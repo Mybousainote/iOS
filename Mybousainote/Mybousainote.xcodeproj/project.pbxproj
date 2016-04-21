@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		226CB94443955157BC811230 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569334FE3B3EC764A814A165 /* Pods.framework */; };
+		78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B2F1CBA3F3500371566 /* TopViewController.swift */; };
+		78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B311CBA3F4E00371566 /* TutorialViewController.swift */; };
+		78C47B341CBA3F9100371566 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C47B331CBA3F9100371566 /* Top.storyboard */; };
+		78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C47B391CBA430200371566 /* Tutorial.storyboard */; };
+		78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B3B1CBA480E00371566 /* DatabaseManager.swift */; };
 		78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BC981CBA2D3A00905E3D /* AppDelegate.swift */; };
-		78D2BC9B1CBA2D3A00905E3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BC9A1CBA2D3A00905E3D /* ViewController.swift */; };
-		78D2BC9E1CBA2D3A00905E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BC9C1CBA2D3A00905E3D /* Main.storyboard */; };
 		78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BC9F1CBA2D3A00905E3D /* Assets.xcassets */; };
 		78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */; };
 		78D2BCAE1CBA2D3A00905E3D /* MybousainoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BCAD1CBA2D3A00905E3D /* MybousainoteTests.swift */; };
 		78D2BCB91CBA2D3A00905E3D /* MybousainoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BCB81CBA2D3A00905E3D /* MybousainoteUITests.swift */; };
+		78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD68271CBB65E900444C65 /* LocationManager.swift */; };
+		78DD682A1CBB667C00444C65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DD68291CBB667C00444C65 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +42,14 @@
 /* Begin PBXFileReference section */
 		2C8825168BBBC41CF0C1DDA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		569334FE3B3EC764A814A165 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78C47B2A1CBA3DF900371566 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		78C47B2F1CBA3F3500371566 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopViewController.swift; path = controller/TopViewController.swift; sourceTree = "<group>"; };
+		78C47B311CBA3F4E00371566 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = controller/TutorialViewController.swift; sourceTree = "<group>"; };
+		78C47B331CBA3F9100371566 /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Top.storyboard; path = storyboard/Top.storyboard; sourceTree = "<group>"; };
+		78C47B391CBA430200371566 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Tutorial.storyboard; path = storyboard/Tutorial.storyboard; sourceTree = "<group>"; };
+		78C47B3B1CBA480E00371566 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		78D2BC951CBA2D3A00905E3D /* Mybousainote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mybousainote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D2BC981CBA2D3A00905E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		78D2BC9A1CBA2D3A00905E3D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		78D2BC9D1CBA2D3A00905E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78D2BC9F1CBA2D3A00905E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78D2BCA21CBA2D3A00905E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78D2BCA41CBA2D3A00905E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +59,8 @@
 		78D2BCB41CBA2D3A00905E3D /* MybousainoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MybousainoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D2BCB81CBA2D3A00905E3D /* MybousainoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MybousainoteUITests.swift; sourceTree = "<group>"; };
 		78D2BCBA1CBA2D3A00905E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78DD68271CBB65E900444C65 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = model/LocationManager.swift; sourceTree = "<group>"; };
+		78DD68291CBB667C00444C65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E347EA0DD9952B34891828F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78DD682A1CBB667C00444C65 /* CoreLocation.framework in Frameworks */,
 				226CB94443955157BC811230 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +91,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78C47B2B1CBA3E9700371566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78C47B3B1CBA480E00371566 /* DatabaseManager.swift */,
+				78DD68271CBB65E900444C65 /* LocationManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		78C47B2C1CBA3E9E00371566 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		78C47B2D1CBA3EA400371566 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				78C47B2F1CBA3F3500371566 /* TopViewController.swift */,
+				78C47B311CBA3F4E00371566 /* TutorialViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		78C47B2E1CBA3EB800371566 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				78C47B331CBA3F9100371566 /* Top.storyboard */,
+				78C47B391CBA430200371566 /* Tutorial.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		78D2BC8C1CBA2D3A00905E3D = {
 			isa = PBXGroup;
 			children = (
@@ -105,8 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				78D2BC981CBA2D3A00905E3D /* AppDelegate.swift */,
-				78D2BC9A1CBA2D3A00905E3D /* ViewController.swift */,
-				78D2BC9C1CBA2D3A00905E3D /* Main.storyboard */,
+				78C47B2E1CBA3EB800371566 /* Storyboard */,
+				78C47B2D1CBA3EA400371566 /* Controller */,
+				78C47B2C1CBA3E9E00371566 /* View */,
+				78C47B2B1CBA3E9700371566 /* Model */,
 				78D2BC9F1CBA2D3A00905E3D /* Assets.xcassets */,
 				78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */,
 				78D2BCA41CBA2D3A00905E3D /* Info.plist */,
@@ -135,6 +183,7 @@
 		91B4158F216B9CBBCA9124C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78DD68291CBB667C00444C65 /* CoreLocation.framework */,
 				569334FE3B3EC764A814A165 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -220,6 +269,11 @@
 				TargetAttributes = {
 					78D2BC941CBA2D3A00905E3D = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					78D2BCA81CBA2D3A00905E3D = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -256,9 +310,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
+				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
-				78D2BC9E1CBA2D3A00905E3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,8 +386,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78D2BC9B1CBA2D3A00905E3D /* ViewController.swift in Sources */,
+				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
+				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
+				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,
+				78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,18 +426,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		78D2BC9C1CBA2D3A00905E3D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				78D2BC9D1CBA2D3A00905E3D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				78D2BCA21CBA2D3A00905E3D /* Base */,
+				78C47B2A1CBA3DF900371566 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -423,7 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -461,7 +512,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -474,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Mybousainote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.Mybousainote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -486,6 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Mybousainote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.Mybousainote;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -12,11 +12,59 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var dbManager: DatabaseManager!
+    var lManager: LocationManager!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        
+        
+        
+        dbManager = DatabaseManager()
+        lManager = LocationManager.init()
+//        lManager.requestAuthorization()
+        
+        let ud = NSUserDefaults.standardUserDefaults()
+        
+        //初期値を設定
+        let defaults: [String: NSObject] = ["FIRST_LAUNCH": true]
+        ud.registerDefaults(defaults)
+        
+        
+        var firstSb: UIStoryboard!
+        
+        //初回起動かどうかの判定
+        if ud.boolForKey("FIRST_LAUNCH") {
+            print("初回起動判定：true")
+            ud.setObject(false, forKey: "FIRST_LAUNCH")
+            firstSb = UIStoryboard(name: "Tutorial", bundle: nil)
+        }
+        else {
+            print("初回起動判定：false")
+            firstSb = UIStoryboard(name: "Top", bundle: nil)
+        }
+        
+        let firstView: UIViewController! = firstSb.instantiateInitialViewController()
+        
+        window?.rootViewController = firstView
+        
+        
+        
+        /* Background fetch */
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
+        
         return true
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        // ここに処理内容
+        print("Background fetch foo")
+        lManager.locationManager.startUpdatingLocation()
+        completionHandler(UIBackgroundFetchResult.NewData)
     }
 
     func applicationWillResignActive(application: UIApplication) {

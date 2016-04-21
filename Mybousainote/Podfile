@@ -4,3 +4,6 @@ xcodeproj 'Mybousainote'
 use_frameworks!
 
 pod 'GoogleMaps'
+pod 'RealmSwift'
+
+
