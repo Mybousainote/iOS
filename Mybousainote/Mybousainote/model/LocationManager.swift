@@ -9,15 +9,20 @@
 import UIKit
 import CoreLocation
 
+protocol LocationManagerDelegate {
+    func aquiredCityName(cityName: String, lat: Double, lng: Double)
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    var delegate: LocationManagerDelegate!
     
     var lat: CLLocationDegrees = 0
     var lng: CLLocationDegrees = 0
     let locationManager: CLLocationManager
     
     override init() {
-        print("LocationManagerのインスタンス作成")
         locationManager = CLLocationManager()
         
         super.init()
@@ -74,14 +79,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if let currentLocation = (locations.last as? CLLocation?) {
                 lat = (currentLocation?.coordinate.latitude)!
                 lng = (currentLocation?.coordinate.longitude)!
-                
+            
 //                print("緯度:\(lat) 経度:\(lng)")
                 
-                revGeocoding(lat, lon: lng)
+                //テスト用
+                //渋谷
+//                lat = 35.659500
+//                lng = 139.699554
+                //北海道
+                lat = 43.064615
+                lng = 141.346807
+                
                 
                 //データベースに保存
-                appDelegate.dbManager.insertLocationData(lat, lng: lng, cityName: "〜〜市", townName: "〜〜町")
-//                print(NSData)
+                appDelegate.dbManager.insertLocationTable(lat, lng: lng)
             }
         }
     }
@@ -92,8 +103,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     //緯度経度から地名取得
-    func revGeocoding(lat: Double, lon: Double) {
-        let location = CLLocation(latitude: lat, longitude: lon)
+    func revGeocoding(lat: Double, lng: Double) {
+        let location = CLLocation(latitude: lat, longitude: lng)
         
         var locality: String = ""
         var subLocality: String = ""
@@ -105,19 +116,19 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if placemarks!.count > 0 {
                 let placemark = placemarks![0] as CLPlacemark
                 //stop updating location to save battery life
-                
-                print("Country = \(placemark.country)")
-                print("Postal Code = \(placemark.postalCode)")
-                print("Administrative Area = \(placemark.administrativeArea)")
-                print("Sub Administrative Area = \(placemark.subAdministrativeArea)")
-                print("Locality = \(placemark.locality)")
-                print("Sub Locality = \(placemark.subLocality)")
-                print("Throughfare = \(placemark.thoroughfare)")
+//                print("Country = \(placemark.country)")
+//                print("Postal Code = \(placemark.postalCode)")
+//                print("Administrative Area = \(placemark.administrativeArea)")
+//                print("Sub Administrative Area = \(placemark.subAdministrativeArea)")
+//                print("Locality = \(placemark.locality)")
+//                print("Sub Locality = \(placemark.subLocality)")
+//                print("Throughfare = \(placemark.thoroughfare)")
                 
                 locality = placemark.locality!
                 subLocality = placemark.subLocality!
                 
-                print("locality: \(locality)  sublocality: \(subLocality)")
+                //取得した地名をDatabaseManagerの方で保存する
+                self.delegate.aquiredCityName(locality+subLocality, lat: lat, lng: lng)
                 
             } else {
                 print("Problem with the data received from geocoder")
