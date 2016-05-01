@@ -24,7 +24,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="L23-WC-vPT">
             <objects>
-                <viewController id="4aa-yd-zCn" customClass="TutorialViewController" sceneMemberID="viewController">
+                <viewController id="4aa-yd-zCn" customClass="TutorialViewController" customModule="Mybousainote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3CA-eM-R0b"/>
                         <viewControllerLayoutGuide type="bottom" id="bBt-M0-Tef"/>
@@ -34,8 +34,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-Eq-kuk">
-                                <rect key="frame" x="382" y="358" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="277" y="361" width="46" height="30"/>
+                                <state key="normal" title="始める"/>
+                                <connections>
+                                    <action selector="didTouchedStartButton:" destination="4aa-yd-zCn" eventType="touchUpInside" id="EW1-cu-Ekz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,6 +48,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ftW-gg-k4F"/>
+                    <connections>
+                        <outlet property="startButton" destination="9aY-Eq-kuk" id="Vh4-Yc-mb1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNo-fM-bO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

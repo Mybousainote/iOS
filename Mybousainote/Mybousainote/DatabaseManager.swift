@@ -9,41 +9,43 @@
 import UIKit
 import RealmSwift
 
+class Location_Table: Object {
+    dynamic var createdDate: NSDate = NSDate()
+    dynamic var lat: Double = 0
+    dynamic var lng: Double = 0
+}
+
+class CityFrequency_Table: Object {
+    dynamic var cityName: String = ""
+    dynamic var frequency: Int = 0
+    dynamic var lat: Double = 0
+    dynamic var lng: Double = 0
+}
 
 protocol DatabaseManagerDelegate {
     func didGettedData(data: NSString)
 }
 
-class DatabaseManager: NSObject, LocationManagerDelegate {
+class DatabaseManager: NSObject {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var delegate: DatabaseManagerDelegate!
     
-    
-    func initializeDatabase() {
-//        showTableContent(Location_Table)
-    
-        //デリゲート設定
-        appDelegate.lManager.delegate = self
-        
+    override init() {
+        super.init()
         showTableContent(Location_Table)
         showTableContent(CityFrequency_Table)
         
-//        deleteTable(CityFrequency_Table)
-        
-        refreshCityFrequency()
-        
-        
-//        deleteAllTable()
+        //        deleteTable(CityFrequency_Table)
     }
     
     //指定したテーブルの中身を表示
     func showTableContent(tableObject: Object.Type) {
         let myRealm = try! Realm()
         let tableContain = myRealm.objects(tableObject)
-        print("----- ▼ 位置情報テーブルの中身 -----")
+        print("----- ▼ テーブルの中身 -----")
         print(tableContain)
-        print("----- ▲ 位置情報テーブルの中身 -----")
+        print("----- ▲ テーブルの中身 -----")
     }
     
     //指定したテーブルを削除
@@ -65,14 +67,13 @@ class DatabaseManager: NSObject, LocationManagerDelegate {
     
     //取得した位置情報をDBに保存する
     func insertLocationTable(lat: Double, lng: Double) {
-        
         let myLocations = Location_Table()
         
         myLocations.createdDate = NSDate()
         myLocations.lat = lat
         myLocations.lng = lng
         
-        print(myLocations.createdDate)
+        print("【保存】緯度：\(lat) 経度：\(lng) 時間：\(myLocations.createdDate)")
         
         let myRealm = try! Realm()
         try! myRealm.write {
@@ -92,13 +93,12 @@ class DatabaseManager: NSObject, LocationManagerDelegate {
         for row in rows {
             let lat = row.lat
             let lng = row.lng
-            
             appDelegate.lManager.revGeocoding(lat, lng: lng)
         }
     }
     
-    //LocationManagerで緯度経度→地名変換が完了したときに呼ばれる
-    func aquiredCityName(cityName: String, lat: Double, lng: Double) {
+    //変換された地名と頻度をテーブルに保存
+    func insertFrequencyTable(cityName: String, lat: Double, lng: Double) {
         
         let myRealm = try! Realm()
         
@@ -126,20 +126,24 @@ class DatabaseManager: NSObject, LocationManagerDelegate {
         try! myRealm.write {
             myRealm.add(myFrequencies)
         }
+        
+        print("【保存】地名：\(cityName) 頻度：\(frequency)")
+    }
+    
+    //上位4つの地域の情報を取得
+    func getForLivingArea() -> [AnyObject] {
+        let livingAreas = [
+            [
+                "cityName": "日野市旭が丘",
+                "lat": 35.132,
+                "lng": 132
+            ]
+        ]
+        
+        return livingAreas
     }
 }
 
-class Location_Table: Object {
-    dynamic var createdDate: NSDate = NSDate()
-    dynamic var lat: Double = 0
-    dynamic var lng: Double = 0
-}
 
-class CityFrequency_Table: Object {
-    dynamic var cityName: String = ""
-    dynamic var frequency: Int = 0
-    dynamic var lat: Double = 0
-    dynamic var lng: Double = 0
-}
 
 

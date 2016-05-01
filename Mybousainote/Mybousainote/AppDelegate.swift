@@ -19,12 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        createGlobalClass()
         
-        
-        
-        dbManager = DatabaseManager()
-        lManager = LocationManager.init()
-//        lManager.requestAuthorization()
         
         let ud = NSUserDefaults.standardUserDefaults()
         
@@ -59,11 +55,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func createGlobalClass() {
+        lManager = LocationManager.init()
+        dbManager = DatabaseManager.init()
+    }
+    
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         // ここに処理内容
         print("Background fetch foo")
         lManager.locationManager.startUpdatingLocation()
+        dbManager.refreshCityFrequency()
+        
         completionHandler(UIBackgroundFetchResult.NewData)
     }
 

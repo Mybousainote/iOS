@@ -10,22 +10,28 @@ import UIKit
 import CoreLocation
 
 protocol LocationManagerDelegate {
-    func aquiredCityName(cityName: String, lat: Double, lng: Double)
+    func DeniedAuthorization()
+    func acceptAuthorization()
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let ud = NSUserDefaults.standardUserDefaults()
     
     var delegate: LocationManagerDelegate!
-    
+
     var lat: CLLocationDegrees = 0
     var lng: CLLocationDegrees = 0
     let locationManager: CLLocationManager
+    var isTopView: Bool = false
+    
+    
     
     override init() {
         locationManager = CLLocationManager()
         
         super.init()
+        
         locationManager.delegate = self
         //位置情報の精度
 //        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
@@ -60,13 +66,28 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         switch (status) {
         case .NotDetermined:
             statusStr = "NotDetermined"
+            
         case .Restricted:
             statusStr = "Restricted"
+            
         case .Denied:
             statusStr = "Denied"
+            ud.setObject(false, forKey: "LOCATION_AUTHORIZED")
+            ud.synchronize()
+            
+            if  isTopView == false {
+                self.delegate.DeniedAuthorization()
+            }
+            
         case .AuthorizedAlways:
             statusStr = "AuthorizedAlways"
-//            locationManager.startUpdatingLocation()
+            ud.setObject(true, forKey: "LOCATION_AUTHORIZED")
+            ud.synchronize()
+            
+            if isTopView == false {
+                self.delegate.acceptAuthorization()
+            }
+            
         case .AuthorizedWhenInUse:
             statusStr = "AuthorizedWhenInUse"
         }
@@ -76,6 +97,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // 位置情報が取得できたとき
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0{
+            
             if let currentLocation = (locations.last as? CLLocation?) {
                 lat = (currentLocation?.coordinate.latitude)!
                 lng = (currentLocation?.coordinate.longitude)!
@@ -87,8 +109,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 //                lat = 35.659500
 //                lng = 139.699554
                 //北海道
-                lat = 43.064615
-                lng = 141.346807
+//                lat = 43.064615
+//                lng = 141.346807
                 
                 
                 //データベースに保存
@@ -104,6 +126,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     //緯度経度から地名取得
     func revGeocoding(lat: Double, lng: Double) {
+        
         let location = CLLocation(latitude: lat, longitude: lng)
         
         var locality: String = ""
@@ -128,7 +151,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 subLocality = placemark.subLocality!
                 
                 //取得した地名をDatabaseManagerの方で保存する
-                self.delegate.aquiredCityName(locality+subLocality, lat: lat, lng: lng)
+                self.appDelegate.dbManager.insertFrequencyTable(locality+subLocality, lat: lat, lng: lng)
                 
             } else {
                 print("Problem with the data received from geocoder")
