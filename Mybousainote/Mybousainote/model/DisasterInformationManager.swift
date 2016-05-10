@@ -20,38 +20,23 @@ class DisasterInformationManager: NSObject {
     func testForAquireDisasterInformation() {
         print("防災情報取得テスト")
         
-        print("同期？？")
-        var URL:NSURL!
-        URL = NSURL(string: "http://localhost:3001/test.json")
-        let jsonData :NSData! = NSData(contentsOfURL: URL)
-        
-        let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSDictionary
-        print(json)
-        
-        print("うん同期")
-        
-        NSLog("AFNetwork Starts First Page!!!")
-
         //リクエスト
         let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
 
         let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
         manager.responseSerializer = serializer
-
-//        let serializer2:AFJSONRequestSerializer = AFJSONRequestSerializer()
-//        manager.requestSerializer = serializer2
         
-        let url = "http://localhost:3001/test.php"
-        let url2 = ""
+        
+        let url = "http://taigasano.com/mybousainote/api/test.php?prefecture=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%97%A5%E9%87%8E%E5%B8%82"
         
         manager.GET(url, parameters: nil,
             success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
                 print("Success!!")
                 
-                let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: [])) as? NSDictionary
+                let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
                 print(json)
-                print(json!["id"])
-                
+                print(json![0])
+                print((json![0] as AnyObject)["name"])
             },
             failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
                 print("Error!!")
@@ -59,7 +44,15 @@ class DisasterInformationManager: NSObject {
                 print(operation?.responseString)
             }
         )
+    }
+    
+    func APITest() {
+        print("同期通信テスト")
+        var URL:NSURL!
+        URL = NSURL(string: "http://localhost:3001/test.json")
+        let jsonData :NSData! = NSData(contentsOfURL: URL)
         
-        print("非同期")
+        let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSDictionary
+        print(json)
     }
 }
