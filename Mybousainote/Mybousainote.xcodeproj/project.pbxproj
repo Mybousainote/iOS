@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		226CB94443955157BC811230 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569334FE3B3EC764A814A165 /* Pods.framework */; };
+		78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */; };
 		78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B2F1CBA3F3500371566 /* TopViewController.swift */; };
 		78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B311CBA3F4E00371566 /* TutorialViewController.swift */; };
 		78C47B341CBA3F9100371566 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C47B331CBA3F9100371566 /* Top.storyboard */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		2C8825168BBBC41CF0C1DDA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		569334FE3B3EC764A814A165 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterInformationManager.swift; path = model/DisasterInformationManager.swift; sourceTree = "<group>"; };
 		78C47B2A1CBA3DF900371566 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		78C47B2F1CBA3F3500371566 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopViewController.swift; path = controller/TopViewController.swift; sourceTree = "<group>"; };
 		78C47B311CBA3F4E00371566 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = controller/TutorialViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				78D81B6F1CD6253A00CA9498 /* Global.swift */,
 				78C47B3B1CBA480E00371566 /* DatabaseManager.swift */,
 				78DD68271CBB65E900444C65 /* LocationManager.swift */,
+				78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,
 				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,
+				78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */,
 				78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

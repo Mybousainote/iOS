@@ -34,26 +34,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-Y1-TRf">
-                                <rect key="frame" x="180" y="73" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMM-bq-Jjg">
+                                <rect key="frame" x="265" y="300" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="test:" destination="Rzt-cc-z6e" eventType="touchUpInside" id="CgM-Ut-0xF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="3Zv-Y1-TRf" secondAttribute="trailing" constant="10" id="LNo-vA-zAP"/>
-                            <constraint firstItem="X8Q-oE-3Jg" firstAttribute="top" secondItem="3Zv-Y1-TRf" secondAttribute="bottom" constant="10" id="OYN-gL-oen"/>
-                            <constraint firstItem="3Zv-Y1-TRf" firstAttribute="top" secondItem="JWz-LY-HTc" secondAttribute="bottom" constant="10" id="To9-wK-hix"/>
-                            <constraint firstItem="3Zv-Y1-TRf" firstAttribute="leading" secondItem="hOf-K5-MDU" secondAttribute="leading" constant="10" id="oCl-py-uRw"/>
+                            <constraint firstItem="zMM-bq-Jjg" firstAttribute="centerX" secondItem="hOf-K5-MDU" secondAttribute="centerX" id="VHq-9x-NVg"/>
+                            <constraint firstItem="zMM-bq-Jjg" firstAttribute="centerY" secondItem="hOf-K5-MDU" secondAttribute="centerY" id="Y3d-r7-Lhm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="haW-xs-1TF"/>
-                    <connections>
-                        <outlet property="debugTextView" destination="3Zv-Y1-TRf" id="5Ai-P5-aCw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ryc-DG-k1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

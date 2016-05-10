@@ -93,7 +93,7 @@ class DatabaseManager: NSObject {
         for row in rows {
             let lat = row.lat
             let lng = row.lng
-            appDelegate.lManager.revGeocoding(lat, lng: lng)
+            appDelegate.LManager.revGeocoding(lat, lng: lng)
         }
     }
     

@@ -16,14 +16,14 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate.lManager.delegate = self
+        appDelegate.LManager.delegate = self
     }
     
     @IBAction func didTouchedStartButton(sender: AnyObject) {
         print("スタート！")
         
         //位置情報許可の申請
-        appDelegate.lManager.requestAuthorization()
+        appDelegate.LManager.requestAuthorization()
     }
     
     func acceptAuthorization() {

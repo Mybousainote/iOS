@@ -23,9 +23,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     var lat: CLLocationDegrees = 0
     var lng: CLLocationDegrees = 0
     let locationManager: CLLocationManager
+    
+    //位置情報許可時の画面遷移の判定用
     var isTopView: Bool = false
-    
-    
     
     override init() {
         locationManager = CLLocationManager()
@@ -114,7 +114,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 
                 
                 //データベースに保存
-                appDelegate.dbManager.insertLocationTable(lat, lng: lng)
+                appDelegate.DBManager.insertLocationTable(lat, lng: lng)
             }
         }
     }
@@ -151,7 +151,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 subLocality = placemark.subLocality!
                 
                 //取得した地名をDatabaseManagerの方で保存する
-                self.appDelegate.dbManager.insertFrequencyTable(locality+subLocality, lat: lat, lng: lng)
+                self.appDelegate.DBManager.insertFrequencyTable(locality+subLocality, lat: lat, lng: lng)
                 
             } else {
                 print("Problem with the data received from geocoder")

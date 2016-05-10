@@ -17,7 +17,8 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate.lManager.isTopView = true
+        //位置情報許可時の画面遷移の判定用
+        appDelegate.LManager.isTopView = true
         
         //位置情報が許可されてない場合アラートを表示
         if ud.boolForKey("LOCATION_AUTHORIZED") == false {
@@ -31,12 +32,14 @@ class TopViewController: UIViewController {
             alert.addAction(defaultAction)
             presentViewController(alert, animated: true, completion: nil)
         }
-        
         setLivingAreaButtons()
+        
+        
+        
     }
     
     func setLivingAreaButtons() {
-        let LivingAreas = appDelegate.dbManager.getForLivingArea()
+        let LivingAreas = appDelegate.DBManager.getForLivingArea()
         
         for livingArea in LivingAreas {
             let cityName = livingArea["cityName"] as! String
@@ -44,6 +47,11 @@ class TopViewController: UIViewController {
         }
     }
 
+    @IBAction func test(sender: AnyObject) {
+        //防災情報取得テスト
+        appDelegate.DIManager.testForAquireDisasterInformation()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

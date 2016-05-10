@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import AFNetworking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var dbManager: DatabaseManager!
-    var lManager: LocationManager!
-
+    var DBManager: DatabaseManager!
+    var LManager: LocationManager!
+    var DIManager: DisasterInformationManager!
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         createGlobalClass()
         
+        //ロギング開始
+//        AFNetworkActivityLogger.sharedLogger().level = .AFLoggerLevelDebug
+//        AFNetworkActivityLogger.sharedLogger().startLogging()
         
         let ud = NSUserDefaults.standardUserDefaults()
         
@@ -56,16 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func createGlobalClass() {
-        lManager = LocationManager.init()
-        dbManager = DatabaseManager.init()
+        LManager = LocationManager.init()
+        DBManager = DatabaseManager.init()
+        DIManager = DisasterInformationManager.init()
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         // ここに処理内容
         print("Background fetch foo")
-        lManager.locationManager.startUpdatingLocation()
-        dbManager.refreshCityFrequency()
+        LManager.locationManager.startUpdatingLocation()
+        DBManager.refreshCityFrequency()
         
         completionHandler(UIBackgroundFetchResult.NewData)
     }
