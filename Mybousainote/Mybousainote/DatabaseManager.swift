@@ -42,9 +42,9 @@ class DatabaseManager: NSObject {
     //指定したテーブルの中身を表示
     func showTableContent(tableObject: Object.Type) {
         let myRealm = try! Realm()
-        let tableContain = myRealm.objects(tableObject)
+        let tableContents = myRealm.objects(tableObject)
         print("----- ▼ テーブルの中身 -----")
-        print(tableContain)
+        print(tableContents)
         print("----- ▲ テーブルの中身 -----")
     }
     
@@ -57,7 +57,7 @@ class DatabaseManager: NSObject {
         }
     }
     
-    //テーブルを全削除する
+    //全テーブルを削除する
     func deleteAllTable() {
         let myRealm = try! Realm()
         try! myRealm.write {
@@ -73,7 +73,7 @@ class DatabaseManager: NSObject {
         myLocations.lat = lat
         myLocations.lng = lng
         
-        print("【保存】緯度：\(lat) 経度：\(lng) 時間：\(myLocations.createdDate)")
+        print("【更新】緯度：\(lat) 経度：\(lng) 時間：\(myLocations.createdDate)")
         
         let myRealm = try! Realm()
         try! myRealm.write {
@@ -132,15 +132,22 @@ class DatabaseManager: NSObject {
     
     //上位4つの地域の情報を取得
     func getForLivingArea() -> [AnyObject] {
-        let livingAreas = [
-            [
-                "cityName": "日野市旭が丘",
-                "lat": 35.132,
-                "lng": 132
-            ]
-        ]
         
-        return livingAreas
+        let myRealm = try! Realm()
+        let tableContents = myRealm.objects(CityFrequency_Table)
+
+        print(tableContents)
+        let livingAreas = NSMutableArray()
+        
+        for row in tableContents {
+            let livingArea = [
+                "cityName": row.cityName,
+                "lat": row.lat,
+                "lng": row.lng,
+            ]
+            livingAreas.addObject(livingArea)
+        }
+        return (livingAreas as? [AnyObject])!
     }
 }
 

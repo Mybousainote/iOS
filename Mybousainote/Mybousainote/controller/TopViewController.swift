@@ -13,13 +13,27 @@ class TopViewController: UIViewController {
     let ud = NSUserDefaults.standardUserDefaults()
 
     @IBOutlet weak var debugTextView: UITextView!
+    @IBOutlet weak var livingAreaView1: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //位置情報許可時の画面遷移の判定用
+        //初回画面からの画面遷移の判定用
         appDelegate.LManager.isTopView = true
         
+        //地名と頻度のテーブルの更新（BackgroundFetchでも呼ばれるがここでも呼んでおく）
+//        appDelegate.DBManager.refreshCityFrequency() ← 更新する際に一度テーブルを削除してややこしくなる
+        
+        checkLocationAuthorize()
+    }
+    
+    //viewが全て読み込まれた後に呼ばれる
+    override func viewDidLayoutSubviews() {
+        setLivingAreaButtons()
+    }
+    
+    func checkLocationAuthorize() {
         //位置情報が許可されてない場合アラートを表示
         if ud.boolForKey("LOCATION_AUTHORIZED") == false {
             let alert: UIAlertController = UIAlertController(title: "位置情報サービスが無効です", message: "設定 > プライバシー > 位置情報サービス から\"My防災ノート\"による位置情報の利用を許可してください", preferredStyle:  UIAlertControllerStyle.Alert)
@@ -32,10 +46,6 @@ class TopViewController: UIViewController {
             alert.addAction(defaultAction)
             presentViewController(alert, animated: true, completion: nil)
         }
-        setLivingAreaButtons()
-        
-        
-        
     }
     
     func setLivingAreaButtons() {
@@ -45,9 +55,23 @@ class TopViewController: UIViewController {
             let cityName = livingArea["cityName"] as! String
             print(cityName)
         }
+        
+        let livingAreaButton = LivingAreaButton()
+        livingAreaButton.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
+        livingAreaView1.addSubview(livingAreaButton)
+    }
+    
+    //防災情報画面へ遷移
+    func transitionToDisasterView() {
+        print("防災情報画面へ遷移")
+        let storyboard = UIStoryboard(name: "Disaster", bundle: nil)
+        let nextView: UIViewController! = storyboard.instantiateInitialViewController()
+        self.navigationController?.pushViewController(nextView, animated: true)
     }
 
     @IBAction func test(sender: AnyObject) {
+        transitionToDisasterView()
+        
         //防災情報取得テスト
         appDelegate.DIManager.testForAquireDisasterInformation()
     }

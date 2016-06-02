@@ -61,7 +61,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print("認証状態の変更");
         var statusStr = "";
         switch (status) {
         case .NotDetermined:
@@ -91,7 +90,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         case .AuthorizedWhenInUse:
             statusStr = "AuthorizedWhenInUse"
         }
-        print("CLAuthorizationStatus: \(statusStr)")
+        print("位置情報許可認証状態(CLAuthorizationStatus): \(statusStr)")
     }
     
     // 位置情報が取得できたとき
@@ -101,7 +100,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if let currentLocation = (locations.last as? CLLocation?) {
                 lat = (currentLocation?.coordinate.latitude)!
                 lng = (currentLocation?.coordinate.longitude)!
-            
 //                print("緯度:\(lat) 経度:\(lng)")
                 
                 //テスト用
@@ -111,7 +109,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 //北海道
 //                lat = 43.064615
 //                lng = 141.346807
-                
                 
                 //データベースに保存
                 appDelegate.DBManager.insertLocationTable(lat, lng: lng)

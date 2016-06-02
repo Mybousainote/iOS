@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //ロギング開始
 //        AFNetworkActivityLogger.sharedLogger().level = .AFLoggerLevelDebug
 //        AFNetworkActivityLogger.sharedLogger().startLogging()
+        
+        //GoogleMaps API 認証
+        GMSServices.provideAPIKey("AIzaSyDtif4Yiatpbp8VB2pACpCsX3-LzdLR-EM");
         
         let ud = NSUserDefaults.standardUserDefaults()
         

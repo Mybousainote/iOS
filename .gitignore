@@ -60,3 +60,7 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
+api/xml/
+
+node_modules/
+

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		226CB94443955157BC811230 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569334FE3B3EC764A814A165 /* Pods.framework */; };
+		7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862F29A1CE71311000E4682 /* LivingAreaButton.swift */; };
+		7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7862F29C1CE71436000E4682 /* LivingAreaButton.xib */; };
+		7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */; };
+		7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */; };
 		78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */; };
 		78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B2F1CBA3F3500371566 /* TopViewController.swift */; };
 		78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B311CBA3F4E00371566 /* TutorialViewController.swift */; };
@@ -45,6 +49,10 @@
 /* Begin PBXFileReference section */
 		2C8825168BBBC41CF0C1DDA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		569334FE3B3EC764A814A165 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7862F29A1CE71311000E4682 /* LivingAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivingAreaButton.swift; path = view/LivingAreaButton.swift; sourceTree = "<group>"; };
+		7862F29C1CE71436000E4682 /* LivingAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LivingAreaButton.xib; path = view/LivingAreaButton.xib; sourceTree = "<group>"; };
+		7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterViewController.swift; path = controller/DisasterViewController.swift; sourceTree = "<group>"; };
+		7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Disaster.storyboard; path = storyboard/Disaster.storyboard; sourceTree = "<group>"; };
 		78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterInformationManager.swift; path = model/DisasterInformationManager.swift; sourceTree = "<group>"; };
 		78C47B2A1CBA3DF900371566 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		78C47B2F1CBA3F3500371566 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopViewController.swift; path = controller/TopViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +120,8 @@
 		78C47B2C1CBA3E9E00371566 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7862F29A1CE71311000E4682 /* LivingAreaButton.swift */,
+				7862F29C1CE71436000E4682 /* LivingAreaButton.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -121,6 +131,7 @@
 			children = (
 				78C47B2F1CBA3F3500371566 /* TopViewController.swift */,
 				78C47B311CBA3F4E00371566 /* TutorialViewController.swift */,
+				7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -130,6 +141,7 @@
 			children = (
 				78C47B331CBA3F9100371566 /* Top.storyboard */,
 				78C47B391CBA430200371566 /* Tutorial.storyboard */,
+				7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -321,8 +333,10 @@
 			files = (
 				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
+				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
+				7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,8 +415,10 @@
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,
 				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,
+				7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */,
 				78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */,
 				78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */,
+				7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

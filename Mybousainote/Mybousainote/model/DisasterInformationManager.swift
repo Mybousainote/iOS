@@ -16,6 +16,7 @@ class DisasterInformationManager: NSObject {
         
         
     }
+
     
     func testForAquireDisasterInformation() {
         print("防災情報取得テスト")
@@ -27,16 +28,21 @@ class DisasterInformationManager: NSObject {
         manager.responseSerializer = serializer
         
         
-        let url = "http://taigasano.com/mybousainote/api/test.php?prefecture=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%97%A5%E9%87%8E%E5%B8%82"
+        let url = "http://taigasano.com/mybousainote/api/facilities/?lat=35.6428564&lng=139.3568053&length=5000"
+        let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         
-        manager.GET(url, parameters: nil,
+        manager.GET(encodeURL, parameters: nil,
             success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
                 print("Success!!")
                 
                 let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
                 print(json)
-                print(json![0])
-                print((json![0] as AnyObject)["name"])
+//                print(json![0])
+//                print((json![0] as AnyObject)["name"])
+                
+//                for object in json! {
+//                    print(object["name"])
+//                }
             },
             failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
                 print("Error!!")
