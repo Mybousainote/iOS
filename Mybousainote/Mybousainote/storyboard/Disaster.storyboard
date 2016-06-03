@@ -27,13 +27,21 @@
                                             <action selector="touchedBackButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="ugp-xp-PSo"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQl-Xf-9V0">
+                                        <rect key="frame" x="283" y="33" width="34" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="gpe-H6-XHh" firstAttribute="top" secondItem="Q2h-9b-zSB" secondAttribute="top" constant="19" id="C9m-2O-c6C"/>
+                                    <constraint firstAttribute="bottom" secondItem="qQl-Xf-9V0" secondAttribute="bottom" constant="14" id="Lo4-8x-TPK"/>
                                     <constraint firstAttribute="bottom" secondItem="gpe-H6-XHh" secondAttribute="bottom" constant="14" id="chA-Uo-ACQ"/>
                                     <constraint firstItem="gpe-H6-XHh" firstAttribute="leading" secondItem="Q2h-9b-zSB" secondAttribute="leading" constant="20" id="lBv-YD-9rH"/>
                                     <constraint firstAttribute="height" constant="68" id="pH8-eb-2w6"/>
+                                    <constraint firstItem="qQl-Xf-9V0" firstAttribute="centerX" secondItem="Q2h-9b-zSB" secondAttribute="centerX" id="ygJ-OL-l5l"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -78,6 +86,10 @@
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="qQl-Xf-9V0" id="TAb-wt-hBU"/>
+                        <outlet property="mapView" destination="NT8-yM-bCb" id="I6f-W1-kxa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfg-UC-CWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

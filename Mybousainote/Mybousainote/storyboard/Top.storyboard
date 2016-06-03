@@ -109,6 +109,9 @@
                     <navigationItem key="navigationItem" id="haW-xs-1TF"/>
                     <connections>
                         <outlet property="LivingAreaView1" destination="bVm-gS-cJe" id="Qk0-JN-rpc"/>
+                        <outlet property="livingAreaView2" destination="vxn-Z7-D5f" id="J7y-tv-bFb"/>
+                        <outlet property="livingAreaView3" destination="RtD-wL-kq7" id="FeW-MD-9sN"/>
+                        <outlet property="livingAreaView4" destination="L3b-Fb-AEp" id="Bso-n7-cmt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ryc-DG-k1k" userLabel="First Responder" sceneMemberID="firstResponder"/>

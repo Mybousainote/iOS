@@ -16,19 +16,17 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    func initializeMap(lat: CLLocationDegrees, lon: CLLocationDegrees) {
-        print("MapViewの初期化")
         
-        //カメラの設定
-        let camera = GMSCameraPosition.cameraWithLatitude(lat, longitude: lon, zoom: 18)
-        self.camera = camera
-        
+        print("地図ビューの初期化")
         //デリゲートの設定
         self.delegate = self
         
         //現在地の表示の設定
         self.myLocationEnabled = true
+    }
+    
+    func setCameraLocation(lat: Double, lng: Double) {
+        let camera = GMSCameraPosition.cameraWithLatitude(lat as CLLocationDegrees, longitude: lng as CLLocationDegrees, zoom: 16)
+        self.camera = camera
     }
 }

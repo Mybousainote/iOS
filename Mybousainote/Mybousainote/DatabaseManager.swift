@@ -35,8 +35,6 @@ class DatabaseManager: NSObject {
         super.init()
         showTableContent(Location_Table)
         showTableContent(CityFrequency_Table)
-        
-        //        deleteTable(CityFrequency_Table)
     }
     
     //指定したテーブルの中身を表示
@@ -83,6 +81,7 @@ class DatabaseManager: NSObject {
     
     //頻度を更新する
     func refreshCityFrequency() {
+        print("頻度を更新")
         //既存のテーブルを削除
         deleteTable(CityFrequency_Table)
         
@@ -126,7 +125,6 @@ class DatabaseManager: NSObject {
         try! myRealm.write {
             myRealm.add(myFrequencies)
         }
-        
         print("【保存】地名：\(cityName) 頻度：\(frequency)")
     }
     

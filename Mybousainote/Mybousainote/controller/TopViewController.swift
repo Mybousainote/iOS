@@ -14,6 +14,9 @@ class TopViewController: UIViewController {
 
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var livingAreaView1: UIView!
+    @IBOutlet weak var livingAreaView2: UIView!
+    @IBOutlet weak var livingAreaView3: UIView!
+    @IBOutlet weak var livingAreaView4: UIView!
     
     
     override func viewDidLoad() {
@@ -54,15 +57,50 @@ class TopViewController: UIViewController {
     func setLivingAreaButtons() {
         let LivingAreas = appDelegate.DBManager.getForLivingArea()
         
-        for livingArea in LivingAreas {
-            let cityName = livingArea["cityName"] as! String
-            print(cityName)
-        }
+        var num = 0
         
-        //とりあえずテスト用で全部同じボタン
-        let livingAreaButton = LivingAreaButton()
-        livingAreaButton.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
-        livingAreaView1.addSubview(livingAreaButton)
+        for livingArea in LivingAreas {
+            num += 1
+            
+            let cityName = livingArea["cityName"] as! String
+            
+            let livingAreaButton = LivingAreaButton()
+            livingAreaButton.rank = num
+            livingAreaButton.loadXib()
+            livingAreaButton.setLocationName(cityName)
+            
+            switch num {
+            case 1:
+                livingAreaButton.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
+                livingAreaView1.addSubview(livingAreaButton)
+                break
+                
+            case 2:
+                livingAreaButton.frame = CGRectMake(0, 0, livingAreaView2.frame.width, livingAreaView2.frame.height)
+                livingAreaView2.addSubview(livingAreaButton)
+                break
+                
+            case 3:
+                livingAreaButton.frame = CGRectMake(0, 0, livingAreaView3.frame.width, livingAreaView3.frame.height)
+                livingAreaView3.addSubview(livingAreaButton)
+                break
+                
+            case 4:
+                livingAreaButton.frame = CGRectMake(0, 0, livingAreaView4.frame.width, livingAreaView4.frame.height)
+                livingAreaView4.addSubview(livingAreaButton)
+                break
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    
+    //生活圏ボタンが押されたときに呼ばれる
+    func touchedLivingAreaButton(button: UIButton) {
+        appDelegate.commonData.selectedAreaNumber = button.tag
+        transitionToDisasterView()
     }
     
     //防災情報画面へ遷移する
@@ -73,6 +111,12 @@ class TopViewController: UIViewController {
         self.navigationController?.pushViewController(nextView, animated: true)
     }
 
+    
+    
+    
+    
+    
+    
     
     
     

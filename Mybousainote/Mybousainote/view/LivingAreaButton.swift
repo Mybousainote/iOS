@@ -11,27 +11,33 @@ import UIKit
 class LivingAreaButton: UIButton {
     
     @IBOutlet weak var label: UILabel!
+    var rank: Int = 0
     
     //コードから初期化
     override init(frame: CGRect) {
         super.init(frame: frame)
-        loadXib()
-        
-        label.text = "ぬあ"
     }
     //SB/xibから初期化
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    private func loadXib() {
+    func setLocationName(name: String) {
+        label.text = name
+    }
+    
+    func loadXib() {
         let  bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: "LivingAreaButton", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil).first as! UIButton
         
-        //ターゲットを設定
-        view.addTarget(TopViewController(), action: #selector(TopViewController.transitionToDisasterView), forControlEvents: .TouchUpInside)
+        //ボタンの番号を設定
+        view.tag = rank
         
+        //ターゲットを設定
+//        view.addTarget(TopViewController(), action: #selector(TopViewController.transitionToDisasterView), forControlEvents: .TouchUpInside)
+
+        view.addTarget(TopViewController(), action: #selector(TopViewController.touchedLivingAreaButton(_:)), forControlEvents: .TouchUpInside)
         addSubview(view)
 
         // カスタムViewのサイズを自分自身と同じサイズにする
@@ -46,4 +52,6 @@ class LivingAreaButton: UIButton {
             metrics:nil,
             views: bindings))
     }
+    
+    
 }

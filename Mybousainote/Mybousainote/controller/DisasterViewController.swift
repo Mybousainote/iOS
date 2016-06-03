@@ -9,11 +9,30 @@
 import UIKit
 
 class DisasterViewController: UIViewController {
-
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var mapView: MapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        let selectedAreaNumber = appDelegate.commonData.selectedAreaNumber
+        print("番号：\(selectedAreaNumber)")
+        
+        if selectedAreaNumber == 0 {
+            print("現在地")
+        }
+        
+        let LivingAreas = appDelegate.DBManager.getForLivingArea()
+        let livingArea = LivingAreas[selectedAreaNumber-1] as AnyObject
+        cityNameLabel.text = livingArea["cityName"] as! String
+        
+        let lat = livingArea["lat"] as! Double
+        let lng = livingArea["lng"] as! Double
+        print(lat)
+        print(lng)
+        mapView.setCameraLocation(lat, lng: lng)
     }
 
     override func didReceiveMemoryWarning() {
