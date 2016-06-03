@@ -27,6 +27,7 @@
 		78D81B721CD6254800CA9498 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D81B711CD6254800CA9498 /* Config.swift */; };
 		78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD68271CBB65E900444C65 /* LocationManager.swift */; };
 		78DD682A1CBB667C00444C65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DD68291CBB667C00444C65 /* CoreLocation.framework */; };
+		78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFE5F21D014DD7005B16BD /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		78D81B711CD6254800CA9498 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		78DD68271CBB65E900444C65 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = model/LocationManager.swift; sourceTree = "<group>"; };
 		78DD68291CBB667C00444C65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		78EFE5F21D014DD7005B16BD /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = view/MapView.swift; sourceTree = "<group>"; };
 		E347EA0DD9952B34891828F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 			children = (
 				7862F29A1CE71311000E4682 /* LivingAreaButton.swift */,
 				7862F29C1CE71436000E4682 /* LivingAreaButton.xib */,
+				78EFE5F21D014DD7005B16BD /* MapView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
 				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
 				78D81B701CD6253A00CA9498 /* Global.swift in Sources */,
+				78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */,
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,
 				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,

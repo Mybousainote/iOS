@@ -16,6 +16,8 @@ class LivingAreaButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
+        
+        label.text = "ぬあ"
     }
     //SB/xibから初期化
     required init?(coder aDecoder: NSCoder) {
@@ -26,8 +28,12 @@ class LivingAreaButton: UIButton {
         let  bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: "LivingAreaButton", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil).first as! UIButton
-        addSubview(view)
         
+        //ターゲットを設定
+        view.addTarget(TopViewController(), action: #selector(TopViewController.transitionToDisasterView), forControlEvents: .TouchUpInside)
+        
+        addSubview(view)
+
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false
         let bindings = ["view": view]

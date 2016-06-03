@@ -37,7 +37,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMM-bq-Jjg">
                                 <rect key="frame" x="276" y="62" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="テスト"/>
                                 <connections>
                                     <action selector="test:" destination="Rzt-cc-z6e" eventType="touchUpInside" id="CgM-Ut-0xF"/>
                                 </connections>

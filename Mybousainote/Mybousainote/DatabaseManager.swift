@@ -136,7 +136,7 @@ class DatabaseManager: NSObject {
         let myRealm = try! Realm()
         let tableContents = myRealm.objects(CityFrequency_Table)
 
-        print(tableContents)
+//        print(tableContents)
         let livingAreas = NSMutableArray()
         
         for row in tableContents {

@@ -5,7 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LivingAreaButton" customModule="Mybousainote" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LivingAreaButton" customModule="Mybousainote" customModuleProvider="target">
+            <connections>
+                <outlet property="label" destination="mOY-iJ-0cC" id="t94-Cj-NlG"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LivingAreaButton" customModule="Mybousainote" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

@@ -30,11 +30,14 @@ class TopViewController: UIViewController {
     
     //viewが全て読み込まれた後に呼ばれる
     override func viewDidLayoutSubviews() {
+//        setLivingAreaButtons()
+    }
+    override func viewDidAppear(animated: Bool) {
         setLivingAreaButtons()
     }
     
+    //位置情報が許可されてない場合アラートを表示する
     func checkLocationAuthorize() {
-        //位置情報が許可されてない場合アラートを表示
         if ud.boolForKey("LOCATION_AUTHORIZED") == false {
             let alert: UIAlertController = UIAlertController(title: "位置情報サービスが無効です", message: "設定 > プライバシー > 位置情報サービス から\"My防災ノート\"による位置情報の利用を許可してください", preferredStyle:  UIAlertControllerStyle.Alert)
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:{
@@ -42,12 +45,12 @@ class TopViewController: UIViewController {
                 (action: UIAlertAction!) -> Void in
                 print("OK")
             })
-            
             alert.addAction(defaultAction)
             presentViewController(alert, animated: true, completion: nil)
         }
     }
     
+    //生活圏リストボタンを作成する
     func setLivingAreaButtons() {
         let LivingAreas = appDelegate.DBManager.getForLivingArea()
         
@@ -56,12 +59,13 @@ class TopViewController: UIViewController {
             print(cityName)
         }
         
+        //とりあえずテスト用で全部同じボタン
         let livingAreaButton = LivingAreaButton()
         livingAreaButton.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
         livingAreaView1.addSubview(livingAreaButton)
     }
     
-    //防災情報画面へ遷移
+    //防災情報画面へ遷移する
     func transitionToDisasterView() {
         print("防災情報画面へ遷移")
         let storyboard = UIStoryboard(name: "Disaster", bundle: nil)
@@ -69,9 +73,14 @@ class TopViewController: UIViewController {
         self.navigationController?.pushViewController(nextView, animated: true)
     }
 
+    
+    
+    
+    
+    
+        	
+    //テスト
     @IBAction func test(sender: AnyObject) {
-        transitionToDisasterView()
-        
         //防災情報取得テスト
         appDelegate.DIManager.testForAquireDisasterInformation()
     }
