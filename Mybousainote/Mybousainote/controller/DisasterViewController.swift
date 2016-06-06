@@ -8,31 +8,66 @@
 
 import UIKit
 
-class DisasterViewController: UIViewController {
+class DisasterViewController: UIViewController,DisasterInformationManagerDelegate, MapViewDelegate {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    //StoryBoard
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var mapView: MapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let selectedAreaNumber = appDelegate.commonData.selectedAreaNumber
-        print("番号：\(selectedAreaNumber)")
         
-        if selectedAreaNumber == 0 {
-            print("現在地")
+        appDelegate.DIManager.delegate = self
+        
+        //トップ画面で選択した地点の情報を取得
+        let livingArea = appDelegate.global.selectedArea as AnyObject
+        
+        //ヘッダーの地名をセット
+        cityNameLabel.text = livingArea["cityName"] as? String
+        
+        //地図のカメラをセット
+        mapView.setCameraLocation(livingArea["lat"] as! Double, lng: livingArea["lng"] as! Double)
+        mapView.mapViewDelegate = self
+        
+        getFacilitiesData()
+    }
+
+    //避難施設情報を取得
+    func getFacilitiesData() {
+        print(mapView)
+        appDelegate.DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().getFacilitiesBound)
+    }
+    
+    //避難施設情報を取得したときに呼ばれる
+    func didGetFacilitiesData(facilities: [AnyObject]) {
+        mapView.isFirstLoad = false
+        
+        //ピンを一旦全削除
+        mapView.removeAllMarkers()
+        
+        var count = 0
+        for facility in facilities {
+            count += 1
+            
+            let name = facility["name"] as! String
+            let lat = facility["lat"] as! String
+            let lng = facility["lng"] as! String
+            
+            var num = count
+            if num > 4 {
+                num = 0
+            }
+            mapView.setFacilitiesPins(Double(lat)!, lng: Double(lng)!, name: name, num: num)
         }
         
-        let LivingAreas = appDelegate.DBManager.getForLivingArea()
-        let livingArea = LivingAreas[selectedAreaNumber-1] as AnyObject
-        cityNameLabel.text = livingArea["cityName"] as! String
-        
-        let lat = livingArea["lat"] as! Double
-        let lng = livingArea["lng"] as! Double
-        print(lat)
-        print(lng)
-        mapView.setCameraLocation(lat, lng: lng)
+//        mapView.setFacilitiesPins(mapView.centerLat, lng: mapView.centerLng, name:  "テスト", num: 0)
+    }
+    
+    //地図の移動が終わったときに呼ばれる
+    func didFinishChangeCameraPosition() {
+        print("ドラッグ終了")
+        getFacilitiesData()
     }
 
     override func didReceiveMemoryWarning() {

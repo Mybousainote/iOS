@@ -9,43 +9,49 @@
 import UIKit
 import AFNetworking
 
+protocol DisasterInformationManagerDelegate {
+    func didGetFacilitiesData(facilities: [AnyObject])
+}
+
 class DisasterInformationManager: NSObject {
+    
+    var delegate: DisasterInformationManagerDelegate!
     
     override init() {
         super.init()
-        
-        
     }
 
     
-    func testForAquireDisasterInformation() {
-        print("防災情報取得テスト")
-        
+    func getFacilitiesData(lat: Double, lng: Double, length: Int) {
+        print("避難施設情報を取得")
         //リクエスト
         let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
 
         let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
         manager.responseSerializer = serializer
         
+        let url = "http://taigasano.com/mybousainote/api/facilities/?lat=\(lat)&lng=\(lng)&length=\(length)"
         
-        let url = "http://taigasano.com/mybousainote/api/facilities/?lat=35.6428564&lng=139.3568053&length=5000"
+        print(url)
         let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         
         manager.GET(encodeURL, parameters: nil,
             success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
-                print("Success!!")
+                print("取得に成功")
                 
                 let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
-                print(json)
+//                print(json)
 //                print(json![0])
 //                print((json![0] as AnyObject)["name"])
                 
 //                for object in json! {
 //                    print(object["name"])
 //                }
+                
+                self.delegate.didGetFacilitiesData(json as! [AnyObject])
             },
             failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
-                print("Error!!")
+                print("エラー！")
                 print(operation?.responseObject)
                 print(operation?.responseString)
             }

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		226CB94443955157BC811230 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569334FE3B3EC764A814A165 /* Pods.framework */; };
+		7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102561D050B3200C61152 /* pin_0@2x.png */; };
+		7821025C1D050B3200C61152 /* pin_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102571D050B3200C61152 /* pin_1@2x.png */; };
+		7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102581D050B3200C61152 /* pin_2@2x.png */; };
+		7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102591D050B3200C61152 /* pin_3@2x.png */; };
+		7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7821025A1D050B3200C61152 /* pin_4@2x.png */; };
 		7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862F29A1CE71311000E4682 /* LivingAreaButton.swift */; };
 		7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7862F29C1CE71436000E4682 /* LivingAreaButton.xib */; };
 		7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */; };
@@ -23,7 +28,6 @@
 		78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */; };
 		78D2BCAE1CBA2D3A00905E3D /* MybousainoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BCAD1CBA2D3A00905E3D /* MybousainoteTests.swift */; };
 		78D2BCB91CBA2D3A00905E3D /* MybousainoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BCB81CBA2D3A00905E3D /* MybousainoteUITests.swift */; };
-		78D2D8BA1D0176570064E9C2 /* CommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2D8B91D0176570064E9C2 /* CommonData.swift */; };
 		78D81B701CD6253A00CA9498 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D81B6F1CD6253A00CA9498 /* Global.swift */; };
 		78D81B721CD6254800CA9498 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D81B711CD6254800CA9498 /* Config.swift */; };
 		78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD68271CBB65E900444C65 /* LocationManager.swift */; };
@@ -51,6 +55,11 @@
 /* Begin PBXFileReference section */
 		2C8825168BBBC41CF0C1DDA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		569334FE3B3EC764A814A165 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		782102561D050B3200C61152 /* pin_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_0@2x.png"; path = "image/pin_0@2x.png"; sourceTree = "<group>"; };
+		782102571D050B3200C61152 /* pin_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_1@2x.png"; path = "image/pin_1@2x.png"; sourceTree = "<group>"; };
+		782102581D050B3200C61152 /* pin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_2@2x.png"; path = "image/pin_2@2x.png"; sourceTree = "<group>"; };
+		782102591D050B3200C61152 /* pin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_3@2x.png"; path = "image/pin_3@2x.png"; sourceTree = "<group>"; };
+		7821025A1D050B3200C61152 /* pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_4@2x.png"; path = "image/pin_4@2x.png"; sourceTree = "<group>"; };
 		7862F29A1CE71311000E4682 /* LivingAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivingAreaButton.swift; path = view/LivingAreaButton.swift; sourceTree = "<group>"; };
 		7862F29C1CE71436000E4682 /* LivingAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LivingAreaButton.xib; path = view/LivingAreaButton.xib; sourceTree = "<group>"; };
 		7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterViewController.swift; path = controller/DisasterViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +82,6 @@
 		78D2BCB41CBA2D3A00905E3D /* MybousainoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MybousainoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D2BCB81CBA2D3A00905E3D /* MybousainoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MybousainoteUITests.swift; sourceTree = "<group>"; };
 		78D2BCBA1CBA2D3A00905E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		78D2D8B91D0176570064E9C2 /* CommonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonData.swift; path = model/CommonData.swift; sourceTree = "<group>"; };
 		78D81B6F1CD6253A00CA9498 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		78D81B711CD6254800CA9498 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		78DD68271CBB65E900444C65 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = model/LocationManager.swift; sourceTree = "<group>"; };
@@ -109,6 +117,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7821024B1D0509FC00C61152 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				782102561D050B3200C61152 /* pin_0@2x.png */,
+				782102571D050B3200C61152 /* pin_1@2x.png */,
+				782102581D050B3200C61152 /* pin_2@2x.png */,
+				782102591D050B3200C61152 /* pin_3@2x.png */,
+				7821025A1D050B3200C61152 /* pin_4@2x.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		78C47B2B1CBA3E9700371566 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +137,6 @@
 				78C47B3B1CBA480E00371566 /* DatabaseManager.swift */,
 				78DD68271CBB65E900444C65 /* LocationManager.swift */,
 				78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */,
-				78D2D8B91D0176570064E9C2 /* CommonData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -178,13 +197,14 @@
 			isa = PBXGroup;
 			children = (
 				78D2BC981CBA2D3A00905E3D /* AppDelegate.swift */,
-				78C47B2E1CBA3EB800371566 /* Storyboard */,
-				78C47B2D1CBA3EA400371566 /* Controller */,
-				78C47B2C1CBA3E9E00371566 /* View */,
 				78C47B2B1CBA3E9700371566 /* Model */,
+				78C47B2C1CBA3E9E00371566 /* View */,
+				78C47B2D1CBA3EA400371566 /* Controller */,
+				78C47B2E1CBA3EB800371566 /* Storyboard */,
 				78D2BC9F1CBA2D3A00905E3D /* Assets.xcassets */,
 				78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */,
 				78D2BCA41CBA2D3A00905E3D /* Info.plist */,
+				7821024B1D0509FC00C61152 /* image */,
 			);
 			path = Mybousainote;
 			sourceTree = "<group>";
@@ -337,10 +357,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7821025C1D050B3200C61152 /* pin_1@2x.png in Resources */,
 				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
+				7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
+				7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */,
+				7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */,
+				7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */,
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
 				7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */,
 			);
@@ -417,7 +442,6 @@
 			files = (
 				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
 				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
-				78D2D8BA1D0176570064E9C2 /* CommonData.swift in Sources */,
 				78D81B701CD6253A00CA9498 /* Global.swift in Sources */,
 				78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */,
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,

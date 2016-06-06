@@ -79,6 +79,19 @@ class DatabaseManager: NSObject {
         }
     }
     
+    //一定期間より古い位置情報履歴を削除する
+    func deleteOldDataFromLocationTable() {
+        print("古い履歴を削除")
+        let myRealm = try! Realm()
+        
+        let pastDate = NSDate(timeInterval: -60*60*24*(Config().timeIntervalHoldData), sinceDate: NSDate())
+        let rows = myRealm.objects(Location_Table).filter("createdDate <= %@", pastDate)
+    
+        try! myRealm.write {
+            myRealm.delete(rows)
+        }
+    }
+    
     //頻度を更新する
     func refreshCityFrequency() {
         print("頻度を更新")
@@ -87,7 +100,7 @@ class DatabaseManager: NSObject {
         
         //位置情報履歴を取得
         let myRealm = try! Realm()
-        let rows = myRealm.objects(Location_Table) //← ここで時間のフィルターをかける必要あり
+        let rows = myRealm.objects(Location_Table)
         
         for row in rows {
             let lat = row.lat
@@ -134,8 +147,7 @@ class DatabaseManager: NSObject {
         let myRealm = try! Realm()
         let tableContents = myRealm.objects(CityFrequency_Table)
 
-//        print(tableContents)
-        let livingAreas = NSMutableArray()
+        var livingAreas = NSMutableArray()
         
         for row in tableContents {
             let livingArea = [
@@ -145,7 +157,14 @@ class DatabaseManager: NSObject {
             ]
             livingAreas.addObject(livingArea)
         }
-        return (livingAreas as? [AnyObject])!
+        
+        if Config().isVirtualPersona == true {
+            //仮想ペルソナの生活圏をセット
+            return Config().virtualLivingArea
+        }
+        else {
+            return (livingAreas as? [AnyObject])!
+        }
     }
 }
 

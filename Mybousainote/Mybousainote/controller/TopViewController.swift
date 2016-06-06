@@ -11,7 +11,9 @@ import UIKit
 class TopViewController: UIViewController {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let ud = NSUserDefaults.standardUserDefaults()
-
+    
+    var livingAreas: [AnyObject]!
+    
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var livingAreaView1: UIView!
     @IBOutlet weak var livingAreaView2: UIView!
@@ -55,11 +57,11 @@ class TopViewController: UIViewController {
     
     //生活圏リストボタンを作成する
     func setLivingAreaButtons() {
-        let LivingAreas = appDelegate.DBManager.getForLivingArea()
+        livingAreas = appDelegate.DBManager.getForLivingArea()
         
         var num = 0
         
-        for livingArea in LivingAreas {
+        for livingArea in livingAreas {
             num += 1
             
             let cityName = livingArea["cityName"] as! String
@@ -98,8 +100,14 @@ class TopViewController: UIViewController {
     
     
     //生活圏ボタンが押されたときに呼ばれる
-    func touchedLivingAreaButton(button: UIButton) {
-        appDelegate.commonData.selectedAreaNumber = button.tag
+    func touchedLivingAreaButton(button: UIButton) {        
+        if button.tag != 0 {
+            appDelegate.global.selectedArea = livingAreas[button.tag-1] as! NSObject
+        }
+        else {
+            print("現在地")
+        }
+        
         transitionToDisasterView()
     }
     
@@ -125,8 +133,8 @@ class TopViewController: UIViewController {
         	
     //テスト
     @IBAction func test(sender: AnyObject) {
-        //防災情報取得テスト
-        appDelegate.DIManager.testForAquireDisasterInformation()
+
+//        appDelegate.DBManager.deleteOldDataFromLocationTable()
     }
     
     override func didReceiveMemoryWarning() {
