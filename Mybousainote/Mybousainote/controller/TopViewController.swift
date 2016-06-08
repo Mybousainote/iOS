@@ -12,9 +12,11 @@ class TopViewController: UIViewController {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let ud = NSUserDefaults.standardUserDefaults()
     
-    var livingAreas: [AnyObject]!
+    var livingAreaObjects: [AnyObject]!
     
     @IBOutlet weak var debugTextView: UITextView!
+    
+    @IBOutlet weak var currentAreaView: UIView!
     @IBOutlet weak var livingAreaView1: UIView!
     @IBOutlet weak var livingAreaView2: UIView!
     @IBOutlet weak var livingAreaView3: UIView!
@@ -27,9 +29,11 @@ class TopViewController: UIViewController {
         //初回画面からの画面遷移の判定用
         appDelegate.LManager.isTopView = true
         
+        //現在地を取得
+        appDelegate.LManager.locationManager.startUpdatingLocation()
+        
         //地名と頻度のテーブルの更新（BackgroundFetchでも呼ばれるがここでも呼んでおく）
 //        appDelegate.DBManager.refreshCityFrequency() ← 更新する際に一度テーブルを削除してややこしくなる
-        
         checkLocationAuthorize()
     }
     
@@ -38,6 +42,7 @@ class TopViewController: UIViewController {
 //        setLivingAreaButtons()
     }
     override func viewDidAppear(animated: Bool) {
+        setCurrentAreaButton()
         setLivingAreaButtons()
     }
     
@@ -55,16 +60,26 @@ class TopViewController: UIViewController {
         }
     }
     
+    //現在地ボタンを作成する
+    func setCurrentAreaButton() {
+        let currentAreaButton = CurrentAreaButton()
+        currentAreaButton.rank = 0
+        currentAreaButton.loadXib()
+        currentAreaButton.setLocationName("現在地")
+        currentAreaButton.frame = CGRectMake(0, 0, currentAreaView.frame.width, currentAreaView.frame.height)
+        currentAreaView.addSubview(currentAreaButton)
+    }
+    
     //生活圏リストボタンを作成する
     func setLivingAreaButtons() {
-        livingAreas = appDelegate.DBManager.getForLivingArea()
+        livingAreaObjects = appDelegate.DBManager.getForLivingArea()
         
         var num = 0
         
-        for livingArea in livingAreas {
+        for livingAreaObject in livingAreaObjects {
             num += 1
             
-            let cityName = livingArea["cityName"] as! String
+            let cityName = livingAreaObject["cityName"] as! String
             
             let livingAreaButton = LivingAreaButton()
             livingAreaButton.rank = num
@@ -98,16 +113,22 @@ class TopViewController: UIViewController {
         }
     }
     
-    
     //生活圏ボタンが押されたときに呼ばれる
     func touchedLivingAreaButton(button: UIButton) {        
         if button.tag != 0 {
-            appDelegate.global.selectedArea = livingAreas[button.tag-1] as! NSObject
+            appDelegate.global.selectedAreaObject = livingAreaObjects[button.tag-1] as! NSObject
         }
         else {
             print("現在地")
+            
+            //現在地許可がされてないときの対処
+            
+            appDelegate.global.selectedAreaObject = [
+                "cityName": "現在地",
+                "lat": appDelegate.LManager.lat,
+                "lng": appDelegate.LManager.lng
+            ]
         }
-        
         transitionToDisasterView()
     }
     

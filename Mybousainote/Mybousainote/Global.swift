@@ -13,5 +13,5 @@ public class Global: NSObject {
 //    var selectedAreaNumber: Int!
     
     //選択された地点データ（地名, 緯度, 経度）
-    var selectedArea: NSObject!
+    var selectedAreaObject: NSObject!
 }

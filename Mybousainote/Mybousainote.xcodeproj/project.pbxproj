@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		226CB94443955157BC811230 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569334FE3B3EC764A814A165 /* Pods.framework */; };
+		780FB4541D07BA8600E5C58E /* CurrentAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780FB4531D07BA8600E5C58E /* CurrentAreaButton.swift */; };
+		780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780FB4551D07BA9F00E5C58E /* CurrentAreaButton.xib */; };
 		7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102561D050B3200C61152 /* pin_0@2x.png */; };
 		7821025C1D050B3200C61152 /* pin_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102571D050B3200C61152 /* pin_1@2x.png */; };
 		7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102581D050B3200C61152 /* pin_2@2x.png */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		2C8825168BBBC41CF0C1DDA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		569334FE3B3EC764A814A165 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		780FB4531D07BA8600E5C58E /* CurrentAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentAreaButton.swift; path = view/CurrentAreaButton.swift; sourceTree = "<group>"; };
+		780FB4551D07BA9F00E5C58E /* CurrentAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CurrentAreaButton.xib; path = view/CurrentAreaButton.xib; sourceTree = "<group>"; };
 		782102561D050B3200C61152 /* pin_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_0@2x.png"; path = "image/pin_0@2x.png"; sourceTree = "<group>"; };
 		782102571D050B3200C61152 /* pin_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_1@2x.png"; path = "image/pin_1@2x.png"; sourceTree = "<group>"; };
 		782102581D050B3200C61152 /* pin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_2@2x.png"; path = "image/pin_2@2x.png"; sourceTree = "<group>"; };
@@ -144,9 +148,11 @@
 		78C47B2C1CBA3E9E00371566 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78EFE5F21D014DD7005B16BD /* MapView.swift */,
 				7862F29A1CE71311000E4682 /* LivingAreaButton.swift */,
 				7862F29C1CE71436000E4682 /* LivingAreaButton.xib */,
-				78EFE5F21D014DD7005B16BD /* MapView.swift */,
+				780FB4531D07BA8600E5C58E /* CurrentAreaButton.swift */,
+				780FB4551D07BA9F00E5C58E /* CurrentAreaButton.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
+				780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */,
 				7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */,
 				7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */,
 				7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */,
@@ -446,6 +453,7 @@
 				78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */,
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,
 				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
+				780FB4541D07BA8600E5C58E /* CurrentAreaButton.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,
 				7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */,
 				78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */,

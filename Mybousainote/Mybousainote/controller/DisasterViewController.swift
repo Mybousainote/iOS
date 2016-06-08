@@ -21,13 +21,13 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         appDelegate.DIManager.delegate = self
         
         //トップ画面で選択した地点の情報を取得
-        let livingArea = appDelegate.global.selectedArea as AnyObject
+        let livingAreaObject = appDelegate.global.selectedAreaObject as AnyObject
         
         //ヘッダーの地名をセット
-        cityNameLabel.text = livingArea["cityName"] as? String
+        cityNameLabel.text = livingAreaObject["cityName"] as? String
         
         //地図のカメラをセット
-        mapView.setCameraLocation(livingArea["lat"] as! Double, lng: livingArea["lng"] as! Double)
+        mapView.setCameraLocation(livingAreaObject["lat"] as! Double, lng: livingAreaObject["lng"] as! Double)
         mapView.mapViewDelegate = self
         
         getFacilitiesData()
@@ -41,9 +41,10 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //避難施設情報を取得したときに呼ばれる
     func didGetFacilitiesData(facilities: [AnyObject]) {
-        mapView.isFirstLoad = false
+        //これ以降、地図をドラッグする度に避難施設情報を読み込む
+        mapView.allowLoadFacilities = true
         
-        //ピンを一旦全削除
+        //マーカーを一旦全削除
         mapView.removeAllMarkers()
         
         var count = 0

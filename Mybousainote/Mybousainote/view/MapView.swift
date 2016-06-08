@@ -25,7 +25,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     
     var mapViewDelegate: MapViewDelegate!
     
-    var isFirstLoad: Bool = true
+    var allowLoadFacilities: Bool = false
     
     //中心点の緯度経度
     var centerLat: Double!
@@ -58,7 +58,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         
         //地図の読み込み時に呼ばれないようにする
-        if isFirstLoad == false {
+        if allowLoadFacilities == true {
             centerLat = position.target.latitude
             centerLng = position.target.longitude
             
@@ -74,8 +74,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         mapViewDelegate.didFinishChangeCameraPosition()
     }
     
-    
-    //避難施設のピンを立てる
+    //避難施設のマーカーを立てる
     func setFacilitiesPins(lat: Double, lng: Double, name: String, num: Int) {
         
         let position = CLLocationCoordinate2DMake(lat, lng)
@@ -90,7 +89,27 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         markers.addObject(marker)
     }
     
-    //ピンをリセットする
+    //マーカーがタップされたときに呼ばれる
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        print("マーカーがタップされた")
+        allowLoadFacilities = false
+        let timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(MapView.setAllowLoadFacilities), userInfo: nil, repeats: false)
+        
+        return false
+    }
+    
+    //マーカーがタップされた数秒後、地図移動後の避難施設読み込みを許可する
+    func setAllowLoadFacilities() {
+        print("許可！")
+        allowLoadFacilities = true
+    }
+    
+    //マーカーのウィンドウがタップされたときに呼ばれる
+    func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
+        print("マーカーウィンドウがタップされた")
+    }
+    
+    //マーカーをリセットする
     func removeAllMarkers() {
         for marker in markers {
             (marker as! GMSMarker).map  = nil
