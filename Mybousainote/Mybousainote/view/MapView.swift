@@ -25,7 +25,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     
     var mapViewDelegate: MapViewDelegate!
     
-    var allowLoadFacilities: Bool = false
+    var allowLoadNewData: Bool = false
     
     //中心点の緯度経度
     var centerLat: Double!
@@ -57,11 +57,11 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     //地図を動かしたときに呼ばれる
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         
+        centerLat = position.target.latitude
+        centerLng = position.target.longitude
+        
         //地図の読み込み時に呼ばれないようにする
-        if allowLoadFacilities == true {
-            centerLat = position.target.latitude
-            centerLng = position.target.longitude
-            
+        if allowLoadNewData == true {    
             if timer != nil {
                 timer!.invalidate()
             }
@@ -92,16 +92,16 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     //マーカーがタップされたときに呼ばれる
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         print("マーカーがタップされた")
-        allowLoadFacilities = false
+        allowLoadNewData = false
         let timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(MapView.setAllowLoadFacilities), userInfo: nil, repeats: false)
         
         return false
     }
     
-    //マーカーがタップされた数秒後、地図移動後の避難施設読み込みを許可する
+    //マーカーがタップされた数秒後、地図移動後のデータ読み込みを許可する
     func setAllowLoadFacilities() {
-        print("許可！")
-        allowLoadFacilities = true
+        print("データの更新を許可")
+        allowLoadNewData = true
     }
     
     //マーカーのウィンドウがタップされたときに呼ばれる

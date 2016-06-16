@@ -1,16 +1,18 @@
 //
-//  LivingAreaButton.swift
+//  EarthquakeView.swift
 //  Mybousainote
 //
-//  Created by menteadmin on 2016/05/14.
+//  Created by menteadmin on 2016/06/15.
 //  Copyright © 2016年 TaigaSano. All rights reserved.
 //
 
 import UIKit
 
-class LivingAreaButton: UIButton {
+class EarthquakeView: UIView {
+    
     
     @IBOutlet weak var label: UILabel!
+//    @IBOutlet weak var label: UILabel!
     
     //コードから初期化
     override init(frame: CGRect) {
@@ -19,36 +21,22 @@ class LivingAreaButton: UIButton {
     //SB/xibから初期化
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        //ターゲットを設定
-        self.addTarget(TopViewController(), action: #selector(TopViewController.touchedLivingAreaButton(_:)), forControlEvents: .TouchUpInside)
     }
     
-    func setLocationName(name: String) {
+    func setInformation(name: String) {
         label.text = name
     }
     
-    class func instance() -> LivingAreaButton {
-        return UINib(nibName: "LivingAreaButton", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! LivingAreaButton
+    class func instance() -> EarthquakeView {
+        return UINib(nibName: "EarthquakeView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! EarthquakeView
     }
-    
-    
-    
-    
     
 //    func loadXib() {
 //        let  bundle = NSBundle(forClass: self.dynamicType)
-//        let nib = UINib(nibName: "LivingAreaButton", bundle: bundle)
-//        let view = nib.instantiateWithOwner(self, options: nil).first as! UIButton
-//        
-//        //ボタンの番号を設定
-//        view.tag = rank
-//        
-//        //ターゲットを設定
-//        view.addTarget(TopViewController(), action: #selector(TopViewController.touchedLivingAreaButton(_:)), forControlEvents: .TouchUpInside)
-//        
+//        let nib = UINib(nibName: "EarthquakeView", bundle: bundle)
+//        let view = nib.instantiateWithOwner(self, options: nil).first as! UIView
 //        addSubview(view)
-//
+//        
 //        // カスタムViewのサイズを自分自身と同じサイズにする
 //        view.translatesAutoresizingMaskIntoConstraints = false
 //        let bindings = ["view": view]
@@ -61,6 +49,5 @@ class LivingAreaButton: UIButton {
 //            metrics:nil,
 //            views: bindings))
 //    }
-    
-    
+
 }

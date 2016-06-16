@@ -34,6 +34,7 @@ class TopViewController: UIViewController {
         
         //地名と頻度のテーブルの更新（BackgroundFetchでも呼ばれるがここでも呼んでおく）
 //        appDelegate.DBManager.refreshCityFrequency() ← 更新する際に一度テーブルを削除してややこしくなる
+        
         checkLocationAuthorize()
     }
     
@@ -62,9 +63,8 @@ class TopViewController: UIViewController {
     
     //現在地ボタンを作成する
     func setCurrentAreaButton() {
-        let currentAreaButton = CurrentAreaButton()
-        currentAreaButton.rank = 0
-        currentAreaButton.loadXib()
+        let currentAreaButton = CurrentAreaButton.instance()
+        currentAreaButton.tag = 0
         currentAreaButton.setLocationName("現在地")
         currentAreaButton.frame = CGRectMake(0, 0, currentAreaView.frame.width, currentAreaView.frame.height)
         currentAreaView.addSubview(currentAreaButton)
@@ -81,9 +81,8 @@ class TopViewController: UIViewController {
             
             let cityName = livingAreaObject["cityName"] as! String
             
-            let livingAreaButton = LivingAreaButton()
-            livingAreaButton.rank = num
-            livingAreaButton.loadXib()
+            let livingAreaButton = LivingAreaButton.instance()
+            livingAreaButton.tag = num
             livingAreaButton.setLocationName(cityName)
             
             switch num {
@@ -154,8 +153,8 @@ class TopViewController: UIViewController {
         	
     //テスト
     @IBAction func test(sender: AnyObject) {
-
-//        appDelegate.DBManager.deleteOldDataFromLocationTable()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

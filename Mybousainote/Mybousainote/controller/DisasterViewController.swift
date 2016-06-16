@@ -15,6 +15,11 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var mapView: MapView!
     
+    @IBOutlet weak var informationView: UIView!
+    var earthquakeView: EarthquakeView!
+    
+    var currentInformationView: String = "facilites"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,17 +37,29 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         getFacilitiesData()
     }
+    
+    //地図の移動が終わったときに呼ばれる
+    func didFinishChangeCameraPosition() {
+        print("ドラッグ終了")
+        
+        getFacilitiesData() //避難施設情報の取得
+        
+        if currentInformationView == "earthquake" {
+            getEarthquakeData() //地震情報の取得
+        }
+    }
+    
+    //MARK: - 避難施設
 
     //避難施設情報を取得
     func getFacilitiesData() {
-        print(mapView)
         appDelegate.DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().getFacilitiesBound)
     }
     
     //避難施設情報を取得したときに呼ばれる
     func didGetFacilitiesData(facilities: [AnyObject]) {
-        //これ以降、地図をドラッグする度に避難施設情報を読み込む
-        mapView.allowLoadFacilities = true
+        //地図をドラッグする度に新しいデータを読み込むのを許可
+        mapView.allowLoadNewData = true
         
         //マーカーを一旦全削除
         mapView.removeAllMarkers()
@@ -61,16 +78,72 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             }
             mapView.setFacilitiesPins(Double(lat)!, lng: Double(lng)!, name: name, num: num)
         }
-        
 //        mapView.setFacilitiesPins(mapView.centerLat, lng: mapView.centerLng, name:  "テスト", num: 0)
     }
     
-    //地図の移動が終わったときに呼ばれる
-    func didFinishChangeCameraPosition() {
-        print("ドラッグ終了")
-        getFacilitiesData()
+    
+    
+    
+    
+    
+    
+    //MARK: - 地震
+    
+    //地震情報を取得
+    func getEarthquakeData() {
+        appDelegate.DIManager.getEarthquakeData(mapView.centerLat, lng: mapView.centerLng)
+    }
+    
+    //地震情報を取得したときに呼ばれる
+    func didGetEarthquakeData(earthquake: AnyObject) {
+        let features = earthquake["features"] as! [AnyObject]
+        let properties = features[0]["properties"]
+        let T30_I45_PS = properties!!["T30_I45_PS"] as! String //30年間で震度5弱以上となる確率
+        print(T30_I45_PS)
+        earthquakeView.setInformation(T30_I45_PS)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //MARK: - アイコンタッチイベント
+    
+    @IBAction func touchedFacilitiesButton(sender: AnyObject) {
+        currentInformationView = "facilities"
+    }
+    
+    @IBAction func touchedEarthquakeButton(sender: AnyObject) {
+        print("地震ボタンがタップされた")
+        currentInformationView = "earthquake"
+        
+        if earthquakeView == nil {
+            print("作成！")
+            earthquakeView = EarthquakeView.instance()
+            earthquakeView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
+            informationView.addSubview(earthquakeView)
+        }
+        getEarthquakeData()
+    }
+    
+    @IBAction func touchedTsunamiButton(sender: AnyObject) {
     }
 
+    @IBAction func touchedSedimentButton(sender: AnyObject) {
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
