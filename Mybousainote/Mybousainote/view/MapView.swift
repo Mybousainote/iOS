@@ -74,8 +74,16 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         mapViewDelegate.didFinishChangeCameraPosition()
     }
     
+    
+    
+    
+    
+    
+    //MARK: - 避難施設
+    
     //避難施設のマーカーを立てる
     func setFacilitiesPins(lat: Double, lng: Double, name: String, num: Int) {
+//        print("避難施設のマーカーを立てる")
         
         let position = CLLocationCoordinate2DMake(lat, lng)
         let marker = GMSMarker(position: position)
@@ -117,5 +125,33 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         markers = NSMutableArray()
     }
     
-
+    
+    
+    
+    
+    
+    //MARK: - 浸水
+    
+    func setFloodsPolygon(polygonPoints: NSArray, polygonColor: UIColor) {
+        print("浸水深のポリゴンを作成")
+        
+        let path = GMSMutablePath()
+        
+        for polygonPoint in polygonPoints {
+            let lat = Double((polygonPoint as! NSArray)[0] as! String)
+            let lng = Double((polygonPoint as! NSArray)[1] as! String)
+            
+            path.addCoordinate(CLLocationCoordinate2DMake(lat!, lng!))
+        }
+        
+        let polygon = GMSPolygon(path: path)
+        polygon.fillColor = polygonColor
+//        polygon.strokeColor = UIColor.blackColor()
+//        polygon.strokeWidth = 2
+        polygon.map = self
+    }
+ 
+    
+    
+    
 }

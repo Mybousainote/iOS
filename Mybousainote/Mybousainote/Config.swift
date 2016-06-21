@@ -6,7 +6,7 @@
 //  Copyright © 2015年 Shinnosuke Komiya. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class Config {
     //デバッグ用アラートを表示するか否か
@@ -43,5 +43,22 @@ public class Config {
             "lat": 35.318734,
             "lng": 139.552864
         ]
+    ]
+    
+    //各浸水深の色
+    let warterDepthColors: AnyObject = [
+        "11": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0～0.5ｍ未満（5段階）
+        "12": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0.5～1.0ｍ未満（5段階）
+        "13": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //1.0～2.0ｍ未満（5段階）
+        "14": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //2.0～5.0ｍ未満（5段階）
+        "15": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //5.0ｍ以上（5段階）
+
+        "21": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0～0.5ｍ未満（7段階）
+        "22": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0.5～1.0ｍ未満（7段階）
+        "23": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //1.0～2.0ｍ未満（7段階）
+        "24": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //2.0～3.0ｍ未満（7段階）
+        "25": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //3.0～4.0ｍ未満（7段階）
+        "26": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //4.0～5.0ｍ未満（7段階）
+        "27": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3) //5.0ｍ以上（7段階）
     ]
 }

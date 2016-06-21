@@ -12,6 +12,7 @@ import AFNetworking
 protocol DisasterInformationManagerDelegate {
     func didGetFacilitiesData(facilities: [AnyObject])
     func didGetEarthquakeData(earthquake: AnyObject)
+    func didGetFloodsData(floods: [AnyObject])
 }
 
 class DisasterInformationManager: NSObject {
@@ -80,6 +81,46 @@ class DisasterInformationManager: NSObject {
                 print("エラー！")
                 print(operation?.responseObject)
                 print(operation?.responseString)
+            }
+        )
+    }
+    
+    //浸水情報を取得
+    func getFloodsData(lat: Double, lng: Double) {
+        print("浸水情報を取得")
+        //リクエスト
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        
+        let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer = serializer
+        
+        let url = "http://taigasano.com/mybousainote/api/floods/"
+        
+        print(url)
+        let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        manager.GET(encodeURL, parameters: nil,
+                    success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
+                        print("取得に成功")
+                        
+                        let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
+                        
+                        
+//                        let posList = json[0]["posList"] as! String
+//
+//                        let startIndex = posList.startIndex.advancedBy(9)
+//                        let endIndex = posList.endIndex.advancedBy(-3)
+//                        
+//                        let st = posList.substringWithRange(startIndex...endIndex)
+//                        print(st)
+                        
+                        //デリゲートメソッドを呼ぶ
+                        self.delegate.didGetFloodsData(json as! [AnyObject])
+            },
+                    failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
+                        print("エラー！")
+                        print(operation?.responseObject)
+                        print(operation?.responseString)
             }
         )
     }

@@ -97,7 +97,7 @@
                                                 <rect key="frame" x="52" y="17" width="46" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <action selector="touchedTsunamiButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="tmE-sV-gkK"/>
+                                                    <action selector="touchedFloodsButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="Quy-UH-qbv"/>
                                                 </connections>
                                             </button>
                                         </subviews>

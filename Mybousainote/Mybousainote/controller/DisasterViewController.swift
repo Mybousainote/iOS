@@ -17,6 +17,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     @IBOutlet weak var informationView: UIView!
     var earthquakeView: EarthquakeView!
+    var floodsView: FloodsView!
     
     var currentInformationView: String = "facilites"
     
@@ -106,6 +107,44 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     
     
+    //MARK: - 浸水
+    
+    //浸水情報を取得
+    func getFloodsData() {
+        appDelegate.DIManager.getFloodsData(0, lng: 0)
+    }
+    
+    //浸水情報を取得したときに呼ばれる
+    func didGetFloodsData(floods: [AnyObject]) {
+        
+        for flood in floods {
+            
+            //Polygon生成用にStringデータを[[緯度, 経度]]に整形
+            var posList = flood["posList"] as! String
+            let startIndex = posList.startIndex.advancedBy(9)
+            let endIndex = posList.endIndex.advancedBy(-3)
+            posList = posList.substringWithRange(startIndex...endIndex)
+            
+            let latLngs = posList.componentsSeparatedByString(",")
+
+            let polygonPoints = NSMutableArray()
+            for latLng in latLngs {
+                let latAndLng = latLng.componentsSeparatedByString(" ")
+                polygonPoints.addObject(latAndLng)
+            }
+            
+            print(polygonPoints)
+            
+            //浸水深
+            let waterDepth = flood["waterDepth"] as! String
+            let polygonColor = Config().warterDepthColors[waterDepth] as! UIColor
+            
+            print(polygonColor)
+            
+            mapView.setFloodsPolygon(polygonPoints as NSArray, polygonColor: polygonColor)
+        }
+//        mapView.setFloodsPolygon()
+    }
     
     
     
@@ -122,24 +161,30 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         currentInformationView = "earthquake"
         
         if earthquakeView == nil {
-            print("作成！")
             earthquakeView = EarthquakeView.instance()
             earthquakeView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
             informationView.addSubview(earthquakeView)
         }
+        informationView.bringSubviewToFront(earthquakeView)
         getEarthquakeData()
     }
     
-    @IBAction func touchedTsunamiButton(sender: AnyObject) {
+    @IBAction func touchedFloodsButton(sender: AnyObject) {
+        print("浸水ボタンがタップされた")
+        currentInformationView = "floods"
+        
+        if floodsView == nil {
+            floodsView = FloodsView.instance()
+            floodsView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
+            informationView.addSubview(floodsView)
+        }
+        informationView.bringSubviewToFront(floodsView)
+        getFloodsData()
     }
-
+    
+    
     @IBAction func touchedSedimentButton(sender: AnyObject) {
     }
-
-    
-    
-    
-    
     
     
     
