@@ -44,7 +44,9 @@ class DisasterInformationManager: NSObject {
                         let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers))
                         
                         //デリゲートメソッドを呼ぶ
-                        self.delegate.didGetEarthquakeData(json!)
+                        if json != nil {
+                            self.delegate.didGetEarthquakeData(json!)
+                        }
             },
                     failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
                         print("エラー！")
@@ -75,7 +77,9 @@ class DisasterInformationManager: NSObject {
                 let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
                 
                 //デリゲートメソッドを呼ぶ
-                self.delegate.didGetFacilitiesData(json as! [AnyObject])
+                if json != nil {
+                    self.delegate.didGetFacilitiesData(json as! [AnyObject])
+                }
             },
             failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
                 print("エラー！")
@@ -86,7 +90,7 @@ class DisasterInformationManager: NSObject {
     }
     
     //浸水情報を取得
-    func getFloodsData(lat: Double, lng: Double) {
+    func getFloodsData(lat: Double, lng: Double, rectSize: Double) {
         print("浸水情報を取得")
         //リクエスト
         let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
@@ -94,7 +98,7 @@ class DisasterInformationManager: NSObject {
         let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
         manager.responseSerializer = serializer
         
-        let url = "http://taigasano.com/mybousainote/api/floods/"
+        let url = "http://taigasano.com/mybousainote/api/floods/?lat=\(lat)&lng=\(lng)&rect-size=\(rectSize)"
         
         print(url)
         let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
@@ -105,17 +109,11 @@ class DisasterInformationManager: NSObject {
                         
                         let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
                         
-                        
-//                        let posList = json[0]["posList"] as! String
-//
-//                        let startIndex = posList.startIndex.advancedBy(9)
-//                        let endIndex = posList.endIndex.advancedBy(-3)
-//                        
-//                        let st = posList.substringWithRange(startIndex...endIndex)
-//                        print(st)
-                        
                         //デリゲートメソッドを呼ぶ
-                        self.delegate.didGetFloodsData(json as! [AnyObject])
+                        if json != nil {
+                            self.delegate.didGetFloodsData(json as! [AnyObject])
+                        }
+                        
             },
                     failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
                         print("エラー！")

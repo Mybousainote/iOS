@@ -41,6 +41,9 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         //現在地の表示の設定
         self.myLocationEnabled = true
         
+        //現在地ボタンの表示の設定
+        self.settings.myLocationButton = true
+        
         markers = NSMutableArray()
     }
     
@@ -60,12 +63,20 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         centerLat = position.target.latitude
         centerLng = position.target.longitude
         
-        //地図の読み込み時に呼ばれないようにする
-        if allowLoadNewData == true {    
+        
+        //MapViewインスタンスの作成時/マーカータップ時/ズームレベルが低い時に呼ばれないようにする
+        if allowLoadNewData == true && mapView.camera.zoom > 12 {
             if timer != nil {
                 timer!.invalidate()
             }
             timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(MapView.callDidFinishChangeCameraPosition), userInfo: nil, repeats: false)
+        }
+        //ズーム度が低いとき表示中の情報をリセットする
+        else if allowLoadNewData == true && mapView.camera.zoom < 12 {
+            if timer != nil {
+                timer!.invalidate()
+            }
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(MapView.removeAllContents), userInfo: nil, repeats: false)
         }
     }
     
@@ -74,8 +85,10 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         mapViewDelegate.didFinishChangeCameraPosition()
     }
     
-    
-    
+    //表示中の情報をリセットする
+    func removeAllContents() {
+        removeAllMarkers()
+    }
     
     
     

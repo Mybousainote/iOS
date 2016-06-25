@@ -153,7 +153,7 @@ class TopViewController: UIViewController {
         	
     //テスト
     @IBAction func test(sender: AnyObject) {
-        appDelegate.DIManager.getFloodsData(0, lng: 0)
+//        appDelegate.DIManager.getFloodsData(0, lng: 0)
     }
     
     override func didReceiveMemoryWarning() {

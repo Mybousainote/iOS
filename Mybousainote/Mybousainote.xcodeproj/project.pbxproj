@@ -27,6 +27,8 @@
 		78C47B341CBA3F9100371566 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C47B331CBA3F9100371566 /* Top.storyboard */; };
 		78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C47B391CBA430200371566 /* Tutorial.storyboard */; };
 		78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B3B1CBA480E00371566 /* DatabaseManager.swift */; };
+		78CF60291D1A69B600119A13 /* FacilitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF60281D1A69B600119A13 /* FacilitiesView.swift */; };
+		78CF602B1D1A69C700119A13 /* FacilitiesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CF602A1D1A69C700119A13 /* FacilitiesView.xib */; };
 		78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D2BC981CBA2D3A00905E3D /* AppDelegate.swift */; };
 		78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BC9F1CBA2D3A00905E3D /* Assets.xcassets */; };
 		78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */; };
@@ -83,6 +85,8 @@
 		78C47B331CBA3F9100371566 /* Top.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Top.storyboard; path = storyboard/Top.storyboard; sourceTree = "<group>"; };
 		78C47B391CBA430200371566 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Tutorial.storyboard; path = storyboard/Tutorial.storyboard; sourceTree = "<group>"; };
 		78C47B3B1CBA480E00371566 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		78CF60281D1A69B600119A13 /* FacilitiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilitiesView.swift; sourceTree = "<group>"; };
+		78CF602A1D1A69C700119A13 /* FacilitiesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FacilitiesView.xib; path = view/FacilitiesView.xib; sourceTree = "<group>"; };
 		78D2BC951CBA2D3A00905E3D /* Mybousainote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mybousainote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D2BC981CBA2D3A00905E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78D2BC9F1CBA2D3A00905E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				780FB4551D07BA9F00E5C58E /* CurrentAreaButton.xib */,
 				7887EB881D18F4010019BC8E /* FloodsView.swift */,
 				7887EB861D18F3EA0019BC8E /* FloodsView.xib */,
+				78CF60281D1A69B600119A13 /* FacilitiesView.swift */,
+				78CF602A1D1A69C700119A13 /* FacilitiesView.xib */,
 				78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */,
 				78EDFD161D1105D000CE4E33 /* EarthquakeView.xib */,
 			);
@@ -392,6 +398,7 @@
 				7887EB871D18F3EA0019BC8E /* FloodsView.xib in Resources */,
 				7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */,
 				78EDFD171D1105D000CE4E33 /* EarthquakeView.xib in Resources */,
+				78CF602B1D1A69C700119A13 /* FacilitiesView.xib in Resources */,
 				7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */,
 				7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */,
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
@@ -475,6 +482,7 @@
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,
 				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
 				780FB4541D07BA8600E5C58E /* CurrentAreaButton.swift in Sources */,
+				78CF60291D1A69B600119A13 /* FacilitiesView.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,
 				7887EB891D18F4010019BC8E /* FloodsView.swift in Sources */,
 				7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */,
