@@ -2,14 +2,12 @@
 
 header("Content-Type: text/html; charset=UTF-8");
 
-
 require_once('../config.php');
 $con = mysql_connect(server, user, pass) or die(mysql_error());
 mysql_select_db(myDatabase, $con) or die(mysql_error());
 mysql_query('set names utf8',$con);
 
-
-for ($num=13; $num < 14; $num++) { 
+for ($num=15; $num < 23; $num++) {
 
 	$fileName;
 	if ($num < 10) {
@@ -19,73 +17,63 @@ for ($num=13; $num < 14; $num++) {
 		$fileName = "A31-12_".$num.".xml";
 	}
 	echo $fileName;
+	echo "<br>";
 
 	$rss =  '../xml/floods/'.$fileName;
 	$xml = simplexml_load_file($rss);
 	$data = get_object_vars($xml);
 
 
-	echo $data;
+	for ($i=0; $i < count($data["ExpectedFloodArea"]); $i++) { 
+		// echo "<br>";
+		// echo "<br>";
 
-	// for ($i=0; $i < count($data["Point"]); $i++) { 
-	// 	echo "<br>";
-	// 	echo "<br>";
+		$curve = $data["Area"][$i]->Curve;
 
-	// 	$evacuationFacilities = $data["EvacuationFacilities"];
-	// 	$point = $data["Point"];
+		//浸水深の値
+		$waterDepth = $data["ExpectedFloodArea"][$i]->waterDepth;
 
-		// echo $evacuationFacilities[$i]->name;
-		// echo $evacuationFacilities[$i]->address;
-		// echo $point[$i]->pos;
+		//それに付随するポリゴン（複数ある場合もあり）
+		for ($j=0; $j < count($curve); $j++) {
+			// echo "<br>";
+			// echo "<br>";
 
+			$posList = (string)($curve[$j]->segments->LineStringSegment->posList);
 
-		// $position = explode(" ", $point[$i]->pos);
-		// $basic = $evacuationFacilities[$i];
-		// $hazardClassification = $evacuationFacilities[$i]->hazardClassification->Classification;
+			if (strpos(substr($posList, -2), ',') !== false) {
+				$posList = substr($posList, 0, -2);
+			}
+			else if (strpos(substr($posList, -3), ',') !== false) {
+				$posList = substr($posList, 0, -3);
+			}
+			else if (strpos(substr($posList, -4), ',') !== false) {
+				$posList = substr($posList, 0, -4);
+			}	
+			else {
+				// echo "ぬあ";
+			}
 
-		// $query = "INSERT INTO MyBS_FLOODS(
-		// position,
-		// name,
-		// address,
-		// facilityType,
-		// seatingCapacity,
-		// facilityScale,
-		// earthquakeHazard,
-		// tsunamiHazard,
-		// windAndFloodDamage,
-		// volcanicHazard,
-		// other
-		// ) VALUES(
-		// GeomFromText('POINT(".$position[0]." ".$position[1].")'),
-		// '".$basic->name."',
-		// '".$basic->address."',
-		// '".$basic->facilityType."',
-		// ".$basic->seatingCapacity.",
-		// ".$basic->facilityScale.",
-		// '".$hazardClassification->earthquakeHazard."',
-		// '".$hazardClassification->tsunamiHazard."',
-		// '".$hazardClassification->windAndFloodDamage."',
-		// '".$hazardClassification->volcanicHazard."',
-		// '".$hazardClassification->other."'
-		// )";
+			if ($waterDepth != null && $posList != null) {
+				//queryを作成
+				$query = "INSERT INTO MyBS_FLOODS(
+				prefectures,
+				posList,
+				waterDepth
+				) VALUES(
+				".$num.",
+				GeomFromText('POLYGON((".$posList."))'),
+				".$waterDepth."
+				)";
 
-		// echo $query;
-		// mysql_query($query) or die(mysql_error());
-	// }
+				// echo $query;
+				mysql_query($query) or die(mysql_error());	
+			}
+		}		
+	}
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
+echo "完了！";
 
 
  ?>

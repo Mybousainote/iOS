@@ -9,32 +9,28 @@ mysql_query('set names utf8',$con);
 
 $lat = $_GET["lat"];
 $lng = $_GET["lng"];
-$rectSize = $_GET["rect-size"];
-
-$half = $rectSize/2;
-
-$containRect = "GeomFromText('Polygon((".(string)($lat-$half)." ".(string)($lng-$half).",".(string)($lat+$half)." ".(string)($lng-$half).",".(string)($lat+$half)." ".(string)($lng+$half).",".(string)($lat-$half)." ".(string)($lng+$half).",".(string)($lat-$half)." ".(string)($lng-$half)."))')";
+$point = "GeomFromText('Point(".$lat." ".$lng.")')";
 
 // echo $containRect;
-$query = "SELECT id, prefectures, AsText(posList) as posList, waterDepth FROM MyBS_FLOODS WHERE MBRContains(".$containRect.", posList)";
+$query = "SELECT id, prefectures, AsText(posList) as posList, waterDepth FROM MyBS_FLOODS WHERE MBRWithin(".$point.", posList)";
 
 $result = mysql_query($query) or die(mysql_error());
 
-$responseArray = array();
 
-while ($row = mysql_fetch_assoc($result)) {
+$row = mysql_fetch_assoc($result);
 
-    $responseRowArray = array(
-
-    	"id" => $row["id"],
-        "prefectures" => $row["prefectures"],
-        "posList" => $row["posList"],
-        "waterDepth" => $row["waterDepth"]
-    	);
-    array_push($responseArray, $responseRowArray);
+$waterDepth;
+if ($row["waterDepth"] != null) {
+	$waterDepth = $row["waterDepth"];
+}else {
+	$waterDepth = "0";
 }
 
-$responseJSON = json_encode($responseArray);
+$responseObject = array(
+	"waterDepth" => $waterDepth
+);
+
+$responseJSON = json_encode($responseObject);
 echo $responseJSON;
 
  ?>
