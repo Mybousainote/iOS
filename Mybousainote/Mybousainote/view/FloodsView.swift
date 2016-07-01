@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol FloodsViewDelegate {
+    func didTouchedReloadButton()
+}
+
 class FloodsView: UIView {
 
     @IBOutlet weak var label: UILabel!
+    
+    //デリゲート設定
+    var delegate: FloodsViewDelegate!
     
     //コードから初期化
     override init(frame: CGRect) {
@@ -27,5 +34,9 @@ class FloodsView: UIView {
     
     class func instance() -> FloodsView {
         return UINib(nibName: "FloodsView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! FloodsView
+    }
+    
+    @IBAction func touchedReloadButton(sender: AnyObject) {
+        self.delegate.didTouchedReloadButton()
     }
 }

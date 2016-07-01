@@ -21,7 +21,8 @@ class MapView: GMSMapView, GMSMapViewDelegate {
 //        set { self.delegate = newValue }
 //    }
     
-    var markers: NSMutableArray!
+    var facilityMarkers: NSMutableArray!
+    var floodPolygons: NSMutableArray!
     
     var mapViewDelegate: MapViewDelegate!
     
@@ -44,7 +45,8 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         //現在地ボタンの表示の設定
         self.settings.myLocationButton = true
         
-        markers = NSMutableArray()
+        facilityMarkers = NSMutableArray()
+        floodPolygons = NSMutableArray()
     }
     
     func setCameraLocation(lat: Double, lng: Double) {
@@ -65,18 +67,26 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         
         
         //MapViewインスタンスの作成時/マーカータップ時/ズームレベルが低い時に呼ばれないようにする
-        if allowLoadNewData == true && mapView.camera.zoom > 12 {
+//        if allowLoadNewData == true && mapView.camera.zoom > 12 {
+//            if timer != nil {
+//                timer!.invalidate()
+//            }
+//            timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(MapView.callDidFinishChangeCameraPosition), userInfo: nil, repeats: false)
+//        }
+//        //ズーム度が低いときは表示中の情報をリセットする
+//        else if allowLoadNewData == true && mapView.camera.zoom < 12 {
+//            if timer != nil {
+//                timer!.invalidate()
+//            }
+//            timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(MapView.removeAllContents), userInfo: nil, repeats: false)
+//        }
+        
+        //MapViewインスタンスの作成時/マーカータップ時に呼ばれないようにする
+        if allowLoadNewData == true {
             if timer != nil {
                 timer!.invalidate()
             }
             timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(MapView.callDidFinishChangeCameraPosition), userInfo: nil, repeats: false)
-        }
-        //ズーム度が低いとき表示中の情報をリセットする
-        else if allowLoadNewData == true && mapView.camera.zoom < 12 {
-            if timer != nil {
-                timer!.invalidate()
-            }
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(MapView.removeAllContents), userInfo: nil, repeats: false)
         }
     }
     
@@ -86,9 +96,10 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     }
     
     //表示中の情報をリセットする
-    func removeAllContents() {
-        removeAllMarkers()
-    }
+//    func removeAllContents() {
+//        print("地図上の情報をリセット")
+//        removeAllMarkers()
+//    }
     
     
     
@@ -107,7 +118,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         marker.icon = img
         marker.map = self
         
-        markers.addObject(marker)
+        facilityMarkers.addObject(marker)
     }
     
     //マーカーがタップされたときに呼ばれる
@@ -132,10 +143,10 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     
     //マーカーをリセットする
     func removeAllMarkers() {
-        for marker in markers {
+        for marker in facilityMarkers {
             (marker as! GMSMarker).map  = nil
         }
-        markers = NSMutableArray()
+        facilityMarkers = NSMutableArray()
     }
     
     
@@ -162,9 +173,16 @@ class MapView: GMSMapView, GMSMapViewDelegate {
 //        polygon.strokeColor = UIColor.blackColor()
 //        polygon.strokeWidth = 2
         polygon.map = self
+        
+        floodPolygons.addObject(polygon)
     }
  
-    
-    
+    //ポリゴンをリセットする
+    func removeAllFloodPolygons() {
+        for polygons in floodPolygons {
+            (polygons as! GMSPolygon).map  = nil
+        }
+        floodPolygons = NSMutableArray()
+    }
     
 }

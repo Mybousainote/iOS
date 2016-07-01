@@ -61,7 +61,7 @@ fastlane/screenshots
 fastlane/test_output
 
 api/xml/
-api/config.php
+config.php
 
 node_modules/
 

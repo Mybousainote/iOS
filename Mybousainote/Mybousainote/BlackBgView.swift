@@ -18,6 +18,6 @@ class BlackBgView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.blackColor()
-        self.alpha = 0.7
+        self.alpha = 0.3
     }
 }

@@ -19,7 +19,10 @@ public class Config {
     let getFacilitiesBound: Int = 3000
     
     //浸水情報を取得する正方形の一片の長さ（緯度経度数）
-    let getFloodsRectSize: Double = 4.15
+    let getFloodsRectSize: Double = 0.1
+    
+    //避難施設マーカーを表示するズームレベルの閾値
+    let thresholdShowMarkerZoomLevel: Float = 12
     
     //仮想ペルソナの生活圏を表示するか否か
     let isVirtualPersona: Bool = true
@@ -48,6 +51,25 @@ public class Config {
         ]
     ]
     
+    //各浸水深の値
+    let warterDepthValues: AnyObject = [
+        "0": "0",
+        
+        "11": "0～0.5ｍ未満",
+        "12": "0.5～1.0ｍ未満",
+        "13": "1.0～2.0ｍ未満",
+        "14": "2.0～5.0ｍ未満",
+        "15": "5.0ｍ以上",
+        
+        "21": "0～0.5ｍ未満",
+        "22": "0.5～1.0ｍ未満",
+        "23": "1.0～2.0ｍ未満",
+        "24": "2.0～3.0ｍ未満",
+        "25": "3.0～4.0ｍ未満",
+        "26": "4.0～5.0ｍ未満",
+        "27": "5.0ｍ以上"
+    ]
+    
     //各浸水深の色
     let warterDepthColors: AnyObject = [
         "11": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0～0.5ｍ未満（5段階）
@@ -65,3 +87,6 @@ public class Config {
         "27": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3) //5.0ｍ以上（7段階）
     ]
 }
+
+
+

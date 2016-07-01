@@ -26,16 +26,19 @@ PODS:
   - Realm/Headers (0.98.6)
   - RealmSwift (0.98.6):
     - Realm (= 0.98.6)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.0)
   - GoogleMaps
   - RealmSwift
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
   Realm: 44803f35418c5d89b27825a564247fcd190de37e
   RealmSwift: c7239c52c83f8c43525a5269ba7be1694da33afc
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
 COCOAPODS: 0.39.0

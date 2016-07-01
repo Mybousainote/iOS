@@ -13,6 +13,7 @@ protocol DisasterInformationManagerDelegate {
     func didGetFacilitiesData(facilities: [AnyObject])
     func didGetEarthquakeData(earthquake: AnyObject)
     func didGetFloodsData(floods: [AnyObject])
+    func didGetWaterDepth(waterDepth: String)
 }
 
 class DisasterInformationManager: NSObject {
@@ -122,6 +123,43 @@ class DisasterInformationManager: NSObject {
             }
         )
     }
+    
+    //中心点の浸水深を取得
+    func getWaterDepth(lat: Double, lng: Double) {
+        print("中心点の浸水深を取得")
+        //リクエスト
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        
+        let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer = serializer
+        
+        let url = "http://taigasano.com/mybousainote/api/floods/get-waterdepth.php?lat=\(lat)&lng=\(lng)"
+        
+        print(url)
+        let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        manager.GET(encodeURL, parameters: nil,
+                    success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
+                        print("取得に成功")
+                        
+                        let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers))
+                        
+                        //デリゲートメソッドを呼ぶ
+                        if json != nil {
+                            //値を取得
+                            let waterDepth = json!["waterDepth"] as! String
+                            self.delegate.didGetWaterDepth(waterDepth)
+                        }
+                        
+            },
+                    failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
+                        print("エラー！")
+                        print(operation?.responseObject)
+                        print(operation?.responseString)
+            }
+        )
+    }
+    
     
     func APITest() {
         print("同期通信テスト")

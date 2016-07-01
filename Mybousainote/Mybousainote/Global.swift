@@ -6,7 +6,8 @@
 //  Copyright © 2015年 Shinnosuke Komiya. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SVProgressHUD
 
 public class Global: NSObject {
     //トップ画面で選択されたボタンの番号（0:現在地 1~4:生活圏）
@@ -14,4 +15,19 @@ public class Global: NSObject {
     
     //選択された地点データ（地名, 緯度, 経度）
     var selectedAreaObject: NSObject!
+    
+    var blackBgView: BlackBgView!
+    
+    //ローディング画面を表示
+    func showLoadingView(view: UIView, messege: String) {
+        blackBgView = BlackBgView.init(frame: view.frame)
+        view.addSubview(blackBgView)
+        SVProgressHUD.showWithStatus(messege)
+    }
+    
+    //ローディング画面を削除
+    func removeLoadingView() {
+        blackBgView.removeFromSuperview()
+        SVProgressHUD.dismiss()
+    }
 }

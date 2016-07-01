@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DisasterViewController: UIViewController,DisasterInformationManagerDelegate, MapViewDelegate {
+class DisasterViewController: UIViewController,DisasterInformationManagerDelegate, MapViewDelegate, FloodsViewDelegate {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     //StoryBoard
@@ -25,6 +25,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //デリゲートの設定
         appDelegate.DIManager.delegate = self
         
         //トップ画面で選択した地点の情報を取得
@@ -47,10 +48,22 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     func didFinishChangeCameraPosition() {
         print("ドラッグ終了")
         
-        getFacilitiesData() //避難施設情報の取得
+        //ズームレベルが一定以上の場合避難施設情報を読み込む
+        if mapView.camera.zoom > Config().thresholdShowMarkerZoomLevel {
+            getFacilitiesData() //避難施設情報の取得
+        }else {
+            mapView.removeAllMarkers() //マーカーを削除
+        }
         
-        if currentInformationView == "earthquake" {
+        switch currentInformationView {
+        case "earthquake":
             getEarthquakeData() //地震情報の取得
+            break
+        case "floods":
+            getWaterDepth() //浸水深の取得
+            break
+        default:
+            break
         }
     }
     
@@ -115,11 +128,15 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //浸水情報を取得
     func getFloodsData() {
+        appDelegate.global.showLoadingView(self.view, messege: "タイルを読み込み中...") //ローディング画面を表示
         appDelegate.DIManager.getFloodsData(mapView.centerLat, lng: mapView.centerLng, rectSize: Config().getFloodsRectSize)
     }
     
     //浸水情報を取得したときに呼ばれる
     func didGetFloodsData(floods: [AnyObject]) {
+        
+        //ポリゴンを一旦全削除
+        mapView.removeAllFloodPolygons()
         
         for flood in floods {
             
@@ -145,14 +162,26 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             
             mapView.setFloodsPolygon(polygonPoints as NSArray, polygonColor: polygonColor)
         }
-//        mapView.setFloodsPolygon()
+        print("ポリゴン作成完了！")
+        appDelegate.global.removeLoadingView() //ローディング画面を削除
+    }
+    
+    //中心点の浸水深を取得
+    func getWaterDepth() {
+        appDelegate.DIManager.getWaterDepth(mapView.centerLat, lng: mapView.centerLng)
+    }
+    
+    //中心点の浸水深を取得したときに呼ばれる
+    func didGetWaterDepth(waterDepth: String) {
+        //ラベルをセット
+        floodsView.setInformation(Config().warterDepthValues[waterDepth] as! String)
     }
     
     
     
     
     
-    //MARK: - アイコンタッチイベント
+    //MARK: - ボタンタッチイベント
     
     //避難施設ボタン
     @IBAction func touchedFacilitiesButton(sender: AnyObject) {
@@ -181,6 +210,8 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             informationView.addSubview(earthquakeView)
         }
         informationView.bringSubviewToFront(earthquakeView)
+        
+        //震度情報を読み込む
         getEarthquakeData()
     }
     
@@ -192,14 +223,32 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         if floodsView == nil {
             floodsView = FloodsView.instance()
             floodsView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
+            //デリゲート設定
+            floodsView.delegate = self
             informationView.addSubview(floodsView)
+            
+            //浸水情報を読み込む
+            getFloodsData()
         }
         informationView.bringSubviewToFront(floodsView)
+        
+        //中心点の浸水深を読み込む
+        getWaterDepth()
+    }
+    
+    //浸水タイル再読み込みボタン
+    func didTouchedReloadButton() {
         getFloodsData()
     }
     
     
+    
+    
+    //土砂災害ボタン
     @IBAction func touchedSedimentButton(sender: AnyObject) {
+        appDelegate.global.removeLoadingView()
+        
+        mapView.removeAllFloodPolygons()
     }
     
     

@@ -14,14 +14,23 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5G-HJ-rtO">
                     <rect key="frame" x="241" y="289" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20m-JM-XbV">
+                    <rect key="frame" x="436" y="545" width="135" height="30"/>
+                    <state key="normal" title="タイルを再読み込み"/>
+                    <connections>
+                        <action selector="touchedReloadButton:" destination="TyD-XN-kTK" eventType="touchUpInside" id="9ef-ql-ZJQ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.80973522378665885" green="0.92511749652923436" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="l5G-HJ-rtO" firstAttribute="centerX" secondItem="TyD-XN-kTK" secondAttribute="centerX" id="Fhc-I3-iHn"/>
+                <constraint firstAttribute="bottom" secondItem="20m-JM-XbV" secondAttribute="bottom" constant="25" id="Jcv-g7-msO"/>
                 <constraint firstItem="l5G-HJ-rtO" firstAttribute="centerY" secondItem="TyD-XN-kTK" secondAttribute="centerY" id="bdb-YO-Fm6"/>
+                <constraint firstAttribute="trailing" secondItem="20m-JM-XbV" secondAttribute="trailing" constant="29" id="zWQ-DJ-THW"/>
             </constraints>
             <connections>
                 <outlet property="label" destination="l5G-HJ-rtO" id="09B-Xl-sOU"/>
