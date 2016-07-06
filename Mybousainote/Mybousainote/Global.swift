@@ -13,8 +13,12 @@ public class Global: NSObject {
     //トップ画面で選択されたボタンの番号（0:現在地 1~4:生活圏）
 //    var selectedAreaNumber: Int!
     
-    //選択された地点データ（地名, 緯度, 経度）
+    //トップ画面で選択された地域のデータ（地名, 緯度, 経度）
     var selectedAreaObject: NSObject!
+    
+    //防災情報画面で選択された避難施設のID
+    var selectedFacilityId: Int!
+    
     
     var blackBgView: BlackBgView!
     

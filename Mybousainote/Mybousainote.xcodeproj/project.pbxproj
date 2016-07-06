@@ -16,6 +16,11 @@
 		7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102591D050B3200C61152 /* pin_3@2x.png */; };
 		7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7821025A1D050B3200C61152 /* pin_4@2x.png */; };
 		783C54091D26551E00961F19 /* BlackBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C54081D26551E00961F19 /* BlackBgView.swift */; };
+		784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */; };
+		784A2DB11D2CB09800EDB81A /* FacilitiesListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */; };
+		784A2DB31D2CBA8100EDB81A /* FacilityInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */; };
+		784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */; };
+		7857CFE31D2CDEDE00D65B76 /* StreetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857CFE21D2CDEDE00D65B76 /* StreetView.swift */; };
 		7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862F29A1CE71311000E4682 /* LivingAreaButton.swift */; };
 		7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7862F29C1CE71436000E4682 /* LivingAreaButton.xib */; };
 		7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */; };
@@ -74,6 +79,11 @@
 		782102591D050B3200C61152 /* pin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_3@2x.png"; path = "image/pin_3@2x.png"; sourceTree = "<group>"; };
 		7821025A1D050B3200C61152 /* pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_4@2x.png"; path = "image/pin_4@2x.png"; sourceTree = "<group>"; };
 		783C54081D26551E00961F19 /* BlackBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackBgView.swift; sourceTree = "<group>"; };
+		784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FacilitiesListButton.xib; path = view/FacilitiesListButton.xib; sourceTree = "<group>"; };
+		784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesListButton.swift; path = view/FacilitiesListButton.swift; sourceTree = "<group>"; };
+		784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilityInformationViewController.swift; path = controller/FacilityInformationViewController.swift; sourceTree = "<group>"; };
+		784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FacilityInformation.storyboard; path = storyboard/FacilityInformation.storyboard; sourceTree = "<group>"; };
+		7857CFE21D2CDEDE00D65B76 /* StreetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreetView.swift; path = view/StreetView.swift; sourceTree = "<group>"; };
 		7862F29A1CE71311000E4682 /* LivingAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivingAreaButton.swift; path = view/LivingAreaButton.swift; sourceTree = "<group>"; };
 		7862F29C1CE71436000E4682 /* LivingAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LivingAreaButton.xib; path = view/LivingAreaButton.xib; sourceTree = "<group>"; };
 		7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterViewController.swift; path = controller/DisasterViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +178,7 @@
 			children = (
 				783C54081D26551E00961F19 /* BlackBgView.swift */,
 				78EFE5F21D014DD7005B16BD /* MapView.swift */,
+				7857CFE21D2CDEDE00D65B76 /* StreetView.swift */,
 				78EDFD1A1D11348C00CE4E33 /* test.swift */,
 				78EDFD1C1D11349C00CE4E33 /* test.xib */,
 				7862F29A1CE71311000E4682 /* LivingAreaButton.swift */,
@@ -178,6 +189,8 @@
 				7887EB861D18F3EA0019BC8E /* FloodsView.xib */,
 				78CF60281D1A69B600119A13 /* FacilitiesView.swift */,
 				78CF602A1D1A69C700119A13 /* FacilitiesView.xib */,
+				784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */,
+				784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */,
 				78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */,
 				78EDFD161D1105D000CE4E33 /* EarthquakeView.xib */,
 			);
@@ -190,6 +203,7 @@
 				78C47B2F1CBA3F3500371566 /* TopViewController.swift */,
 				78C47B311CBA3F4E00371566 /* TutorialViewController.swift */,
 				7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */,
+				784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -200,6 +214,7 @@
 				78C47B331CBA3F9100371566 /* Top.storyboard */,
 				78C47B391CBA430200371566 /* Tutorial.storyboard */,
 				7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */,
+				784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -396,12 +411,14 @@
 				7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
 				78EDFD1D1D11349C00CE4E33 /* test.xib in Resources */,
+				784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */,
 				7887EB871D18F3EA0019BC8E /* FloodsView.xib in Resources */,
 				7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */,
 				78EDFD171D1105D000CE4E33 /* EarthquakeView.xib in Resources */,
 				78CF602B1D1A69C700119A13 /* FacilitiesView.xib in Resources */,
+				784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */,
 				7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */,
 				7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */,
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
@@ -487,9 +504,12 @@
 				780FB4541D07BA8600E5C58E /* CurrentAreaButton.swift in Sources */,
 				78CF60291D1A69B600119A13 /* FacilitiesView.swift in Sources */,
 				78D2BC991CBA2D3A00905E3D /* AppDelegate.swift in Sources */,
+				784A2DB11D2CB09800EDB81A /* FacilitiesListButton.swift in Sources */,
 				7887EB891D18F4010019BC8E /* FloodsView.swift in Sources */,
 				7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */,
 				78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */,
+				7857CFE31D2CDEDE00D65B76 /* StreetView.swift in Sources */,
+				784A2DB31D2CBA8100EDB81A /* FacilityInformationViewController.swift in Sources */,
 				78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */,
 				78EDFD191D1105FB00CE4E33 /* EarthquakeView.swift in Sources */,
 				7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */,

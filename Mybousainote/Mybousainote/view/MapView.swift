@@ -106,7 +106,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     //MARK: - 避難施設
     
     //避難施設のマーカーを立てる
-    func setFacilitiesPins(lat: Double, lng: Double, name: String, num: Int) {
+    func setFacilitiesMarkers(lat: Double, lng: Double, name: String, num: Int) {
 //        print("避難施設のマーカーを立てる")
         
         let position = CLLocationCoordinate2DMake(lat, lng)

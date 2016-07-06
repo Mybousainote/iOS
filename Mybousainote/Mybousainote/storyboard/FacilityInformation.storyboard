@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Uj-s7-bdK">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Facility Information View Controller-->
+        <scene sceneID="Vhh-Fg-TDi">
+            <objects>
+                <viewController id="0Uj-s7-bdK" customClass="FacilityInformationViewController" customModule="Mybousainote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gbk-aJ-pno"/>
+                        <viewControllerLayoutGuide type="bottom" id="roU-vd-yAb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fsf-6N-6zj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myd-qM-fwZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-D0-34t">
+                                        <rect key="frame" x="24" y="30" width="30" height="30"/>
+                                        <state key="normal" title="戻る"/>
+                                        <connections>
+                                            <action selector="touchedBackButton:" destination="0Uj-s7-bdK" eventType="touchUpInside" id="5W7-i4-JuF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92020245337019524" green="1" blue="0.74751949397945405" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="LGC-Kd-aII"/>
+                                    <constraint firstItem="0gd-D0-34t" firstAttribute="leading" secondItem="myd-qM-fwZ" secondAttribute="leading" constant="20" id="vFp-fz-nx1"/>
+                                    <constraint firstAttribute="bottom" secondItem="0gd-D0-34t" secondAttribute="bottom" constant="14" id="vI0-Ip-uZs"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gih-2X-cez">
+                                <rect key="frame" x="182" y="483" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8UH-6F-eug" customClass="StreetView" customModule="Mybousainote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="69" width="600" height="211"/>
+                                <color key="backgroundColor" red="0.85370734901904899" green="1" blue="0.95117541167885933" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="211" id="tFs-j4-FFS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8UH-6F-eug" firstAttribute="top" secondItem="myd-qM-fwZ" secondAttribute="bottom" id="4BU-Rh-zwD"/>
+                            <constraint firstItem="myd-qM-fwZ" firstAttribute="leading" secondItem="fsf-6N-6zj" secondAttribute="leading" id="Ecw-4u-6Q2"/>
+                            <constraint firstAttribute="trailing" secondItem="8UH-6F-eug" secondAttribute="trailing" id="NhL-KI-z2l"/>
+                            <constraint firstItem="8UH-6F-eug" firstAttribute="leading" secondItem="fsf-6N-6zj" secondAttribute="leading" id="Zcf-wL-p5L"/>
+                            <constraint firstItem="myd-qM-fwZ" firstAttribute="top" secondItem="fsf-6N-6zj" secondAttribute="top" id="rF4-Vg-em0"/>
+                            <constraint firstAttribute="trailing" secondItem="myd-qM-fwZ" secondAttribute="trailing" id="w71-lU-fEl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="streetView" destination="8UH-6F-eug" id="GRQ-Cs-jA6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2n-DZ-EEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6F-2k-OxG">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vye-64-aDO">
+                            <rect key="frame" x="28" y="24" width="30" height="30"/>
+                            <state key="normal" title="戻る"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sJ-z9-OCI">
+                            <rect key="frame" x="283" y="33" width="34" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="0sJ-z9-OCI" firstAttribute="centerX" secondItem="X6F-2k-OxG" secondAttribute="centerX" id="2N3-AO-57L"/>
+                        <constraint firstItem="Vye-64-aDO" firstAttribute="top" secondItem="X6F-2k-OxG" secondAttribute="top" constant="19" id="Cd2-m5-eRy"/>
+                        <constraint firstAttribute="bottom" secondItem="0sJ-z9-OCI" secondAttribute="bottom" constant="14" id="JfX-lb-oZ4"/>
+                        <constraint firstAttribute="height" constant="68" id="aZm-gm-kXa"/>
+                        <constraint firstAttribute="bottom" secondItem="Vye-64-aDO" secondAttribute="bottom" constant="14" id="i0F-36-Caa"/>
+                        <constraint firstItem="Vye-64-aDO" firstAttribute="leading" secondItem="X6F-2k-OxG" secondAttribute="leading" constant="20" id="k8N-Pw-6Os"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Cd2-m5-eRy"/>
+                        </mask>
+                    </variation>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="830" y="140"/>
+        </scene>
+    </scenes>
+</document>

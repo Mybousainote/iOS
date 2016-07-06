@@ -113,7 +113,7 @@ class TopViewController: UIViewController {
     }
     
     //生活圏ボタンが押されたときに呼ばれる
-    func touchedLivingAreaButton(button: UIButton) {        
+    func touchedLivingAreaButton(button: UIButton) {
         if button.tag != 0 {
             appDelegate.global.selectedAreaObject = livingAreaObjects[button.tag-1] as! NSObject
         }

@@ -20,9 +20,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2h-9b-zSB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
-                                        <rect key="frame" x="20" y="24" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
+                                        <rect key="frame" x="28" y="24" width="30" height="30"/>
+                                        <state key="normal" title="戻る"/>
                                         <connections>
                                             <action selector="touchedBackButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="ugp-xp-PSo"/>
                                         </connections>
@@ -60,8 +60,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOd-UR-ArO">
-                                                <rect key="frame" x="52" y="17" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="45" y="17" width="60" height="30"/>
+                                                <state key="normal" title="避難施設"/>
                                                 <connections>
                                                     <action selector="touchedFacilitiesButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="l6z-t7-LdL"/>
                                                 </connections>
@@ -77,8 +77,8 @@
                                         <rect key="frame" x="150" y="0.0" width="150" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBB-LA-3Uz">
-                                                <rect key="frame" x="52" y="17" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="60" y="17" width="30" height="30"/>
+                                                <state key="normal" title="地震"/>
                                                 <connections>
                                                     <action selector="touchedEarthquakeButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="jML-vp-mdg"/>
                                                 </connections>
@@ -94,8 +94,8 @@
                                         <rect key="frame" x="300" y="0.0" width="150" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-B4-dlj">
-                                                <rect key="frame" x="52" y="17" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="60" y="17" width="30" height="30"/>
+                                                <state key="normal" title="洪水"/>
                                                 <connections>
                                                     <action selector="touchedFloodsButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="Quy-UH-qbv"/>
                                                 </connections>
@@ -111,8 +111,8 @@
                                         <rect key="frame" x="450" y="0.0" width="150" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azp-LP-d0W">
-                                                <rect key="frame" x="52" y="17" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="60" y="17" width="30" height="30"/>
+                                                <state key="normal" title="土砂"/>
                                                 <connections>
                                                     <action selector="touchedSedimentButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="nRc-Es-0GO"/>
                                                 </connections>

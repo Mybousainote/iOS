@@ -9,11 +9,12 @@
 import UIKit
 import AFNetworking
 
-protocol DisasterInformationManagerDelegate {
-    func didGetFacilitiesData(facilities: [AnyObject])
-    func didGetEarthquakeData(earthquake: AnyObject)
-    func didGetFloodsData(floods: [AnyObject])
-    func didGetWaterDepth(waterDepth: String)
+@objc protocol DisasterInformationManagerDelegate {
+    optional func didGetFacilitiesData(facilities: [AnyObject])
+    optional func didGetFacilityDataFromId(facility: AnyObject)
+    optional func didGetEarthquakeData(earthquake: AnyObject)
+    optional func didGetFloodsData(floods: [AnyObject])
+    optional func didGetWaterDepth(waterDepth: String)
 }
 
 class DisasterInformationManager: NSObject {
@@ -46,7 +47,7 @@ class DisasterInformationManager: NSObject {
                         
                         //デリゲートメソッドを呼ぶ
                         if json != nil {
-                            self.delegate.didGetEarthquakeData(json!)
+                            self.delegate.didGetEarthquakeData!(json!)
                         }
             },
                     failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
@@ -79,13 +80,47 @@ class DisasterInformationManager: NSObject {
                 
                 //デリゲートメソッドを呼ぶ
                 if json != nil {
-                    self.delegate.didGetFacilitiesData(json as! [AnyObject])
+                    self.delegate.didGetFacilitiesData!(json as! [AnyObject])
                 }
             },
             failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
                 print("エラー！")
                 print(operation?.responseObject)
                 print(operation?.responseString)
+            }
+        )
+    }
+    
+    //指定したIDの避難施設情報を取得
+    func getFacilityDataFromId(id: Int) {
+        print("ID:\(id) の避難施設情報を取得")
+        
+        //リクエスト
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        
+        let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer = serializer
+        
+        let url = "http://taigasano.com/mybousainote/api/facilities/get-from-id.php?id=\(id)"
+        
+        print(url)
+        let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        manager.GET(encodeURL, parameters: nil,
+                    success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
+                        print("取得に成功")
+                        
+                        let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers))
+                        
+                        //デリゲートメソッドを呼ぶ
+                        if json != nil {
+                            self.delegate.didGetFacilityDataFromId!(json!)
+                        }
+            },
+                    failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
+                        print("エラー！")
+                        print(operation?.responseObject)
+                        print(operation?.responseString)
             }
         )
     }
@@ -112,7 +147,7 @@ class DisasterInformationManager: NSObject {
                         
                         //デリゲートメソッドを呼ぶ
                         if json != nil {
-                            self.delegate.didGetFloodsData(json as! [AnyObject])
+                            self.delegate.didGetFloodsData!(json as! [AnyObject])
                         }
                         
             },
@@ -148,7 +183,7 @@ class DisasterInformationManager: NSObject {
                         if json != nil {
                             //値を取得
                             let waterDepth = json!["waterDepth"] as! String
-                            self.delegate.didGetWaterDepth(waterDepth)
+                            self.delegate.didGetWaterDepth!(waterDepth)
                         }
                         
             },

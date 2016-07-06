@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var DBManager: DatabaseManager!
     var LManager: LocationManager!
-    var DIManager: DisasterInformationManager!
+//    var DIManager: DisasterInformationManager!
     var global: Global!
     
 
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createGlobalClass() {
         LManager = LocationManager.init()
         DBManager = DatabaseManager.init()
-        DIManager = DisasterInformationManager.init()
+//        DIManager = DisasterInformationManager.init()
         global = Global()
     }
     

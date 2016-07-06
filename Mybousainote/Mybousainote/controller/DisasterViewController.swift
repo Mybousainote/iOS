@@ -11,6 +11,10 @@ import UIKit
 class DisasterViewController: UIViewController,DisasterInformationManagerDelegate, MapViewDelegate, FloodsViewDelegate {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    //防災情報取得の管理クラス
+    var DIManager: DisasterInformationManager!
+    
+    
     //StoryBoard
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var mapView: MapView!
@@ -26,7 +30,8 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         super.viewDidLoad()
         
         //デリゲートの設定
-        appDelegate.DIManager.delegate = self
+        DIManager = DisasterInformationManager.init()
+        DIManager.delegate = self
         
         //トップ画面で選択した地点の情報を取得
         let livingAreaObject = appDelegate.global.selectedAreaObject as AnyObject
@@ -71,7 +76,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
 
     //避難施設情報を取得
     func getFacilitiesData() {
-        appDelegate.DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().getFacilitiesBound)
+        DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().getFacilitiesBound)
     }
     
     //避難施設情報を取得したときに呼ばれる
@@ -82,9 +87,13 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //マーカーを一旦全削除
         mapView.removeAllMarkers()
         
+        var buttonInformations = NSMutableArray()
+        
         var count = 0
         for facility in facilities {
             count += 1
+            
+            let id = facility["id"] as! String
             
             let name = facility["name"] as! String
             let lat = facility["lat"] as! String
@@ -94,11 +103,23 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             if num > 4 {
                 num = 0
             }
-            mapView.setFacilitiesPins(Double(lat)!, lng: Double(lng)!, name: name, num: num)
+            //マーカーを立てる
+            mapView.setFacilitiesMarkers(Double(lat)!, lng: Double(lng)!, name: name, num: num)
+            
+            
+            if count <= 4 {
+                let buttonInformation = [
+                    "id": id,
+                    "name": name
+                ]
+                buttonInformations.addObject(buttonInformation)
+            }
         }
-//        mapView.setFacilitiesPins(mapView.centerLat, lng: mapView.centerLng, name:  "テスト", num: 0)
+        //上位４つのボタンを作成する
+        facilitiesView.setFacilitiesListButton(buttonInformations)
     }
     
+
     
     
     
@@ -109,7 +130,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //地震情報を取得
     func getEarthquakeData() {
-        appDelegate.DIManager.getEarthquakeData(mapView.centerLat, lng: mapView.centerLng)
+        DIManager.getEarthquakeData(mapView.centerLat, lng: mapView.centerLng)
     }
     
     //地震情報を取得したときに呼ばれる
@@ -129,7 +150,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //浸水情報を取得
     func getFloodsData() {
         appDelegate.global.showLoadingView(self.view, messege: "タイルを読み込み中...") //ローディング画面を表示
-        appDelegate.DIManager.getFloodsData(mapView.centerLat, lng: mapView.centerLng, rectSize: Config().getFloodsRectSize)
+        DIManager.getFloodsData(mapView.centerLat, lng: mapView.centerLng, rectSize: Config().getFloodsRectSize)
     }
     
     //浸水情報を取得したときに呼ばれる
@@ -168,7 +189,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //中心点の浸水深を取得
     func getWaterDepth() {
-        appDelegate.DIManager.getWaterDepth(mapView.centerLat, lng: mapView.centerLng)
+        DIManager.getWaterDepth(mapView.centerLat, lng: mapView.centerLng)
     }
     
     //中心点の浸水深を取得したときに呼ばれる
@@ -254,6 +275,21 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     
     
+    
+    func touchedFacilitiesListButton(button: UIButton) {
+        print("選択された避難施設のID: \(button.tag)")
+        appDelegate.global.selectedFacilityId = button.tag
+        
+        transitionToFacilityInformationView()
+    }
+    
+    
+    func transitionToFacilityInformationView() {
+        print("避難施設詳細画面へ遷移")
+        let storyboard = UIStoryboard(name: "FacilityInformation", bundle: nil)
+        let nextView: UIViewController! = storyboard.instantiateInitialViewController()
+        self.navigationController?.pushViewController(nextView, animated: true)
+    }
     
     
     

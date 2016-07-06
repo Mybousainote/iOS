@@ -9,9 +9,10 @@
 import UIKit
 
 class FacilitiesView: UIView {
-
     
-    @IBOutlet weak var label: UILabel!
+    class func instance() -> FacilitiesView {
+        return UINib(nibName: "FacilitiesView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! FacilitiesView
+    }
     
     //コードから初期化
     override init(frame: CGRect) {
@@ -22,11 +23,23 @@ class FacilitiesView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func setInformation(name: String) {
-        label.text = name
-    }
-    
-    class func instance() -> FacilitiesView {
-        return UINib(nibName: "FacilitiesView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! FacilitiesView
+    func setFacilitiesListButton(buttonInformations: NSArray) {
+        
+        var count: CGFloat = 0
+        for buttonInformation in buttonInformations {
+            let listButton = FacilitiesListButton.instance()
+            
+            
+            let width = self.frame.width-16
+            let height = (self.frame.height-8*3-10*2)/4
+            
+            listButton.frame = CGRectMake(8, 10+count*(height+8), width, height)
+            
+            listButton.name.text = buttonInformation["name"] as? String
+            listButton.tag = Int(buttonInformation["id"] as! String)!
+            self.addSubview(listButton)
+            
+            count += 1
+        }
     }
 }
