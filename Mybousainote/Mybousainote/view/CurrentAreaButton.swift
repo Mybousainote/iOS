@@ -10,7 +10,7 @@ import UIKit
 
 class CurrentAreaButton: UIButton {
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var streetView: UIImageView!
     
     //コードから初期化
     override init(frame: CGRect) {
@@ -20,20 +20,39 @@ class CurrentAreaButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        setUI()
+        
         //ターゲットを設定
-        self.addTarget(TopViewController(), action: #selector(TopViewController.transitionToDisasterView), forControlEvents: .TouchUpInside)
-    }
-    
-    func setLocationName(name: String) {
-        label.text = name
+        self.addTarget(TopViewController(), action: #selector(TopViewController.touchedLivingAreaButton(_:)), forControlEvents: .TouchUpInside)
     }
     
     class func instance() -> CurrentAreaButton {
         return UINib(nibName: "CurrentAreaButton", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! CurrentAreaButton
     }
     
+    func setUI() {
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
+    }
     
-    
+    func setStreetViewImage(lat: Double, lng: Double, width: CGFloat, height: CGFloat) {
+        
+        let apiKey = "AIzaSyCslSIWQG0dnhS8BaeCIQyUxttCliecBdA"
+        let heading = arc4random_uniform(360)
+        let urlString = "http://maps.googleapis.com/maps/api/streetview?size=\(Int(width*2))x\(Int(height*2))&location=\(lat),\(lng)&heading=\(heading)&pitch=-0.76&sensor=true&fov=90&key=\(apiKey)"
+        
+        print("ストリートビュー画像の取得: "+urlString)
+        let url = NSURL(string: urlString)
+        let req = NSURLRequest(URL:url!)
+        
+        NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+            let image = UIImage(data:data!)
+            // 画像に対する処理 (UcellのUIImageViewに表示する等)
+            self.streetView.image = image
+            self.addSubview(self.streetView)
+            self.sendSubviewToBack(self.streetView)
+        }
+    }
     
     
 //    func loadXib() {

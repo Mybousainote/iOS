@@ -34,8 +34,12 @@ class TopViewController: UIViewController {
         
         //地名と頻度のテーブルの更新（BackgroundFetchでも呼ばれるがここでも呼んでおく）
 //        appDelegate.DBManager.refreshCityFrequency() ← 更新する際に一度テーブルを削除してややこしくなる
-        
         checkLocationAuthorize()
+    }
+    
+    //ステータスバーを白くする
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     //viewが全て読み込まれた後に呼ばれる
@@ -43,9 +47,36 @@ class TopViewController: UIViewController {
 //        setLivingAreaButtons()
     }
     override func viewDidAppear(animated: Bool) {
+        setLivingAreaBg()
         setCurrentAreaButton()
         setLivingAreaButtons()
     }
+    
+    //各ボタンの背景を作成
+    func setLivingAreaBg() {
+        var livingAreaBg = UIView()
+        livingAreaBg.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
+        livingAreaBg = stylingAreaBg(livingAreaBg)
+        
+        livingAreaView1.addSubview(livingAreaBg)
+        livingAreaView2.addSubview(livingAreaBg)
+        livingAreaView3.addSubview(livingAreaBg)
+        livingAreaView4.addSubview(livingAreaBg)
+        
+        var currentAreaBg = UIView()
+        currentAreaBg.frame = CGRectMake(0, 0, currentAreaView.frame.width, currentAreaView.frame.height)
+        currentAreaBg = stylingAreaBg(currentAreaBg)
+        currentAreaView.addSubview(currentAreaBg)
+    }
+    
+    func stylingAreaBg(view: UIView) -> UIView {
+        view.layer.cornerRadius = 12
+        view.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.4).CGColor
+        view.layer.borderWidth = 4;
+        
+        return view
+    }
+
     
     //位置情報が許可されてない場合アラートを表示する
     func checkLocationAuthorize() {
@@ -65,44 +96,56 @@ class TopViewController: UIViewController {
     func setCurrentAreaButton() {
         let currentAreaButton = CurrentAreaButton.instance()
         currentAreaButton.tag = 0
-        currentAreaButton.setLocationName("現在地")
+        currentAreaButton.setStreetViewImage(appDelegate.LManager.lat, lng: appDelegate.LManager.lng, width: currentAreaView.frame.width, height: currentAreaView.frame.height-(20+7*2))
         currentAreaButton.frame = CGRectMake(0, 0, currentAreaView.frame.width, currentAreaView.frame.height)
         currentAreaView.addSubview(currentAreaButton)
+        
+        addShadowAreaView(currentAreaView)
     }
     
     //生活圏リストボタンを作成する
     func setLivingAreaButtons() {
-        livingAreaObjects = appDelegate.DBManager.getForLivingArea()
+        //DBから生活圏上位4つを取得
+        livingAreaObjects = appDelegate.DBManager.getFourLivingArea()
         
         var num = 0
         
         for livingAreaObject in livingAreaObjects {
             num += 1
             
-            let cityName = livingAreaObject["cityName"] as! String
+            //情報を取得
+            let subLocality = livingAreaObject["subLocality"] as! String
+            let lat = livingAreaObject["lat"] as! Double
+            let lng = livingAreaObject["lng"] as! Double
             
             let livingAreaButton = LivingAreaButton.instance()
             livingAreaButton.tag = num
-            livingAreaButton.setLocationName(cityName)
+            livingAreaButton.setLocationName(subLocality)
+            livingAreaButton.setStreetViewImage(lat, lng: lng, width: livingAreaView1.frame.width, height: livingAreaView1.frame.height-(20+7*2))
+            livingAreaButton.setRank(num)
             
             switch num {
             case 1:
                 livingAreaButton.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
+                addShadowAreaView(livingAreaView1)
                 livingAreaView1.addSubview(livingAreaButton)
                 break
                 
             case 2:
                 livingAreaButton.frame = CGRectMake(0, 0, livingAreaView2.frame.width, livingAreaView2.frame.height)
+                addShadowAreaView(livingAreaView2)
                 livingAreaView2.addSubview(livingAreaButton)
                 break
                 
             case 3:
                 livingAreaButton.frame = CGRectMake(0, 0, livingAreaView3.frame.width, livingAreaView3.frame.height)
+                addShadowAreaView(livingAreaView3)
                 livingAreaView3.addSubview(livingAreaButton)
                 break
                 
             case 4:
                 livingAreaButton.frame = CGRectMake(0, 0, livingAreaView4.frame.width, livingAreaView4.frame.height)
+                addShadowAreaView(livingAreaView4)
                 livingAreaView4.addSubview(livingAreaButton)
                 break
                 
@@ -112,14 +155,20 @@ class TopViewController: UIViewController {
         }
     }
     
+    func addShadowAreaView(view: UIView) {
+        view.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).CGColor
+        view.layer.shadowOffset = CGSizeMake(1.0, 1.0)
+        view.layer.shadowRadius = 0
+        view.layer.shadowOpacity = 0.2
+        view.layer.masksToBounds = false
+    }
+    
     //生活圏ボタンが押されたときに呼ばれる
     func touchedLivingAreaButton(button: UIButton) {
         if button.tag != 0 {
             appDelegate.global.selectedAreaObject = livingAreaObjects[button.tag-1] as! NSObject
         }
         else {
-            print("現在地")
-            
             //現在地許可がされてないときの対処
             
             appDelegate.global.selectedAreaObject = [
@@ -150,11 +199,7 @@ class TopViewController: UIViewController {
     
     
     
-        	
-    //テスト
-    @IBAction func test(sender: AnyObject) {
-//        appDelegate.DIManager.getFloodsData(0, lng: 0)
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

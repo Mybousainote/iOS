@@ -31,24 +31,28 @@ public class Config {
     let virtualLivingArea: [AnyObject] = [
         [
             "cityName": "鎌倉市大船", //自宅
+            "subLocality": "大船",
             "lat": 35.317931,
             "lng": 139.499904
         ],
         [
             "cityName": "鎌倉市津西", //勤務地
+            "subLocality": "津西",
             "lat": 35.353113,
             "lng": 139.538310
         ],
         [
             "cityName": "鎌倉市鎌倉山", //よく行くカフェ
+            "subLocality": "鎌倉山",
             "lat": 35.318271,
             "lng": 139.514939
-        ],
-        [
-            "cityName": "鎌倉市小町", //スポーツクラブ
-            "lat": 35.318734,
-            "lng": 139.552864
         ]
+//        [
+//            "cityName": "鎌倉市小町", //スポーツクラブ
+//            "subLocality": "小町",
+//            "lat": 35.318734,
+//            "lng": 139.552864
+//        ]
     ]
     
     //各浸水深の値

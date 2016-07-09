@@ -17,6 +17,8 @@ class Location_Table: Object {
 
 class CityFrequency_Table: Object {
     dynamic var cityName: String = ""
+    dynamic var locality: String = ""
+    dynamic var subLocality: String = ""
     dynamic var frequency: Int = 0
     dynamic var lat: Double = 0
     dynamic var lng: Double = 0
@@ -110,7 +112,7 @@ class DatabaseManager: NSObject {
     }
     
     //変換された地名と頻度をテーブルに保存
-    func insertFrequencyTable(cityName: String, lat: Double, lng: Double) {
+    func insertFrequencyTable(cityName: String, locality: String, subLocality: String, lat: Double, lng: Double) {
         
         let myRealm = try! Realm()
         
@@ -132,6 +134,8 @@ class DatabaseManager: NSObject {
         let myFrequencies = CityFrequency_Table()
         myFrequencies.cityName = cityName
         myFrequencies.frequency = frequency + 1
+        myFrequencies.locality = locality
+        myFrequencies.subLocality = subLocality
         myFrequencies.lat = lat
         myFrequencies.lng = lng
         
@@ -142,7 +146,7 @@ class DatabaseManager: NSObject {
     }
     
     //上位4つの地域の情報を取得
-    func getForLivingArea() -> [AnyObject] {
+    func getFourLivingArea() -> [AnyObject] {
         
         let myRealm = try! Realm()
         let tableContents = myRealm.objects(CityFrequency_Table)
@@ -152,6 +156,7 @@ class DatabaseManager: NSObject {
         for row in tableContents {
             let livingArea = [
                 "cityName": row.cityName,
+                "sublocality": row.subLocality,
                 "lat": row.lat,
                 "lng": row.lng,
             ]

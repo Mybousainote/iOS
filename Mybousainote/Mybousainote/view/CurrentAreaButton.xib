@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ヒラギノ角ゴOld StdN W6.otf">
+            <string>HiraSansOldStdN-W6</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -11,20 +16,40 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Cv-D5B">
-                    <rect key="frame" x="201" y="296" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在地" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Cv-D5B">
+                    <rect key="frame" x="536" y="573" width="54" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="KcG-46-gO1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="18"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gvl-oT-57v">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="565"/>
+                    <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.72162658845416128" green="0.85702261740331487" blue="0.7122380291941719" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.2196078431372549" green="0.80000000000000004" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="Gvl-oT-57v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3wm-aZ-fR1"/>
                 <constraint firstItem="Bzj-Cv-D5B" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BlD-do-p7P"/>
+                <constraint firstItem="Bzj-Cv-D5B" firstAttribute="top" secondItem="Gvl-oT-57v" secondAttribute="bottom" constant="7" id="Fem-6W-tx2"/>
+                <constraint firstAttribute="trailing" secondItem="Gvl-oT-57v" secondAttribute="trailing" id="UyB-HM-NcG"/>
+                <constraint firstAttribute="trailing" secondItem="Bzj-Cv-D5B" secondAttribute="trailing" constant="10" id="crN-tG-gR9"/>
+                <constraint firstItem="Gvl-oT-57v" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lPP-i5-7ek"/>
                 <constraint firstItem="Bzj-Cv-D5B" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oXw-hD-zfZ"/>
+                <constraint firstAttribute="bottom" secondItem="Bzj-Cv-D5B" secondAttribute="bottom" constant="7" id="ugC-O0-oDx"/>
+                <constraint firstItem="Bzj-Cv-D5B" firstAttribute="top" secondItem="Gvl-oT-57v" secondAttribute="bottom" constant="8" id="xcK-sa-17B"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BlD-do-p7P"/>
+                    <exclude reference="oXw-hD-zfZ"/>
+                </mask>
+            </variation>
             <connections>
-                <outlet property="label" destination="Bzj-Cv-D5B" id="UhU-vw-I5N"/>
+                <outlet property="streetView" destination="Gvl-oT-57v" id="YsN-2T-bM8"/>
             </connections>
         </view>
     </objects>

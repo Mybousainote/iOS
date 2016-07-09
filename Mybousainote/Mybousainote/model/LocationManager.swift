@@ -148,7 +148,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 subLocality = placemark.subLocality!
                 
                 //取得した地名をDatabaseManagerの方で保存する
-                self.appDelegate.DBManager.insertFrequencyTable(locality+subLocality, lat: lat, lng: lng)
+                self.appDelegate.DBManager.insertFrequencyTable(locality+subLocality, locality: locality, subLocality: subLocality, lat: lat, lng: lng)
                 
             } else {
                 print("Problem with the data received from geocoder")

@@ -87,6 +87,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //マーカーを一旦全削除
         mapView.removeAllMarkers()
         
+        //4つのボタン作成用
         var buttonInformations = NSMutableArray()
         
         var count = 0
@@ -94,18 +95,17 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             count += 1
             
             let id = facility["id"] as! String
-            
             let name = facility["name"] as! String
             let lat = facility["lat"] as! String
             let lng = facility["lng"] as! String
             
+            //一番近い4つはマーカーを変える
             var num = count
             if num > 4 {
                 num = 0
             }
             //マーカーを立てる
-            mapView.setFacilitiesMarkers(Double(lat)!, lng: Double(lng)!, name: name, num: num)
-            
+            mapView.setFacilitiesMarkers(Double(lat)!, lng: Double(lng)!, name: name, num: num, id: id)
             
             if count <= 4 {
                 let buttonInformation = [
@@ -117,6 +117,20 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         }
         //上位４つのボタンを作成する
         facilitiesView.setFacilitiesListButton(buttonInformations)
+    }
+    
+    //避難施設のボタンが押されたとき呼ばれる
+    func touchedFacilitiesListButton(button: UIButton) {
+        //選択された避難施設のIDをViewController共有用に保存し、画面遷移
+        appDelegate.global.selectedFacilityId = button.tag
+        transitionToFacilityInformationView()
+    }
+    
+    //マーカーウィンドウがタッチされたときに呼ばれる
+    func didTouchMakerWindow(id: String) {
+        //選択された避難施設のIDをViewController共有用に保存し、画面遷移
+        appDelegate.global.selectedFacilityId = Int(id)
+        transitionToFacilityInformationView()
     }
     
 
@@ -276,14 +290,10 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     
     
-    func touchedFacilitiesListButton(button: UIButton) {
-        print("選択された避難施設のID: \(button.tag)")
-        appDelegate.global.selectedFacilityId = button.tag
-        
-        transitionToFacilityInformationView()
-    }
     
     
+    
+    //画面遷移
     func transitionToFacilityInformationView() {
         print("避難施設詳細画面へ遷移")
         let storyboard = UIStoryboard(name: "FacilityInformation", bundle: nil)

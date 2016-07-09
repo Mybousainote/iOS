@@ -11,6 +11,7 @@ import GoogleMaps
 
 protocol MapViewDelegate {
     func didFinishChangeCameraPosition()
+    func didTouchMakerWindow(id: String)
 }
 
 class MapView: GMSMapView, GMSMapViewDelegate {
@@ -106,7 +107,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     //MARK: - 避難施設
     
     //避難施設のマーカーを立てる
-    func setFacilitiesMarkers(lat: Double, lng: Double, name: String, num: Int) {
+    func setFacilitiesMarkers(lat: Double, lng: Double, name: String, num: Int, id: String) {
 //        print("避難施設のマーカーを立てる")
         
         let position = CLLocationCoordinate2DMake(lat, lng)
@@ -116,6 +117,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         let pinName = "pin_\(num).png"
         let img: UIImage! = UIImage(named: pinName)
         marker.icon = img
+        marker.userData = id
         marker.map = self
         
         facilityMarkers.addObject(marker)
@@ -139,6 +141,9 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     //マーカーのウィンドウがタップされたときに呼ばれる
     func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         print("マーカーウィンドウがタップされた")
+        print("ID: "+(marker.userData as! String))
+        //デリゲートを呼ぶ
+        mapViewDelegate.didTouchMakerWindow(marker.userData as! String)
     }
     
     //マーカーをリセットする
