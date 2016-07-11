@@ -20,6 +20,8 @@
 		784A2DB11D2CB09800EDB81A /* FacilitiesListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */; };
 		784A2DB31D2CBA8100EDB81A /* FacilityInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */; };
 		784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */; };
+		784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784DBD671D33543600D5C6AA /* SedimentsView.swift */; };
+		784DBD6A1D33544800D5C6AA /* SedimentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784DBD691D33544800D5C6AA /* SedimentsView.xib */; };
 		7857CFE31D2CDEDE00D65B76 /* StreetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857CFE21D2CDEDE00D65B76 /* StreetView.swift */; };
 		7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862F29A1CE71311000E4682 /* LivingAreaButton.swift */; };
 		7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7862F29C1CE71436000E4682 /* LivingAreaButton.xib */; };
@@ -84,6 +86,8 @@
 		784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesListButton.swift; path = view/FacilitiesListButton.swift; sourceTree = "<group>"; };
 		784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilityInformationViewController.swift; path = controller/FacilityInformationViewController.swift; sourceTree = "<group>"; };
 		784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FacilityInformation.storyboard; path = storyboard/FacilityInformation.storyboard; sourceTree = "<group>"; };
+		784DBD671D33543600D5C6AA /* SedimentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SedimentsView.swift; path = view/SedimentsView.swift; sourceTree = "<group>"; };
+		784DBD691D33544800D5C6AA /* SedimentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SedimentsView.xib; path = view/SedimentsView.xib; sourceTree = "<group>"; };
 		7857CFE21D2CDEDE00D65B76 /* StreetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreetView.swift; path = view/StreetView.swift; sourceTree = "<group>"; };
 		7862F29A1CE71311000E4682 /* LivingAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivingAreaButton.swift; path = view/LivingAreaButton.swift; sourceTree = "<group>"; };
 		7862F29C1CE71436000E4682 /* LivingAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LivingAreaButton.xib; path = view/LivingAreaButton.xib; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */,
 				78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */,
 				78EDFD161D1105D000CE4E33 /* EarthquakeView.xib */,
+				784DBD671D33543600D5C6AA /* SedimentsView.swift */,
+				784DBD691D33544800D5C6AA /* SedimentsView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
 				7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
+				784DBD6A1D33544800D5C6AA /* SedimentsView.xib in Resources */,
 				78EDFD1D1D11349C00CE4E33 /* test.xib in Resources */,
 				784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
@@ -499,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */,
 				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
 				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
 				78D81B701CD6253A00CA9498 /* Global.swift in Sources */,

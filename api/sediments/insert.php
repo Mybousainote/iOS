@@ -34,28 +34,26 @@ for ($num=14; $num < 15; $num++) {
 		$type = $data["SedimentRelatedDisasterWarningAreasPolygon"][$i]->cop;
 
 		if ($type == 1) {
-			echo "急傾斜地の崩壊";
+			// echo "急傾斜地の崩壊";
 		}else if ($type == 2) {
-			echo "土石流";
+			// echo "土石流";
 		}else if ($type == 3) {
-			echo "地滑り";
+			// echo "地滑り";
 		}else {
-			echo "その他？";
 		}
 		echo "<br>";
 
 		//区域区分
-		$class = $data["SedimentRelatedDisasterWarningAreasPolygon"][$i]->coz;
-		if ($class == 1) {
-			echo "土砂災害警戒区域(指定済)";
-		}else if ($class == 2) {
-			echo "	土砂災害特別警戒区域(指定済)";
-		}else if ($class == 3) {
-			echo "土砂災害警戒区域(指定前)";
-		}else if ($class == 4) {
-			echo "土砂災害特別警戒区域(指定前)";
+		$vigilanceDivision = $data["SedimentRelatedDisasterWarningAreasPolygon"][$i]->coz;
+		if ($vigilanceDivision == 1) {
+			// echo "土砂災害警戒区域(指定済)";
+		}else if ($vigilanceDivision == 2) {
+			// echo "	土砂災害特別警戒区域(指定済)";
+		}else if ($vigilanceDivision == 3) {
+			// echo "土砂災害警戒区域(指定前)";
+		}else if ($vigilanceDivision == 4) {
+			// echo "土砂災害特別警戒区域(指定前)";
 		}else {
-			echo "その他？";
 		}
 
 		// //それに付随するポリゴン（複数ある場合もあり）
@@ -74,22 +72,23 @@ for ($num=14; $num < 15; $num++) {
 				$posList = substr($posList, 0, -4);
 			}	
 			else {
-				// echo "ぬあ";
 			}
 
 			if ($posList != null) {
 				//queryを作成
-				$query = "INSERT INTO MyBS_FLOODS(
+				$query = "INSERT INTO MyBS_SEDIMENTS(
 				prefectures,
 				posList,
-				waterDepth
+				type,
+				vigilanceDivision
 				) VALUES(
 				".$num.",
 				GeomFromText('POLYGON((".$posList."))'),
-				".$waterDepth."
+				".$type.",
+				".$vigilanceDivision."
 				)";
 
-				// echo $query;
+				echo $query;
 				// mysql_query($query) or die(mysql_error());	
 			}
 		}		

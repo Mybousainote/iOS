@@ -24,6 +24,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     
     var facilityMarkers: NSMutableArray!
     var floodPolygons: NSMutableArray!
+    var sedimentPolygons: NSMutableArray!
     
     var mapViewDelegate: MapViewDelegate!
     
@@ -46,8 +47,10 @@ class MapView: GMSMapView, GMSMapViewDelegate {
         //現在地ボタンの表示の設定
         self.settings.myLocationButton = true
         
+        
         facilityMarkers = NSMutableArray()
         floodPolygons = NSMutableArray()
+        sedimentPolygons = NSMutableArray()
     }
     
     func setCameraLocation(lat: Double, lng: Double) {
@@ -161,9 +164,7 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     
     //MARK: - 浸水
     
-    func setFloodsPolygon(polygonPoints: NSArray, polygonColor: UIColor) {
-        print("浸水深のポリゴンを作成")
-        
+    func setFloodsPolygon(polygonPoints: NSArray, polygonColor: UIColor) { 
         let path = GMSMutablePath()
         
         for polygonPoint in polygonPoints {
@@ -172,7 +173,6 @@ class MapView: GMSMapView, GMSMapViewDelegate {
             
             path.addCoordinate(CLLocationCoordinate2DMake(lat!, lng!))
         }
-        
         let polygon = GMSPolygon(path: path)
         polygon.fillColor = polygonColor
 //        polygon.strokeColor = UIColor.blackColor()
@@ -185,9 +185,67 @@ class MapView: GMSMapView, GMSMapViewDelegate {
     //ポリゴンをリセットする
     func removeAllFloodPolygons() {
         for polygons in floodPolygons {
-            (polygons as! GMSPolygon).map  = nil
+            (polygons as! GMSPolygon).map = nil
         }
         floodPolygons = NSMutableArray()
     }
     
+    //ポリゴンを非表示にする（データは消さない）
+    func hiddenAllFloodPolygons() {
+        for polygons in floodPolygons {
+            (polygons as! GMSPolygon).map = nil
+        }
+    }
+    
+    //ポリゴンを表示する
+    func showAllFloodPolygons() {
+        for polygons in floodPolygons {
+            (polygons as! GMSPolygon).map = self
+        }
+    }
+    
+    
+    
+    //MARK: - 土砂
+    
+    func setSedimentsPolygon(polygonPoints: NSArray, polygonColor: UIColor) {
+        let path = GMSMutablePath()
+        
+        for polygonPoint in polygonPoints {
+            let lat = Double((polygonPoint as! NSArray)[0] as! String)
+            let lng = Double((polygonPoint as! NSArray)[1] as! String)
+            
+            path.addCoordinate(CLLocationCoordinate2DMake(lat!, lng!))
+        }
+        
+        let polygon = GMSPolygon(path: path)
+        polygon.fillColor = polygonColor
+        //        polygon.strokeColor = UIColor.blackColor()
+        //        polygon.strokeWidth = 2
+        polygon.map = self
+        
+        sedimentPolygons.addObject(polygon)
+    }
+    
+    //ポリゴンをリセットする
+    func removeAllSedimentPolygons() {
+        for polygons in sedimentPolygons {
+            (polygons as! GMSPolygon).map  = nil
+        }
+        sedimentPolygons = NSMutableArray()
+    }
+    
+    //ポリゴンを非表示にする（データは消さない）
+    func hiddenAllSedimentsPolygons() {
+        for polygons in sedimentPolygons {
+            (polygons as! GMSPolygon).map = nil
+        }
+    }
+    
+    //ポリゴンを表示する
+    func showAllSedimentsPolygons() {
+        for polygons in sedimentPolygons {
+            (polygons as! GMSPolygon).map = self
+        }
+    }
 }

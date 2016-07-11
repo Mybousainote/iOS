@@ -15,6 +15,7 @@ import AFNetworking
     optional func didGetEarthquakeData(earthquake: AnyObject)
     optional func didGetFloodsData(floods: [AnyObject])
     optional func didGetWaterDepth(waterDepth: String)
+    optional func didGetSedimentsData(sediments: [AnyObject])
 }
 
 class DisasterInformationManager: NSObject {
@@ -194,6 +195,42 @@ class DisasterInformationManager: NSObject {
             }
         )
     }
+    
+    //土砂情報を取得
+    func getSedimentsData(lat: Double, lng: Double, rectSize: Double) {
+        print("土砂情報を取得")
+        //リクエスト
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        
+        let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer = serializer
+        
+        let url = "http://taigasano.com/mybousainote/api/sediments/?lat=\(lat)&lng=\(lng)&rect-size=\(rectSize)"
+        
+        print(url)
+        let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        manager.GET(encodeURL, parameters: nil,
+                    success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
+                        print("取得に成功")
+                        
+                        let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers)) as? NSArray
+                        
+                        //デリゲートメソッドを呼ぶ
+                        if json != nil {
+                            self.delegate.didGetSedimentsData!(json as! [AnyObject])
+                        }
+                        
+            },
+                    failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
+                        print("エラー！")
+                        print(operation?.responseObject)
+                        print(operation?.responseString)
+            }
+        )
+    }
+    
+    
     
     
     func APITest() {

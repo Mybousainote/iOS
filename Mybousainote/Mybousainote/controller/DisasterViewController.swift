@@ -23,8 +23,16 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     var earthquakeView: EarthquakeView!
     var floodsView: FloodsView!
     var facilitiesView: FacilitiesView!
+    var sedimentsView: SedimentsView!
     
     var currentInformationView: String = "facilities"
+    
+    
+    //最後にポリゴンを取得した地点の緯度経度
+    var latDidLoadFloodPolygon: Double!
+    var lngDidLoadFloodPolygon: Double!
+    var latDidLoadSedimentPolygon: Double!
+    var lngDidLoadSedimentPolygon: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,17 +57,28 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         getFacilitiesData()
     }
     
+    
     //地図の移動が終わったときに呼ばれる
     func didFinishChangeCameraPosition() {
         print("ドラッグ終了")
-        
-        //ズームレベルが一定以上の場合避難施設情報を読み込む
+        //ズームレベルが一定以上の場合諸々読み込む
         if mapView.camera.zoom > Config().thresholdShowMarkerZoomLevel {
             getFacilitiesData() //避難施設情報の取得
+            
+            if currentInformationView == "floods" {
+                setNewFloodPolygons()
+            }
+            else if currentInformationView == "sediments" {
+                setNewSedimentPolygons()
+            }
         }else {
             mapView.removeAllMarkers() //マーカーを削除
+            //ポリゴンを非表示にする
+            mapView.hiddenAllFloodPolygons()
+            mapView.hiddenAllSedimentsPolygons()
         }
         
+        //ズームレベル関係なく読み込むもの
         switch currentInformationView {
         case "earthquake":
             getEarthquakeData() //地震情報の取得
@@ -72,11 +91,51 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         }
     }
     
+    //浸水ポリゴン
+    func setNewFloodPolygons() {
+        if latDidLoadFloodPolygon != nil {
+            //最後に取得した地点からの距離を取得
+            let distance = calcurateDistance(mapView.centerLat, y1: mapView.centerLng, x2: latDidLoadFloodPolygon, y2: lngDidLoadFloodPolygon)
+            
+            if distance > Config().rectSizeForGetPolygon/2 {
+                getFloodsData() //一定距離以上離れてる場合は新たにデータを読み込む
+            } else {
+                mapView.showAllFloodPolygons() //特に離れてない場合は既にあるデータを表示する
+            }
+        }
+    }
+    
+    //土砂ポリゴン
+    func setNewSedimentPolygons() {
+        if latDidLoadSedimentPolygon != nil {
+            //最後に取得した地点からの距離を取得
+            let distance = calcurateDistance(mapView.centerLat, y1: mapView.centerLng, x2: latDidLoadSedimentPolygon, y2: lngDidLoadSedimentPolygon)
+            
+            if distance > Config().rectSizeForGetPolygon/2 {
+                getSedimentsData() //一定距離以上離れてる場合は新たにデータを読み込む
+            } else {
+                mapView.showAllSedimentsPolygons() //特に離れてない場合は既にあるデータを表示する
+            }
+        }
+    }
+    
+    //二点間の距離を計算
+    func calcurateDistance(x1: Double, y1: Double, x2: Double, y2: Double) -> Double{
+        let a = pow(x1-x2, 2)
+        let b = pow(y1-y2, 2)
+        let distance = sqrt(a+b)
+        return distance
+    }
+    
+    
+    
+    
+    
     //MARK: - 避難施設
 
     //避難施設情報を取得
     func getFacilitiesData() {
-        DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().getFacilitiesBound)
+        DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().BoundForGetFacilities)
     }
     
     //避難施設情報を取得したときに呼ばれる
@@ -163,8 +222,12 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //浸水情報を取得
     func getFloodsData() {
-        appDelegate.global.showLoadingView(self.view, messege: "タイルを読み込み中...") //ローディング画面を表示
-        DIManager.getFloodsData(mapView.centerLat, lng: mapView.centerLng, rectSize: Config().getFloodsRectSize)
+        appDelegate.global.showLoadingView(self.view, messege: "読み込み中...") //ローディング画面を表示
+        DIManager.getFloodsData(mapView.centerLat, lng: mapView.centerLng, rectSize: Config().rectSizeForGetPolygon)
+        
+        //このときの緯度経度を保存しておく
+        latDidLoadFloodPolygon = mapView.centerLat
+        lngDidLoadFloodPolygon = mapView.centerLng
     }
     
     //浸水情報を取得したときに呼ばれる
@@ -188,8 +251,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
                 let latAndLng = latLng.componentsSeparatedByString(" ")
                 polygonPoints.addObject(latAndLng)
             }
-            
-            print(polygonPoints)
+//            print(polygonPoints)
             
             //浸水深
             let waterDepth = flood["waterDepth"] as! String
@@ -216,6 +278,70 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     
     
+    
+    
+    
+    
+    //MARK: - 土砂情報
+    
+    //土砂情報を取得
+    func getSedimentsData() {
+        appDelegate.global.showLoadingView(self.view, messege: "読み込み中...") //ローディング画面を表示
+        DIManager.getSedimentsData(mapView.centerLat, lng: mapView.centerLng, rectSize: Config().rectSizeForGetPolygon)
+        
+        //このときの緯度経度を保存しておく
+        latDidLoadSedimentPolygon = mapView.centerLat
+        lngDidLoadSedimentPolygon = mapView.centerLng
+    }
+    
+    //土砂情報を取得したときに呼ばれる
+    func didGetSedimentsData(sediments: [AnyObject]) {
+        
+        //ポリゴンを一旦全削除
+        mapView.removeAllSedimentPolygons()
+        
+        for sediment in sediments {
+            
+            //Polygon生成用にStringデータを[[緯度, 経度]]に整形
+            var posList = sediment["posList"] as! String
+            let startIndex = posList.startIndex.advancedBy(9)
+            let endIndex = posList.endIndex.advancedBy(-3)
+            posList = posList.substringWithRange(startIndex...endIndex)
+            
+            let latLngs = posList.componentsSeparatedByString(",")
+            
+            let polygonPoints = NSMutableArray()
+            for latLng in latLngs {
+                let latAndLng = latLng.componentsSeparatedByString(" ")
+                polygonPoints.addObject(latAndLng)
+            }
+//            print(polygonPoints)
+            
+            
+            //現象の種類
+            let type = sediment["type"] as! String
+            let vigilanceDivision = sediment["vigilanceDivision"] as! String
+            
+            let typeName = Config().typeName[type]
+            let vigilanceDivisionName = Config().vigilanceDivisionName[vigilanceDivision]
+            
+            let polygonColor = Config().sedimentAreaColors[typeName!]!![vigilanceDivisionName!] as! UIColor
+            
+            mapView.setSedimentsPolygon(polygonPoints as NSArray, polygonColor: polygonColor)
+        }
+        print("ポリゴン作成完了！")
+        appDelegate.global.removeLoadingView() //ローディング画面を削除
+    }
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
     //MARK: - ボタンタッチイベント
     
     //避難施設ボタン
@@ -224,6 +350,10 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         createFacilitesView()
         informationView.bringSubviewToFront(facilitiesView)
+        
+        //ポリゴンを非表示にする
+        mapView.hiddenAllFloodPolygons()
+        mapView.hiddenAllSedimentsPolygons()
     }
     
     func createFacilitesView() {
@@ -248,6 +378,10 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         //震度情報を読み込む
         getEarthquakeData()
+        
+        //ポリゴンを非表示にする
+        mapView.hiddenAllFloodPolygons()
+        mapView.hiddenAllSedimentsPolygons()
     }
     
     //浸水ボタン
@@ -264,26 +398,44 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             
             //浸水情報を読み込む
             getFloodsData()
+        }else {
+            setNewFloodPolygons()
         }
         informationView.bringSubviewToFront(floodsView)
         
         //中心点の浸水深を読み込む
         getWaterDepth()
+        
+        //土砂ポリゴンを非表示にする
+        mapView.hiddenAllSedimentsPolygons()
     }
     
     //浸水タイル再読み込みボタン
     func didTouchedReloadButton() {
-        getFloodsData()
+//        getFloodsData()
     }
-    
-    
     
     
     //土砂災害ボタン
     @IBAction func touchedSedimentButton(sender: AnyObject) {
-        appDelegate.global.removeLoadingView()
+        print("土砂ボタンがタップされた")
+        currentInformationView = "sediments"
         
-        mapView.removeAllFloodPolygons()
+        if sedimentsView == nil {
+            sedimentsView = SedimentsView.instance()
+            sedimentsView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
+            
+            informationView.addSubview(sedimentsView)
+            
+            //土砂情報を読み込む
+            getSedimentsData()
+        }else {
+            setNewSedimentPolygons()
+        }
+        informationView.bringSubviewToFront(sedimentsView)
+        
+        //浸水ポリゴンを非表示にする
+        mapView.hiddenAllFloodPolygons()
     }
     
     

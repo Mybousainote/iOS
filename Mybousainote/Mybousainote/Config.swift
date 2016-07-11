@@ -16,10 +16,10 @@ public class Config {
     let timeIntervalHoldData: Double = 30
     
     //避難施設を取得する中心点からの範囲（m）
-    let getFacilitiesBound: Int = 3000
+    let BoundForGetFacilities: Int = 3000
     
-    //浸水情報を取得する正方形の一片の長さ（緯度経度数）
-    let getFloodsRectSize: Double = 0.1
+    //ポリゴン情報を取得する正方形の一片の長さ（緯度経度数）
+    let rectSizeForGetPolygon: Double = 0.1
     
     //避難施設マーカーを表示するズームレベルの閾値
     let thresholdShowMarkerZoomLevel: Float = 12
@@ -74,7 +74,7 @@ public class Config {
         "27": "5.0ｍ以上"
     ]
     
-    //各浸水深の色
+    //各浸水深のポリゴンの色
     let warterDepthColors: AnyObject = [
         "11": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0～0.5ｍ未満（5段階）
         "12": UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 0.3), //0.5～1.0ｍ未満（5段階）
@@ -89,6 +89,38 @@ public class Config {
         "25": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3), //3.0～4.0ｍ未満（7段階）
         "26": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3), //4.0～5.0ｍ未満（7段階）
         "27": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3) //5.0ｍ以上（7段階）
+    ]
+    
+    //土砂災害の種類
+    let typeName = [
+        "1": "急傾斜地",
+        "2": "土石流",
+        "3": "地滑り"
+    ]
+    
+    //土砂災害の区域区分
+    let vigilanceDivisionName = [
+        "1": "警戒区域",
+        "2": "特別警戒区域",
+        "3": "警戒区域",
+        "4": "特別警戒区域"
+    ]
+    
+    
+    //土砂災害警戒区域のポリゴンの色
+    let sedimentAreaColors: AnyObject = [
+        "急傾斜地": [
+            "警戒区域": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3),
+            "特別警戒区域": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.8)
+        ],
+        "土石流": [
+            "警戒区域": UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 0.3),
+            "特別警戒区域": UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 0.8)
+        ],
+        "地滑り": [
+            "警戒区域": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3),
+            "特別警戒区域": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.8)
+        ]
     ]
 }
 
