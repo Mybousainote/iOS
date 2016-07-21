@@ -38,9 +38,9 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
     func transitionToTopView() {
         print("トップ画面へ遷移")
         let storyboard = UIStoryboard(name: "Top", bundle: nil)
-        let nextView: UIViewController! = storyboard.instantiateInitialViewController()
+        let modalView: UIViewController! = storyboard.instantiateInitialViewController()
 //        self.navigationController?.pushViewController(nextView, animated: true)
-        self.presentViewController(nextView, animated: true, completion: nil)
+        self.presentViewController(modalView, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

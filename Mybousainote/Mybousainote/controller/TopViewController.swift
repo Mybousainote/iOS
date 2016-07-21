@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Onboard
 
 class TopViewController: UIViewController {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -192,8 +193,54 @@ class TopViewController: UIViewController {
     
     
     
+    //インフォメーションボタンが押されたとき呼ばれる
+    @IBAction func touchedInformationButton(sender: AnyObject) {
+        print("インフォメーション画面を表示")
+//        let storyboard = UIStoryboard(name: "Information", bundle: nil)
+//        let modalView: UIViewController! = storyboard.instantiateInitialViewController()
+//        self.presentViewController(modalView, animated: true, completion: nil)
+        
+        showInformationView()
+    }
     
     
+    func showInformationView() {
+        //        let bgImageURL = NSURL(string: "https://www.pakutaso.com/shared/img/thumb/KAZ_hugyftdrftyg_TP_V.jpg")!
+        //        let bgImage = UIImage(data: NSData(contentsOfURL: bgImageURL)!)
+        
+        
+        let content1 = OnboardingContentViewController(
+            title: "Title1",
+            body: "Body1",
+            image: nil,
+            buttonText: "アンケートのお願い",
+            action: {
+                print("アンケート画面を表示")
+                let url = NSURL(string: "https://docs.google.com/forms/d/1k9suATBlW927fyBjj-9_di6MiswsPCMnJhjQgNxZxck/edit")
+                let app:UIApplication = UIApplication.sharedApplication()
+                app.openURL(url!)
+            }
+        )
+        let content2 = OnboardingContentViewController(
+            title: "Title2",
+            body: "Body2",
+            image: nil,
+            buttonText: "",
+            action: nil
+        )
+        
+        
+        let vc = OnboardingViewController(
+            backgroundImage: nil,
+            contents: [content1, content2]
+        )
+        vc.allowSkipping = true
+        vc.skipHandler = { _ in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     
     
     

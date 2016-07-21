@@ -66,9 +66,24 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Xw-87r">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phc-aU-ab2">
+                                        <rect key="frame" x="332" y="32" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="c9x-uW-zRA"/>
+                                            <constraint firstAttribute="width" constant="26" id="xca-Ik-bcF"/>
+                                        </constraints>
+                                        <state key="normal" image="information.png"/>
+                                        <connections>
+                                            <action selector="touchedInformationButton:" destination="Rzt-cc-z6e" eventType="touchUpInside" id="Oig-Dg-qlI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.2196078431372549" green="0.80000000000000004" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="b31-LX-ZuF"/>
+                                    <constraint firstItem="phc-aU-ab2" firstAttribute="top" secondItem="Frh-Xw-87r" secondAttribute="top" constant="30" id="cAk-Yv-3Od"/>
+                                    <constraint firstAttribute="trailing" secondItem="phc-aU-ab2" secondAttribute="trailing" constant="15" id="q3h-Sv-1aV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtD-wL-kq7">
@@ -138,4 +153,7 @@
             <point key="canvasLocation" x="1244.5" y="230.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="information.png" width="64" height="64"/>
+    </resources>
 </document>

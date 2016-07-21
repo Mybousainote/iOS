@@ -15,6 +15,11 @@
 		7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102581D050B3200C61152 /* pin_2@2x.png */; };
 		7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102591D050B3200C61152 /* pin_3@2x.png */; };
 		7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7821025A1D050B3200C61152 /* pin_4@2x.png */; };
+		782DE97F1D40683D007F698E /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 782DE97E1D40683D007F698E /* information.png */; };
+		782DE9811D406965007F698E /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DE9801D406965007F698E /* InformationViewController.swift */; };
+		782DE9831D406976007F698E /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782DE9821D406976007F698E /* Information.storyboard */; };
+		782DE9851D407A75007F698E /* AnketoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DE9841D407A75007F698E /* AnketoViewController.swift */; };
+		782DE9871D407A8D007F698E /* Anketo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782DE9861D407A8D007F698E /* Anketo.storyboard */; };
 		783C54091D26551E00961F19 /* BlackBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C54081D26551E00961F19 /* BlackBgView.swift */; };
 		784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */; };
 		784A2DB11D2CB09800EDB81A /* FacilitiesListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */; };
@@ -81,6 +86,11 @@
 		782102581D050B3200C61152 /* pin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_2@2x.png"; path = "image/pin_2@2x.png"; sourceTree = "<group>"; };
 		782102591D050B3200C61152 /* pin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_3@2x.png"; path = "image/pin_3@2x.png"; sourceTree = "<group>"; };
 		7821025A1D050B3200C61152 /* pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_4@2x.png"; path = "image/pin_4@2x.png"; sourceTree = "<group>"; };
+		782DE97E1D40683D007F698E /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
+		782DE9801D406965007F698E /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InformationViewController.swift; path = controller/InformationViewController.swift; sourceTree = "<group>"; };
+		782DE9821D406976007F698E /* Information.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Information.storyboard; path = storyboard/Information.storyboard; sourceTree = "<group>"; };
+		782DE9841D407A75007F698E /* AnketoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnketoViewController.swift; path = controller/AnketoViewController.swift; sourceTree = "<group>"; };
+		782DE9861D407A8D007F698E /* Anketo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Anketo.storyboard; path = storyboard/Anketo.storyboard; sourceTree = "<group>"; };
 		783C54081D26551E00961F19 /* BlackBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackBgView.swift; sourceTree = "<group>"; };
 		784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FacilitiesListButton.xib; path = view/FacilitiesListButton.xib; sourceTree = "<group>"; };
 		784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesListButton.swift; path = view/FacilitiesListButton.swift; sourceTree = "<group>"; };
@@ -158,6 +168,7 @@
 		7821024B1D0509FC00C61152 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				782DE97E1D40683D007F698E /* information.png */,
 				782102561D050B3200C61152 /* pin_0@2x.png */,
 				782102571D050B3200C61152 /* pin_1@2x.png */,
 				782102581D050B3200C61152 /* pin_2@2x.png */,
@@ -212,6 +223,8 @@
 				78C47B311CBA3F4E00371566 /* TutorialViewController.swift */,
 				7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */,
 				784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */,
+				782DE9801D406965007F698E /* InformationViewController.swift */,
+				782DE9841D407A75007F698E /* AnketoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -223,6 +236,8 @@
 				78C47B391CBA430200371566 /* Tutorial.storyboard */,
 				7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */,
 				784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */,
+				782DE9821D406976007F698E /* Information.storyboard */,
+				782DE9861D407A8D007F698E /* Anketo.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -417,6 +432,7 @@
 				7821025C1D050B3200C61152 /* pin_1@2x.png in Resources */,
 				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
+				782DE97F1D40683D007F698E /* information.png in Resources */,
 				7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
 				784DBD6A1D33544800D5C6AA /* SedimentsView.xib in Resources */,
@@ -424,8 +440,10 @@
 				784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */,
+				782DE9871D407A8D007F698E /* Anketo.storyboard in Resources */,
 				7887EB871D18F3EA0019BC8E /* FloodsView.xib in Resources */,
 				7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */,
+				782DE9831D406976007F698E /* Information.storyboard in Resources */,
 				78EDFD171D1105D000CE4E33 /* EarthquakeView.xib in Resources */,
 				78CF602B1D1A69C700119A13 /* FacilitiesView.xib in Resources */,
 				784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */,
@@ -507,6 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */,
+				782DE9811D406965007F698E /* InformationViewController.swift in Sources */,
 				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
 				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
 				78D81B701CD6253A00CA9498 /* Global.swift in Sources */,
@@ -526,6 +545,7 @@
 				78EDFD191D1105FB00CE4E33 /* EarthquakeView.swift in Sources */,
 				7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */,
 				78EDFD1B1D11348C00CE4E33 /* test.swift in Sources */,
+				782DE9851D407A75007F698E /* AnketoViewController.swift in Sources */,
 				783C54091D26551E00961F19 /* BlackBgView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
