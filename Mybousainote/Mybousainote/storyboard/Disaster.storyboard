@@ -3,7 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ヒラギノ角ゴOld StdN W6.otf">
+            <string>HiraSansOldStdN-W6</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Disaster View Controller-->
         <scene sceneID="8Tn-Ae-3Nc">
@@ -20,21 +26,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2h-9b-zSB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
-                                        <rect key="frame" x="28" y="24" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
+                                        <rect key="frame" x="20" y="24" width="30" height="30"/>
                                         <state key="normal" title="戻る"/>
                                         <connections>
                                             <action selector="touchedBackButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="ugp-xp-PSo"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQl-Xf-9V0">
-                                        <rect key="frame" x="283" y="33" width="34" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="284" y="38" width="32" height="16"/>
+                                        <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784494876862" green="0.80000001192092896" blue="0.7137255072593689" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="gpe-H6-XHh" firstAttribute="top" secondItem="Q2h-9b-zSB" secondAttribute="top" constant="19" id="C9m-2O-c6C"/>
                                     <constraint firstAttribute="bottom" secondItem="qQl-Xf-9V0" secondAttribute="bottom" constant="14" id="Lo4-8x-TPK"/>
@@ -50,8 +56,20 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT8-yM-bCb" customClass="MapView" customModule="Mybousainote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="600" height="231"/>
+                                <rect key="frame" x="0.0" y="68" width="600" height="117"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NT8-yM-bCb" secondAttribute="height" multiplier="375:314" id="0C9-nR-fAz"/>
+                                    <constraint firstAttribute="width" secondItem="NT8-yM-bCb" secondAttribute="height" multiplier="375:314" id="2JQ-Sx-Y94"/>
+                                    <constraint firstAttribute="height" constant="469" id="2PN-C1-vN7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0C9-nR-fAz"/>
+                                        <exclude reference="2JQ-Sx-Y94"/>
+                                        <exclude reference="2PN-C1-vN7"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3i-VN-H80">
                                 <rect key="frame" x="0.0" y="537" width="600" height="63"/>
@@ -59,9 +77,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udU-Xj-aaK">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="63"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabicon_facility.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fqg-SU-c9p">
+                                                <rect key="frame" x="45" y="4" width="60" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="Se5-3X-m8s"/>
+                                                    <constraint firstAttribute="height" constant="55" id="b1V-6G-3EZ"/>
+                                                </constraints>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOd-UR-ArO">
-                                                <rect key="frame" x="45" y="17" width="60" height="30"/>
-                                                <state key="normal" title="避難施設"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="63"/>
                                                 <connections>
                                                     <action selector="touchedFacilitiesButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="l6z-t7-LdL"/>
                                                 </connections>
@@ -69,16 +93,34 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="WOd-UR-ArO" firstAttribute="leading" secondItem="udU-Xj-aaK" secondAttribute="leading" id="70B-Q0-8gV"/>
+                                            <constraint firstItem="WOd-UR-ArO" firstAttribute="top" secondItem="udU-Xj-aaK" secondAttribute="top" id="Iv2-A2-yH8"/>
+                                            <constraint firstItem="Fqg-SU-c9p" firstAttribute="centerX" secondItem="udU-Xj-aaK" secondAttribute="centerX" id="QrV-kd-RCo"/>
                                             <constraint firstItem="WOd-UR-ArO" firstAttribute="centerY" secondItem="udU-Xj-aaK" secondAttribute="centerY" id="aMo-4M-XSK"/>
+                                            <constraint firstItem="Fqg-SU-c9p" firstAttribute="centerY" secondItem="udU-Xj-aaK" secondAttribute="centerY" id="e1M-Wr-8Rz"/>
+                                            <constraint firstAttribute="bottom" secondItem="Fqg-SU-c9p" secondAttribute="bottom" constant="4" id="eO4-P3-dfN"/>
+                                            <constraint firstAttribute="bottom" secondItem="WOd-UR-ArO" secondAttribute="bottom" id="kax-3h-2Yn"/>
+                                            <constraint firstAttribute="trailing" secondItem="WOd-UR-ArO" secondAttribute="trailing" id="pgV-je-gtW"/>
                                             <constraint firstItem="WOd-UR-ArO" firstAttribute="centerX" secondItem="udU-Xj-aaK" secondAttribute="centerX" id="snU-Fl-grJ"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="e1M-Wr-8Rz"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-cc-lGo">
                                         <rect key="frame" x="150" y="0.0" width="150" height="63"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabicon_earthquake.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ij3-wk-Guf">
+                                                <rect key="frame" x="45" y="9" width="60" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="cb1-Ye-gMr"/>
+                                                    <constraint firstAttribute="width" constant="60" id="gP3-VU-K9Z"/>
+                                                </constraints>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBB-LA-3Uz">
-                                                <rect key="frame" x="60" y="17" width="30" height="30"/>
-                                                <state key="normal" title="地震"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="63"/>
                                                 <connections>
                                                     <action selector="touchedEarthquakeButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="jML-vp-mdg"/>
                                                 </connections>
@@ -87,42 +129,90 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="GBB-LA-3Uz" firstAttribute="centerY" secondItem="ixt-cc-lGo" secondAttribute="centerY" id="Bmy-DJ-70r"/>
+                                            <constraint firstAttribute="bottom" secondItem="GBB-LA-3Uz" secondAttribute="bottom" id="EBu-3P-E8N"/>
+                                            <constraint firstItem="GBB-LA-3Uz" firstAttribute="top" secondItem="ixt-cc-lGo" secondAttribute="top" id="QwE-P4-NSy"/>
+                                            <constraint firstItem="Ij3-wk-Guf" firstAttribute="centerY" secondItem="ixt-cc-lGo" secondAttribute="centerY" id="WiJ-Uw-o8e"/>
                                             <constraint firstItem="GBB-LA-3Uz" firstAttribute="centerX" secondItem="ixt-cc-lGo" secondAttribute="centerX" id="gal-Sh-VTZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ij3-wk-Guf" secondAttribute="bottom" constant="4" id="jZK-za-avn"/>
+                                            <constraint firstItem="GBB-LA-3Uz" firstAttribute="leading" secondItem="ixt-cc-lGo" secondAttribute="leading" id="kmo-sw-vJQ"/>
+                                            <constraint firstItem="Ij3-wk-Guf" firstAttribute="centerX" secondItem="ixt-cc-lGo" secondAttribute="centerX" id="lyK-Ru-nbB"/>
+                                            <constraint firstAttribute="trailing" secondItem="GBB-LA-3Uz" secondAttribute="trailing" id="oMR-Zi-smO"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WiJ-Uw-o8e"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9K-Mq-Nja">
                                         <rect key="frame" x="300" y="0.0" width="150" height="63"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabicon_sediment.png" translatesAutoresizingMaskIntoConstraints="NO" id="RTE-Tw-V0p">
+                                                <rect key="frame" x="51" y="9" width="48" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="9lg-vX-Wxs"/>
+                                                    <constraint firstAttribute="width" constant="48" id="Udk-jr-O5F"/>
+                                                </constraints>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-B4-dlj">
-                                                <rect key="frame" x="60" y="17" width="30" height="30"/>
-                                                <state key="normal" title="洪水"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="63"/>
                                                 <connections>
-                                                    <action selector="touchedFloodsButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="Quy-UH-qbv"/>
+                                                    <action selector="touchedSedimentButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="bRa-An-GuH"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="ejy-B4-dlj" firstAttribute="centerX" secondItem="O9K-Mq-Nja" secondAttribute="centerX" id="0jH-qh-MgI"/>
+                                            <constraint firstItem="ejy-B4-dlj" firstAttribute="top" secondItem="O9K-Mq-Nja" secondAttribute="top" id="Jxz-On-i7j"/>
+                                            <constraint firstItem="RTE-Tw-V0p" firstAttribute="centerY" secondItem="O9K-Mq-Nja" secondAttribute="centerY" id="TZT-fg-WPA"/>
+                                            <constraint firstAttribute="bottom" secondItem="ejy-B4-dlj" secondAttribute="bottom" id="VFn-gC-T1R"/>
+                                            <constraint firstAttribute="trailing" secondItem="ejy-B4-dlj" secondAttribute="trailing" id="aQg-Gf-cDh"/>
+                                            <constraint firstItem="RTE-Tw-V0p" firstAttribute="centerX" secondItem="O9K-Mq-Nja" secondAttribute="centerX" id="bxg-bB-4T4"/>
+                                            <constraint firstItem="ejy-B4-dlj" firstAttribute="leading" secondItem="O9K-Mq-Nja" secondAttribute="leading" id="f4x-CG-SqO"/>
+                                            <constraint firstAttribute="bottom" secondItem="RTE-Tw-V0p" secondAttribute="bottom" constant="4" id="iCe-jR-f0d"/>
                                             <constraint firstItem="ejy-B4-dlj" firstAttribute="centerY" secondItem="O9K-Mq-Nja" secondAttribute="centerY" id="uW4-hd-t5B"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="TZT-fg-WPA"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-h9-YSP">
                                         <rect key="frame" x="450" y="0.0" width="150" height="63"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabicon_flood.png" translatesAutoresizingMaskIntoConstraints="NO" id="cOt-Yf-tZj">
+                                                <rect key="frame" x="51" y="14" width="48" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="63y-iI-mU4"/>
+                                                    <constraint firstAttribute="width" constant="48" id="x5j-us-4zJ"/>
+                                                </constraints>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azp-LP-d0W">
-                                                <rect key="frame" x="60" y="17" width="30" height="30"/>
-                                                <state key="normal" title="土砂"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="63"/>
                                                 <connections>
-                                                    <action selector="touchedSedimentButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="nRc-Es-0GO"/>
+                                                    <action selector="touchedFloodsButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="KKV-NS-ZSB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="azp-LP-d0W" firstAttribute="centerY" secondItem="Hso-h9-YSP" secondAttribute="centerY" id="37D-Bn-mbD"/>
+                                            <constraint firstItem="cOt-Yf-tZj" firstAttribute="centerY" secondItem="Hso-h9-YSP" secondAttribute="centerY" id="8ps-RZ-sas"/>
+                                            <constraint firstItem="azp-LP-d0W" firstAttribute="top" secondItem="Hso-h9-YSP" secondAttribute="top" id="Aho-eX-XPB"/>
+                                            <constraint firstAttribute="trailing" secondItem="azp-LP-d0W" secondAttribute="trailing" id="XOh-Wr-DYu"/>
+                                            <constraint firstAttribute="bottom" secondItem="cOt-Yf-tZj" secondAttribute="bottom" constant="4" id="Zsf-3J-VmR"/>
+                                            <constraint firstItem="azp-LP-d0W" firstAttribute="leading" secondItem="Hso-h9-YSP" secondAttribute="leading" id="bbb-Jo-TjF"/>
                                             <constraint firstItem="azp-LP-d0W" firstAttribute="centerX" secondItem="Hso-h9-YSP" secondAttribute="centerX" id="kWG-J1-yot"/>
+                                            <constraint firstItem="cOt-Yf-tZj" firstAttribute="centerX" secondItem="Hso-h9-YSP" secondAttribute="centerX" id="pHu-0E-Ywv"/>
+                                            <constraint firstAttribute="bottom" secondItem="azp-LP-d0W" secondAttribute="bottom" id="uYa-Rz-iQ6"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8ps-RZ-sas"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -156,11 +246,17 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eW0-0U-XyM">
-                                <rect key="frame" x="0.0" y="299" width="600" height="238"/>
+                                <rect key="frame" x="0.0" y="185" width="600" height="352"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="238" id="DuS-GM-RxZ"/>
+                                    <constraint firstAttribute="height" constant="224" id="DuS-GM-RxZ"/>
+                                    <constraint firstAttribute="width" secondItem="eW0-0U-XyM" secondAttribute="height" multiplier="75:44" id="omT-zL-U8L"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DuS-GM-RxZ"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -169,22 +265,51 @@
                             <constraint firstItem="eW0-0U-XyM" firstAttribute="top" secondItem="NT8-yM-bCb" secondAttribute="bottom" id="0nc-3v-sNG"/>
                             <constraint firstAttribute="trailing" secondItem="eW0-0U-XyM" secondAttribute="trailing" id="1W7-Hx-2n8"/>
                             <constraint firstItem="eW0-0U-XyM" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="3Jq-1Y-ydd"/>
+                            <constraint firstAttribute="trailing" secondItem="NT8-yM-bCb" secondAttribute="trailing" id="4IM-Kd-RUz"/>
+                            <constraint firstItem="Q2h-9b-zSB" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="6wE-KZ-81R"/>
                             <constraint firstItem="NT8-yM-bCb" firstAttribute="top" secondItem="Q2h-9b-zSB" secondAttribute="bottom" id="9fV-hZ-1ex"/>
+                            <constraint firstItem="eW0-0U-XyM" firstAttribute="top" secondItem="NT8-yM-bCb" secondAttribute="bottom" id="K3p-6F-a1c"/>
                             <constraint firstItem="Q2h-9b-zSB" firstAttribute="top" secondItem="acb-Xa-Jhf" secondAttribute="top" id="Ke5-Bv-9hJ"/>
+                            <constraint firstItem="NT8-yM-bCb" firstAttribute="top" secondItem="Q2h-9b-zSB" secondAttribute="bottom" id="O5h-gf-Yth"/>
                             <constraint firstItem="L3i-VN-H80" firstAttribute="top" secondItem="eW0-0U-XyM" secondAttribute="bottom" id="RaP-FR-ev8"/>
+                            <constraint firstItem="NT8-yM-bCb" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="Ro7-03-vCL"/>
+                            <constraint firstAttribute="trailing" secondItem="Q2h-9b-zSB" secondAttribute="trailing" id="TNY-ae-YGt"/>
                             <constraint firstItem="L3i-VN-H80" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="TOm-RO-0Nz"/>
                             <constraint firstAttribute="trailing" secondItem="NT8-yM-bCb" secondAttribute="trailing" id="Tkn-8s-qp5"/>
                             <constraint firstItem="Q2h-9b-zSB" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="WIg-T9-5zH"/>
+                            <constraint firstItem="NT8-yM-bCb" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="b4Q-kr-Q62"/>
                             <constraint firstItem="NT8-yM-bCb" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="exp-oA-wWW"/>
                             <constraint firstAttribute="trailing" secondItem="L3i-VN-H80" secondAttribute="trailing" id="hRG-eI-6uU"/>
+                            <constraint firstItem="eW0-0U-XyM" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="ocw-PF-F4o"/>
+                            <constraint firstItem="NT8-yM-bCb" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="pmG-7r-A47"/>
+                            <constraint firstItem="NT8-yM-bCb" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="rDh-Lg-71q"/>
                             <constraint firstAttribute="trailing" secondItem="Q2h-9b-zSB" secondAttribute="trailing" id="wuP-EM-YpI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9fV-hZ-1ex"/>
+                                <exclude reference="Ro7-03-vCL"/>
+                                <exclude reference="Tkn-8s-qp5"/>
+                                <exclude reference="b4Q-kr-Q62"/>
+                                <exclude reference="exp-oA-wWW"/>
+                                <exclude reference="pmG-7r-A47"/>
+                                <exclude reference="0nc-3v-sNG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cityNameLabel" destination="qQl-Xf-9V0" id="TAb-wt-hBU"/>
+                        <outlet property="earthquakeButtonBg" destination="ixt-cc-lGo" id="t8q-dZ-ETh"/>
+                        <outlet property="earthquakeIcon" destination="Ij3-wk-Guf" id="r8R-dB-bU4"/>
+                        <outlet property="facilityButtonBg" destination="udU-Xj-aaK" id="8g0-oK-eXC"/>
+                        <outlet property="facilityIcon" destination="Fqg-SU-c9p" id="zxj-kt-h5o"/>
+                        <outlet property="floodButtonBg" destination="Hso-h9-YSP" id="XiL-Fm-mv8"/>
+                        <outlet property="floodIcon" destination="cOt-Yf-tZj" id="Gty-2t-NXZ"/>
                         <outlet property="informationView" destination="eW0-0U-XyM" id="PVP-vN-Oaz"/>
                         <outlet property="mapView" destination="NT8-yM-bCb" id="I6f-W1-kxa"/>
+                        <outlet property="sedimentButtonBg" destination="O9K-Mq-Nja" id="Xrh-2u-muX"/>
+                        <outlet property="sedimentIcon" destination="RTE-Tw-V0p" id="JuZ-hb-KKP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfg-UC-CWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,4 +317,10 @@
             <point key="canvasLocation" x="953" y="291"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabicon_earthquake.png" width="119" height="100"/>
+        <image name="tabicon_facility.png" width="120" height="110"/>
+        <image name="tabicon_flood.png" width="95" height="90"/>
+        <image name="tabicon_sediment.png" width="95" height="99"/>
+    </resources>
 </document>

@@ -9,6 +9,9 @@
 import UIKit
 
 public class Config {
+    //Google API key
+    let googleAPIKey: String = "AIzaSyB7lwbZsfTWQopgQ9p64n5edGnu9gqfBXA"
+    
     //デバッグ用アラートを表示するか否か
     let isForDebug: Bool = false
     
@@ -59,28 +62,28 @@ public class Config {
     let warterDepthValues: AnyObject = [
         "0": "0",
         
-        "11": "0～0.5ｍ未満",
-        "12": "0.5～1.0ｍ未満",
-        "13": "1.0～2.0ｍ未満",
-        "14": "2.0～5.0ｍ未満",
-        "15": "5.0ｍ以上",
+        "11": "0-0.5",
+        "12": "0.5-1.0",
+        "13": "1.0~2.0",
+        "14": "2.0~5.0",
+        "15": "5.0~",
         
-        "21": "0～0.5ｍ未満",
-        "22": "0.5～1.0ｍ未満",
-        "23": "1.0～2.0ｍ未満",
-        "24": "2.0～3.0ｍ未満",
-        "25": "3.0～4.0ｍ未満",
-        "26": "4.0～5.0ｍ未満",
-        "27": "5.0ｍ以上"
+        "21": "0-0.5",
+        "22": "0.5-1.0",
+        "23": "1.0~2.0",
+        "24": "2.0~3.0",
+        "25": "3.0~4.0",
+        "26": "4.0~5.0",
+        "27": "5.0~"
     ]
     
     //各浸水深のポリゴンの色
     let warterDepthColors: AnyObject = [
-        "11": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3), //0～0.5ｍ未満（5段階）
-        "12": UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 0.3), //0.5～1.0ｍ未満（5段階）
-        "13": UIColor(red: 255/255, green: 0/255, blue: 255/255, alpha: 0.3), //1.0～2.0ｍ未満（5段階）
-        "14": UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 0.3), //2.0～5.0ｍ未満（5段階）
-        "15": UIColor(red: 0/255, green: 255/255, blue: 255/255, alpha: 0.3), //5.0ｍ以上（5段階）
+        "11": UIColor(red: 128/255, green: 0/255, blue: 255/255, alpha: 0.6), //0～0.5ｍ未満（5段階）
+        "12": UIColor(red: 255/255, green: 40/255, blue: 0/255, alpha: 0.6), //0.5～1.0ｍ未満（5段階）
+        "13": UIColor(red: 239/255, green: 117/255, blue: 152/255, alpha: 0.6), //1.0～2.0ｍ未満（5段階）
+        "14": UIColor(red: 255/255, green: 153/255, blue: 0/255, alpha: 0.6), //2.0～5.0ｍ未満（5段階）
+        "15": UIColor(red: 255/255, green: 230/255, blue: 0/255, alpha: 0.6), //5.0ｍ以上（5段階）
 
         "21": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3), //0～0.5ｍ未満（7段階）
         "22": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3), //0.5～1.0ｍ未満（7段階）
@@ -106,20 +109,19 @@ public class Config {
         "4": "特別警戒区域"
     ]
     
-    
     //土砂災害警戒区域のポリゴンの色
     let sedimentAreaColors: AnyObject = [
         "急傾斜地": [
-            "警戒区域": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.3),
-            "特別警戒区域": UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.8)
+            "警戒区域": UIColor(red: 255/255, green: 230/255, blue: 0/255, alpha: 0.6),
+            "特別警戒区域": UIColor(red: 230/255, green: 0/255, blue: 18/255, alpha: 0.6)
         ],
         "土石流": [
-            "警戒区域": UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 0.3),
-            "特別警戒区域": UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 0.8)
+            "警戒区域": UIColor(red: 255/255, green: 230/255, blue: 0/255, alpha: 0.6),
+            "特別警戒区域": UIColor(red: 230/255, green: 0/255, blue: 18/255, alpha: 0.6)
         ],
         "地滑り": [
-            "警戒区域": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.3),
-            "特別警戒区域": UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.8)
+            "警戒区域": UIColor(red: 255/255, green: 230/255, blue: 0/255, alpha: 0.6),
+            "特別警戒区域": UIColor(red: 230/255, green: 0/255, blue: 18/255, alpha: 0.6)
         ]
     ]
 }

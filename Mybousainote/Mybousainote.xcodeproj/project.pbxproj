@@ -15,25 +15,33 @@
 		7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102581D050B3200C61152 /* pin_2@2x.png */; };
 		7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 782102591D050B3200C61152 /* pin_3@2x.png */; };
 		7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7821025A1D050B3200C61152 /* pin_4@2x.png */; };
+		782864011D46FFC500DBDE09 /* FacilityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782864001D46FFC500DBDE09 /* FacilityMapView.swift */; };
+		782864031D4709E000DBDE09 /* DirectionAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782864021D4709E000DBDE09 /* DirectionAPIManager.swift */; };
 		782DE97F1D40683D007F698E /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 782DE97E1D40683D007F698E /* information.png */; };
-		782DE9811D406965007F698E /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DE9801D406965007F698E /* InformationViewController.swift */; };
 		782DE9831D406976007F698E /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782DE9821D406976007F698E /* Information.storyboard */; };
-		782DE9851D407A75007F698E /* AnketoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DE9841D407A75007F698E /* AnketoViewController.swift */; };
-		782DE9871D407A8D007F698E /* Anketo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782DE9861D407A8D007F698E /* Anketo.storyboard */; };
+		782DE98A1D40A4FA007F698E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78D2BCA41CBA2D3A00905E3D /* Info.plist */; };
 		783C54091D26551E00961F19 /* BlackBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C54081D26551E00961F19 /* BlackBgView.swift */; };
+		7841DF531D49B6CF00500593 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF521D49B6CF00500593 /* GoogleService-Info.plist */; };
+		7841DF551D49F04600500593 /* faclitylist_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF541D49F04600500593 /* faclitylist_arrow.png */; };
+		7841DF5A1D49F62100500593 /* tabicon_earthquake.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF561D49F62100500593 /* tabicon_earthquake.png */; };
+		7841DF5B1D49F62100500593 /* tabicon_facility.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF571D49F62100500593 /* tabicon_facility.png */; };
+		7841DF5C1D49F62100500593 /* tabicon_flood.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF581D49F62100500593 /* tabicon_flood.png */; };
+		7841DF5D1D49F62100500593 /* tabicon_sediment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF591D49F62100500593 /* tabicon_sediment.png */; };
 		784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */; };
 		784A2DB11D2CB09800EDB81A /* FacilitiesListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */; };
 		784A2DB31D2CBA8100EDB81A /* FacilityInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */; };
 		784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */; };
 		784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784DBD671D33543600D5C6AA /* SedimentsView.swift */; };
-		784DBD6A1D33544800D5C6AA /* SedimentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784DBD691D33544800D5C6AA /* SedimentsView.xib */; };
+		784DBD6A1D33544800D5C6AA /* FloodsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784DBD691D33544800D5C6AA /* FloodsView.xib */; };
 		7857CFE31D2CDEDE00D65B76 /* StreetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857CFE21D2CDEDE00D65B76 /* StreetView.swift */; };
 		7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862F29A1CE71311000E4682 /* LivingAreaButton.swift */; };
 		7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7862F29C1CE71436000E4682 /* LivingAreaButton.xib */; };
 		7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */; };
 		7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */; };
-		7887EB871D18F3EA0019BC8E /* FloodsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7887EB861D18F3EA0019BC8E /* FloodsView.xib */; };
+		7887EB871D18F3EA0019BC8E /* SedimentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7887EB861D18F3EA0019BC8E /* SedimentsView.xib */; };
 		7887EB891D18F4010019BC8E /* FloodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887EB881D18F4010019BC8E /* FloodsView.swift */; };
+		78A2C0D31D56CE7600B6ABE8 /* classification.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D21D56CE7600B6ABE8 /* classification.png */; };
+		78A2C0D51D5700A700B6ABE8 /* classification_sediment.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */; };
 		78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */; };
 		78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B2F1CBA3F3500371566 /* TopViewController.swift */; };
 		78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B311CBA3F4E00371566 /* TutorialViewController.swift */; };
@@ -86,25 +94,33 @@
 		782102581D050B3200C61152 /* pin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_2@2x.png"; path = "image/pin_2@2x.png"; sourceTree = "<group>"; };
 		782102591D050B3200C61152 /* pin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_3@2x.png"; path = "image/pin_3@2x.png"; sourceTree = "<group>"; };
 		7821025A1D050B3200C61152 /* pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin_4@2x.png"; path = "image/pin_4@2x.png"; sourceTree = "<group>"; };
+		782864001D46FFC500DBDE09 /* FacilityMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilityMapView.swift; path = view/FacilityMapView.swift; sourceTree = "<group>"; };
+		782864021D4709E000DBDE09 /* DirectionAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectionAPIManager.swift; path = model/DirectionAPIManager.swift; sourceTree = "<group>"; };
 		782DE97E1D40683D007F698E /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
-		782DE9801D406965007F698E /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InformationViewController.swift; path = controller/InformationViewController.swift; sourceTree = "<group>"; };
 		782DE9821D406976007F698E /* Information.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Information.storyboard; path = storyboard/Information.storyboard; sourceTree = "<group>"; };
-		782DE9841D407A75007F698E /* AnketoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnketoViewController.swift; path = controller/AnketoViewController.swift; sourceTree = "<group>"; };
-		782DE9861D407A8D007F698E /* Anketo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Anketo.storyboard; path = storyboard/Anketo.storyboard; sourceTree = "<group>"; };
+		782DE98D1D40A8FA007F698E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		783C54081D26551E00961F19 /* BlackBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackBgView.swift; sourceTree = "<group>"; };
+		7841DF521D49B6CF00500593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7841DF541D49F04600500593 /* faclitylist_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faclitylist_arrow.png; sourceTree = "<group>"; };
+		7841DF561D49F62100500593 /* tabicon_earthquake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_earthquake.png; sourceTree = "<group>"; };
+		7841DF571D49F62100500593 /* tabicon_facility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_facility.png; sourceTree = "<group>"; };
+		7841DF581D49F62100500593 /* tabicon_flood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_flood.png; sourceTree = "<group>"; };
+		7841DF591D49F62100500593 /* tabicon_sediment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_sediment.png; sourceTree = "<group>"; };
 		784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FacilitiesListButton.xib; path = view/FacilitiesListButton.xib; sourceTree = "<group>"; };
 		784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesListButton.swift; path = view/FacilitiesListButton.swift; sourceTree = "<group>"; };
 		784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilityInformationViewController.swift; path = controller/FacilityInformationViewController.swift; sourceTree = "<group>"; };
 		784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FacilityInformation.storyboard; path = storyboard/FacilityInformation.storyboard; sourceTree = "<group>"; };
 		784DBD671D33543600D5C6AA /* SedimentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SedimentsView.swift; path = view/SedimentsView.swift; sourceTree = "<group>"; };
-		784DBD691D33544800D5C6AA /* SedimentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SedimentsView.xib; path = view/SedimentsView.xib; sourceTree = "<group>"; };
+		784DBD691D33544800D5C6AA /* FloodsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FloodsView.xib; path = view/FloodsView.xib; sourceTree = "<group>"; };
 		7857CFE21D2CDEDE00D65B76 /* StreetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreetView.swift; path = view/StreetView.swift; sourceTree = "<group>"; };
 		7862F29A1CE71311000E4682 /* LivingAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivingAreaButton.swift; path = view/LivingAreaButton.swift; sourceTree = "<group>"; };
 		7862F29C1CE71436000E4682 /* LivingAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LivingAreaButton.xib; path = view/LivingAreaButton.xib; sourceTree = "<group>"; };
 		7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterViewController.swift; path = controller/DisasterViewController.swift; sourceTree = "<group>"; };
 		7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Disaster.storyboard; path = storyboard/Disaster.storyboard; sourceTree = "<group>"; };
-		7887EB861D18F3EA0019BC8E /* FloodsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FloodsView.xib; path = view/FloodsView.xib; sourceTree = "<group>"; };
+		7887EB861D18F3EA0019BC8E /* SedimentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SedimentsView.xib; path = view/SedimentsView.xib; sourceTree = "<group>"; };
 		7887EB881D18F4010019BC8E /* FloodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloodsView.swift; path = view/FloodsView.swift; sourceTree = "<group>"; };
+		78A2C0D21D56CE7600B6ABE8 /* classification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classification.png; sourceTree = "<group>"; };
+		78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classification_sediment.png; sourceTree = "<group>"; };
 		78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterInformationManager.swift; path = model/DisasterInformationManager.swift; sourceTree = "<group>"; };
 		78C47B2A1CBA3DF900371566 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		78C47B2F1CBA3F3500371566 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopViewController.swift; path = controller/TopViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +184,13 @@
 		7821024B1D0509FC00C61152 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */,
+				78A2C0D21D56CE7600B6ABE8 /* classification.png */,
+				7841DF561D49F62100500593 /* tabicon_earthquake.png */,
+				7841DF571D49F62100500593 /* tabicon_facility.png */,
+				7841DF581D49F62100500593 /* tabicon_flood.png */,
+				7841DF591D49F62100500593 /* tabicon_sediment.png */,
+				7841DF541D49F04600500593 /* faclitylist_arrow.png */,
 				782DE97E1D40683D007F698E /* information.png */,
 				782102561D050B3200C61152 /* pin_0@2x.png */,
 				782102571D050B3200C61152 /* pin_1@2x.png */,
@@ -186,6 +209,7 @@
 				78C47B3B1CBA480E00371566 /* DatabaseManager.swift */,
 				78DD68271CBB65E900444C65 /* LocationManager.swift */,
 				78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */,
+				782864021D4709E000DBDE09 /* DirectionAPIManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -195,6 +219,7 @@
 			children = (
 				783C54081D26551E00961F19 /* BlackBgView.swift */,
 				78EFE5F21D014DD7005B16BD /* MapView.swift */,
+				782864001D46FFC500DBDE09 /* FacilityMapView.swift */,
 				7857CFE21D2CDEDE00D65B76 /* StreetView.swift */,
 				78EDFD1A1D11348C00CE4E33 /* test.swift */,
 				78EDFD1C1D11349C00CE4E33 /* test.xib */,
@@ -203,7 +228,7 @@
 				780FB4531D07BA8600E5C58E /* CurrentAreaButton.swift */,
 				780FB4551D07BA9F00E5C58E /* CurrentAreaButton.xib */,
 				7887EB881D18F4010019BC8E /* FloodsView.swift */,
-				7887EB861D18F3EA0019BC8E /* FloodsView.xib */,
+				784DBD691D33544800D5C6AA /* FloodsView.xib */,
 				78CF60281D1A69B600119A13 /* FacilitiesView.swift */,
 				78CF602A1D1A69C700119A13 /* FacilitiesView.xib */,
 				784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */,
@@ -211,7 +236,7 @@
 				78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */,
 				78EDFD161D1105D000CE4E33 /* EarthquakeView.xib */,
 				784DBD671D33543600D5C6AA /* SedimentsView.swift */,
-				784DBD691D33544800D5C6AA /* SedimentsView.xib */,
+				7887EB861D18F3EA0019BC8E /* SedimentsView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -223,8 +248,6 @@
 				78C47B311CBA3F4E00371566 /* TutorialViewController.swift */,
 				7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */,
 				784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */,
-				782DE9801D406965007F698E /* InformationViewController.swift */,
-				782DE9841D407A75007F698E /* AnketoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -237,7 +260,6 @@
 				7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */,
 				784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */,
 				782DE9821D406976007F698E /* Information.storyboard */,
-				782DE9861D407A8D007F698E /* Anketo.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -276,6 +298,8 @@
 				78F418DE1D30D5FB00ECB4E0 /* font */,
 				78D2BCA11CBA2D3A00905E3D /* LaunchScreen.storyboard */,
 				78D2BCA41CBA2D3A00905E3D /* Info.plist */,
+				7841DF521D49B6CF00500593 /* GoogleService-Info.plist */,
+				782DE98D1D40A8FA007F698E /* Bridging-Header.h */,
 				7821024B1D0509FC00C61152 /* image */,
 			);
 			path = Mybousainote;
@@ -429,28 +453,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A2C0D51D5700A700B6ABE8 /* classification_sediment.png in Resources */,
+				7841DF5D1D49F62100500593 /* tabicon_sediment.png in Resources */,
 				7821025C1D050B3200C61152 /* pin_1@2x.png in Resources */,
 				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
+				78A2C0D31D56CE7600B6ABE8 /* classification.png in Resources */,
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
+				7841DF5C1D49F62100500593 /* tabicon_flood.png in Resources */,
 				782DE97F1D40683D007F698E /* information.png in Resources */,
 				7821025F1D050B3200C61152 /* pin_4@2x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
-				784DBD6A1D33544800D5C6AA /* SedimentsView.xib in Resources */,
+				784DBD6A1D33544800D5C6AA /* FloodsView.xib in Resources */,
 				78EDFD1D1D11349C00CE4E33 /* test.xib in Resources */,
 				784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */,
-				782DE9871D407A8D007F698E /* Anketo.storyboard in Resources */,
-				7887EB871D18F3EA0019BC8E /* FloodsView.xib in Resources */,
+				7841DF5A1D49F62100500593 /* tabicon_earthquake.png in Resources */,
+				7887EB871D18F3EA0019BC8E /* SedimentsView.xib in Resources */,
 				7821025D1D050B3200C61152 /* pin_2@2x.png in Resources */,
 				782DE9831D406976007F698E /* Information.storyboard in Resources */,
+				7841DF551D49F04600500593 /* faclitylist_arrow.png in Resources */,
+				7841DF5B1D49F62100500593 /* tabicon_facility.png in Resources */,
 				78EDFD171D1105D000CE4E33 /* EarthquakeView.xib in Resources */,
 				78CF602B1D1A69C700119A13 /* FacilitiesView.xib in Resources */,
 				784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */,
+				7841DF531D49B6CF00500593 /* GoogleService-Info.plist in Resources */,
 				78F418DF1D30D5FB00ECB4E0 /* font in Resources */,
 				7821025E1D050B3200C61152 /* pin_3@2x.png in Resources */,
 				7821025B1D050B3200C61152 /* pin_0@2x.png in Resources */,
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
+				782DE98A1D40A4FA007F698E /* Info.plist in Resources */,
 				7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,10 +557,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */,
-				782DE9811D406965007F698E /* InformationViewController.swift in Sources */,
 				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
 				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
 				78D81B701CD6253A00CA9498 /* Global.swift in Sources */,
+				782864011D46FFC500DBDE09 /* FacilityMapView.swift in Sources */,
 				78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */,
 				78D81B721CD6254800CA9498 /* Config.swift in Sources */,
 				78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */,
@@ -541,11 +573,11 @@
 				78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */,
 				7857CFE31D2CDEDE00D65B76 /* StreetView.swift in Sources */,
 				784A2DB31D2CBA8100EDB81A /* FacilityInformationViewController.swift in Sources */,
+				782864031D4709E000DBDE09 /* DirectionAPIManager.swift in Sources */,
 				78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */,
 				78EDFD191D1105FB00CE4E33 /* EarthquakeView.swift in Sources */,
 				7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */,
 				78EDFD1B1D11348C00CE4E33 /* test.swift in Sources */,
-				782DE9851D407A75007F698E /* AnketoViewController.swift in Sources */,
 				783C54091D26551E00961F19 /* BlackBgView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +717,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.Mybousainote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Mybousainote/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -698,6 +731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.Mybousainote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Mybousainote/Bridging-Header.h";
 			};
 			name = Release;
 		};

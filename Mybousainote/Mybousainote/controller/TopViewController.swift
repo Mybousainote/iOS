@@ -23,6 +23,8 @@ class TopViewController: UIViewController {
     @IBOutlet weak var livingAreaView3: UIView!
     @IBOutlet weak var livingAreaView4: UIView!
     
+    //アナリティクスのトラッカー
+    let tracker = GAI.sharedInstance().defaultTracker
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,15 @@ class TopViewController: UIViewController {
         setLivingAreaBg()
         setCurrentAreaButton()
         setLivingAreaButtons()
+        
+        trackingScreen()
+    }
+    
+    //スクリーンをトラッキング
+    func trackingScreen() {
+        tracker.set(kGAIScreenName, value: "トップ")
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //各ボタンの背景を作成
@@ -179,6 +190,24 @@ class TopViewController: UIViewController {
             ]
         }
         transitionToDisasterView()
+        
+        //アナリティクス
+        var builder: GAIDictionaryBuilder!
+        switch button.tag {
+        case 0:
+            builder = GAIDictionaryBuilder.createEventWithCategory("地域ボタンタップ", action: "現在地", label: "", value: nil)
+        case 1:
+            builder = GAIDictionaryBuilder.createEventWithCategory("地域ボタンタップ", action: "1番目", label: "", value: nil)
+        case 2:
+            builder = GAIDictionaryBuilder.createEventWithCategory("地域ボタンタップ", action: "2番目", label: "", value: nil)
+        case 3:
+            builder = GAIDictionaryBuilder.createEventWithCategory("地域ボタンタップ", action: "3番目", label: "", value: nil)
+        case 4:
+            builder = GAIDictionaryBuilder.createEventWithCategory("地域ボタンタップ", action: "4番目", label: "", value: nil)
+        default:
+            return
+        }
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //防災情報画面へ遷移する
@@ -188,14 +217,17 @@ class TopViewController: UIViewController {
         let nextView: UIViewController! = storyboard.instantiateInitialViewController()
         self.navigationController?.pushViewController(nextView, animated: true)
     }
-
-    
-    
     
     
     //インフォメーションボタンが押されたとき呼ばれる
     @IBAction func touchedInformationButton(sender: AnyObject) {
         print("インフォメーション画面を表示")
+        
+        //スクリーンをトラッキング
+        tracker.set(kGAIScreenName, value: "インフォメーション")
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+        
 //        let storyboard = UIStoryboard(name: "Information", bundle: nil)
 //        let modalView: UIViewController! = storyboard.instantiateInitialViewController()
 //        self.presentViewController(modalView, animated: true, completion: nil)
@@ -219,6 +251,9 @@ class TopViewController: UIViewController {
                 let url = NSURL(string: "https://docs.google.com/forms/d/1k9suATBlW927fyBjj-9_di6MiswsPCMnJhjQgNxZxck/edit")
                 let app:UIApplication = UIApplication.sharedApplication()
                 app.openURL(url!)
+                
+                let builder = GAIDictionaryBuilder.createEventWithCategory("インフォメーション", action: "アンケートを開く", label: "", value: nil)
+                self.tracker.send(builder.build() as [NSObject : AnyObject])
             }
         )
         let content2 = OnboardingContentViewController(
@@ -228,7 +263,6 @@ class TopViewController: UIViewController {
             buttonText: "",
             action: nil
         )
-        
         
         let vc = OnboardingViewController(
             backgroundImage: nil,

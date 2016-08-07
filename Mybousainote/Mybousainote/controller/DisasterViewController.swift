@@ -14,7 +14,6 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //防災情報取得の管理クラス
     var DIManager: DisasterInformationManager!
     
-    
     //StoryBoard
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var mapView: MapView!
@@ -27,12 +26,27 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     var currentInformationView: String = "facilities"
     
-    
     //最後にポリゴンを取得した地点の緯度経度
     var latDidLoadFloodPolygon: Double!
     var lngDidLoadFloodPolygon: Double!
     var latDidLoadSedimentPolygon: Double!
     var lngDidLoadSedimentPolygon: Double!
+    
+    //アナリティクスのトラッカー
+    let tracker = GAI.sharedInstance().defaultTracker
+    
+    //タブアイコン
+    @IBOutlet weak var facilityIcon: UIImageView!
+    @IBOutlet weak var earthquakeIcon: UIImageView!
+    @IBOutlet weak var sedimentIcon: UIImageView!
+    @IBOutlet weak var floodIcon: UIImageView!
+    
+    //タブボタンの背景
+    @IBOutlet weak var facilityButtonBg: UIView!
+    @IBOutlet weak var earthquakeButtonBg: UIView!
+    @IBOutlet weak var sedimentButtonBg: UIView!
+    @IBOutlet weak var floodButtonBg: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +69,19 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //まず避難施設情報をセット
         createFacilitesView()
         getFacilitiesData()
+        stylingTabButtonAlpha(facilityIcon)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        trackingScreen()
+    }
+    
+    //スクリーンをトラッキング
+    func trackingScreen() {
+        tracker.set(kGAIScreenName, value: "防災情報")
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
     
     //地図の移動が終わったときに呼ばれる
     func didFinishChangeCameraPosition() {
@@ -136,6 +161,9 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //避難施設情報を取得
     func getFacilitiesData() {
         DIManager.getFacilitiesData(mapView.centerLat, lng: mapView.centerLng, length: Config().BoundForGetFacilities)
+        
+        let builder = GAIDictionaryBuilder.createEventWithCategory("防災情報の取得", action: "避難施設", label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //避難施設情報を取得したときに呼ばれる
@@ -166,8 +194,10 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             //マーカーを立てる
             mapView.setFacilitiesMarkers(Double(lat)!, lng: Double(lng)!, name: name, num: num, id: id)
             
+            
             if count <= 4 {
                 let buttonInformation = [
+                    "num": "\(count)",
                     "id": id,
                     "name": name
                 ]
@@ -180,15 +210,33 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //避難施設のボタンが押されたとき呼ばれる
     func touchedFacilitiesListButton(button: UIButton) {
+        let builder = GAIDictionaryBuilder.createEventWithCategory("避難施設詳細へ遷移", action: "リストから選択", label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        
         //選択された避難施設のIDをViewController共有用に保存し、画面遷移
         appDelegate.global.selectedFacilityId = button.tag
+        
+        //同じく中心点の緯度経度を保存
+        appDelegate.global.centerLat = mapView.centerLat
+        appDelegate.global.centerLng = mapView.centerLng
+        
         transitionToFacilityInformationView()
     }
     
     //マーカーウィンドウがタッチされたときに呼ばれる
     func didTouchMakerWindow(id: String) {
+        let builder = GAIDictionaryBuilder.createEventWithCategory("避難施設詳細へ遷移", action: "ピンから選択", label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        
         //選択された避難施設のIDをViewController共有用に保存し、画面遷移
         appDelegate.global.selectedFacilityId = Int(id)
+        
+        //同じく中心点の緯度経度を保存
+        appDelegate.global.centerLat = mapView.centerLat
+        appDelegate.global.centerLng = mapView.centerLng
+        
         transitionToFacilityInformationView()
     }
     
@@ -204,15 +252,27 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //地震情報を取得
     func getEarthquakeData() {
         DIManager.getEarthquakeData(mapView.centerLat, lng: mapView.centerLng)
+        
+        let builder = GAIDictionaryBuilder.createEventWithCategory("防災情報の取得", action: "地震危険度", label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //地震情報を取得したときに呼ばれる
     func didGetEarthquakeData(earthquake: AnyObject) {
         let features = earthquake["features"] as! [AnyObject]
         let properties = features[0]["properties"]
-        let T30_I45_PS = properties!!["T30_I45_PS"] as! String //30年間で震度5弱以上となる確率
-        print(T30_I45_PS)
-        earthquakeView.setInformation(T30_I45_PS)
+        let T30_I45_PS = Double(properties!!["T30_I45_PS"] as! String) //30年間で震度5弱以上となる確率
+        let T30_I50_PS = Double(properties!!["T30_I50_PS"] as! String) //30年間で震度5強以上となる確率
+        let T30_I55_PS = Double(properties!!["T30_I55_PS"] as! String) //30年間で震度6弱以上となる確率
+        let T30_I60_PS = Double(properties!!["T30_I60_PS"] as! String)//30年間で震度6強以上となる確率
+        
+        //%変換＆小数点第二位以下切り捨て
+        let I45 = "\(floor(T30_I45_PS! * 1000) / 10)"
+        let I50 = "\(floor(T30_I50_PS! * 1000) / 10)"
+        let I55 = "\(floor(T30_I55_PS! * 1000) / 10)"
+        let I60 = "\(floor(T30_I60_PS! * 1000) / 10)"
+        
+        earthquakeView.setInformation(I45, I50: I50, I55: I55, I60: I60)
     }
     
     
@@ -228,6 +288,9 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //このときの緯度経度を保存しておく
         latDidLoadFloodPolygon = mapView.centerLat
         lngDidLoadFloodPolygon = mapView.centerLng
+        
+        let builder = GAIDictionaryBuilder.createEventWithCategory("防災情報の取得", action: "洪水浸水", label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //浸水情報を取得したときに呼ばれる
@@ -292,6 +355,9 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //このときの緯度経度を保存しておく
         latDidLoadSedimentPolygon = mapView.centerLat
         lngDidLoadSedimentPolygon = mapView.centerLng
+        
+        let builder = GAIDictionaryBuilder.createEventWithCategory("防災情報の取得", action: "土砂災害", label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //土砂情報を取得したときに呼ばれる
@@ -347,6 +413,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //避難施設ボタン
     @IBAction func touchedFacilitiesButton(sender: AnyObject) {
         currentInformationView = "facilities"
+        trackingIconToucheEvent("避難施設情報")
         
         createFacilitesView()
         informationView.bringSubviewToFront(facilitiesView)
@@ -354,6 +421,9 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //ポリゴンを非表示にする
         mapView.hiddenAllFloodPolygons()
         mapView.hiddenAllSedimentsPolygons()
+        
+        //アイコンの透明度を変える
+        stylingTabButtonAlpha(facilityIcon)
     }
     
     func createFacilitesView() {
@@ -367,11 +437,13 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //地震ボタン
     @IBAction func touchedEarthquakeButton(sender: AnyObject) {
         print("地震ボタンがタップされた")
+        trackingIconToucheEvent("地震危険度")
         currentInformationView = "earthquake"
         
         if earthquakeView == nil {
             earthquakeView = EarthquakeView.instance()
             earthquakeView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
+            earthquakeView.stylingBoldFont()
             informationView.addSubview(earthquakeView)
         }
         informationView.bringSubviewToFront(earthquakeView)
@@ -382,16 +454,21 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         //ポリゴンを非表示にする
         mapView.hiddenAllFloodPolygons()
         mapView.hiddenAllSedimentsPolygons()
+        
+        //アイコンの透明度を変える
+        stylingTabButtonAlpha(earthquakeIcon)
     }
     
     //浸水ボタン
     @IBAction func touchedFloodsButton(sender: AnyObject) {
         print("浸水ボタンがタップされた")
+        trackingIconToucheEvent("洪水浸水")
         currentInformationView = "floods"
         
         if floodsView == nil {
             floodsView = FloodsView.instance()
             floodsView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
+            floodsView.stylingBoldFont()
             //デリゲート設定
             floodsView.delegate = self
             informationView.addSubview(floodsView)
@@ -408,6 +485,9 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         //土砂ポリゴンを非表示にする
         mapView.hiddenAllSedimentsPolygons()
+        
+        //アイコンの透明度を変える
+        stylingTabButtonAlpha(floodIcon)
     }
     
     //浸水タイル再読み込みボタン
@@ -419,12 +499,13 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     //土砂災害ボタン
     @IBAction func touchedSedimentButton(sender: AnyObject) {
         print("土砂ボタンがタップされた")
+        trackingIconToucheEvent("土砂災害")
         currentInformationView = "sediments"
         
         if sedimentsView == nil {
             sedimentsView = SedimentsView.instance()
             sedimentsView.frame = CGRectMake(0, 0, informationView.frame.width, informationView.frame.height)
-            
+            sedimentsView.stylingBoldFont()
             informationView.addSubview(sedimentsView)
             
             //土砂情報を読み込む
@@ -436,13 +517,34 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         //浸水ポリゴンを非表示にする
         mapView.hiddenAllFloodPolygons()
+        
+        //アイコンの透明度を変える
+        stylingTabButtonAlpha(sedimentIcon)
+    }
+    
+    //防災画面の切り替えをトラッキング
+    func trackingIconToucheEvent(actionName: String) {
+        let builder = GAIDictionaryBuilder.createEventWithCategory("防災画面切り替え", action: actionName, label: "", value: nil)
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     
+    //タブの背景をリセット
+//    func resetTabBackground() {
+//        facilityButtonBg.backgroundColor = nil
+//        earthquakeButtonBg.backgroundColor = nil
+//        sedimentButtonBg.backgroundColor = nil
+//        floodButtonBg.backgroundColor = nil
+//    }
     
-    
-    
-    
+    func stylingTabButtonAlpha(icon: UIImageView) {
+        facilityIcon.alpha = 0.7
+        earthquakeIcon.alpha = 0.7
+        sedimentIcon.alpha = 0.7
+        floodIcon.alpha = 0.7
+        
+        icon.alpha = 1.0
+    }
     
     
     //画面遷移

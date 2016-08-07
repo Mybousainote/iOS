@@ -7,7 +7,7 @@ pod 'GoogleMaps'
 pod 'RealmSwift'
 pod 'AFNetworking', '~> 2.6.0'
 pod 'SVProgressHUD'
-pod ‘Onboard’, '~> 2.1.7’
-
+pod 'Onboard', '~> 2.1.7'
+pod 'Google/Analytics'
 
 

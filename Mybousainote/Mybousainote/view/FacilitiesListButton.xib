@@ -4,6 +4,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ヒラギノ角ゴOld StdN W6.otf">
+            <string>HiraSansOldStdN-W6</string>
+            <string>HiraSansOldStdN-W6</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -11,22 +17,49 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tml-93-cja">
-                    <rect key="frame" x="279" y="290" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="避難施設名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tml-93-cja">
+                    <rect key="frame" x="46" y="291" width="90" height="18"/>
+                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="18"/>
+                    <color key="textColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7r-zo-JB3">
+                    <rect key="frame" x="13" y="291" width="13" height="18"/>
+                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="18"/>
+                    <color key="textColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="faclitylist_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kn2-yQ-1zN">
+                    <rect key="frame" x="576" y="290" width="12" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Kes-Hd-d83"/>
+                        <constraint firstAttribute="width" constant="12" id="ZrJ-pw-fiR"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="tml-93-cja" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="557-yD-z3v"/>
+                <constraint firstItem="Kn2-yQ-1zN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Cyh-pw-RoB"/>
                 <constraint firstItem="tml-93-cja" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ec1-Em-fK8"/>
+                <constraint firstItem="tml-93-cja" firstAttribute="leading" secondItem="o7r-zo-JB3" secondAttribute="trailing" constant="20" id="QpD-76-keG"/>
+                <constraint firstAttribute="trailing" secondItem="Kn2-yQ-1zN" secondAttribute="trailing" constant="12" id="jEs-4p-khZ"/>
+                <constraint firstItem="o7r-zo-JB3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="ou1-md-HhE"/>
+                <constraint firstItem="o7r-zo-JB3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yEj-10-Gr9"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="557-yD-z3v"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="name" destination="tml-93-cja" id="R8D-23-xUt"/>
+                <outlet property="num" destination="o7r-zo-JB3" id="eQb-5X-8rL"/>
             </connections>
             <point key="canvasLocation" x="217" y="377"/>
         </view>
     </objects>
+    <resources>
+        <image name="faclitylist_arrow.png" width="24" height="40"/>
+    </resources>
 </document>

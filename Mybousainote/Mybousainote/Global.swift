@@ -19,6 +19,10 @@ public class Global: NSObject {
     //防災情報画面で選択された避難施設のID
     var selectedFacilityId: Int!
     
+    //防災情報画面から避難施設詳細画面へ遷移するときの中心点の緯度経度
+    var centerLat: Double!
+    var centerLng: Double!
+    
     
     var blackBgView: BlackBgView!
     

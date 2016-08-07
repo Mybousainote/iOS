@@ -73,7 +73,7 @@ class DatabaseManager: NSObject {
         myLocations.lat = lat
         myLocations.lng = lng
         
-        print("【更新】緯度：\(lat) 経度：\(lng) 時間：\(myLocations.createdDate)")
+//        print("【更新】緯度：\(lat) 経度：\(lng) 時間：\(myLocations.createdDate)")
         
         let myRealm = try! Realm()
         try! myRealm.write {

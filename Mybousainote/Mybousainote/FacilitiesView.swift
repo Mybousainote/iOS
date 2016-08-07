@@ -30,13 +30,16 @@ class FacilitiesView: UIView {
             let listButton = FacilitiesListButton.instance()
             
             
-            let width = self.frame.width-16
+            let width = self.frame.width-20
             let height = (self.frame.height-8*3-10*2)/4
             
-            listButton.frame = CGRectMake(8, 10+count*(height+8), width, height)
-            
+            listButton.frame = CGRectMake(10, 10+count*(height+8), width, height)
             listButton.name.text = buttonInformation["name"] as? String
+            listButton.name.font = UIFont.boldSystemFontOfSize(18)
             listButton.tag = Int(buttonInformation["id"] as! String)!
+            listButton.num.text = buttonInformation["num"] as? String
+            listButton.num.font = UIFont.boldSystemFontOfSize(18)
+
             self.addSubview(listButton)
             
             count += 1

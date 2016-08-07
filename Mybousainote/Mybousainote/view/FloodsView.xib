@@ -3,39 +3,148 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ヒラギノ角ゴOld StdN W6.otf">
+            <string>HiraSansOldStdN-W6</string>
+            <string>HiraSansOldStdN-W6</string>
+            <string>HiraSansOldStdN-W6</string>
+            <string>HiraSansOldStdN-W6</string>
+            <string>HiraSansOldStdN-W6</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="TyD-XN-kTK" customClass="FloodsView" customModule="Mybousainote" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FloodsView" customModule="Mybousainote" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5G-HJ-rtO">
-                    <rect key="frame" x="241" y="289" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20m-JM-XbV">
-                    <rect key="frame" x="436" y="545" width="135" height="30"/>
-                    <state key="normal" title="タイルを再読み込み"/>
-                    <connections>
-                        <action selector="touchedReloadButton:" destination="TyD-XN-kTK" eventType="touchUpInside" id="9ef-ql-ZJQ"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5Q-bA-5JV">
+                    <rect key="frame" x="30" y="30" width="540" height="540"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classification.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cb6-sh-SAB">
+                            <rect key="frame" x="178" y="10" width="362" height="530"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Cb6-sh-SAB" secondAttribute="height" multiplier="13:19" id="DBV-i8-bnN"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9j-wb-uK8">
+                            <rect key="frame" x="0.0" y="28" width="190" height="137"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdG-2i-2CK">
+                                    <rect key="frame" x="-3" y="58" width="190" height="66"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="66" id="5Gn-vg-zsz"/>
+                                        <constraint firstAttribute="width" constant="190" id="ndD-Me-SzQ"/>
+                                    </constraints>
+                                    <string key="text">想定し得る最大規模の降雨により当該河川が氾濫した場合に想定される洪水浸水</string>
+                                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="12"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浸水値" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vs-59-HwV">
+                                    <rect key="frame" x="0.0" y="23" width="85" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="85" id="eMR-X0-4V4"/>
+                                        <constraint firstAttribute="height" constant="29" id="iwd-r7-lYJ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="25"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-rt-eVg">
+                                    <rect key="frame" x="88" y="0.0" width="86" height="54"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-zp-jfJ">
+                                            <rect key="frame" x="3" y="0.0" width="80" height="54"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="DTG-Fd-Jzz"/>
+                                                <constraint firstAttribute="height" constant="54" id="Ld0-ih-ibb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="22"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="PMW-zp-jfJ" firstAttribute="centerX" secondItem="Ve3-rt-eVg" secondAttribute="centerX" id="nhP-Rl-wKN"/>
+                                        <constraint firstAttribute="width" constant="86" id="q59-OM-bqB"/>
+                                        <constraint firstItem="PMW-zp-jfJ" firstAttribute="centerY" secondItem="Ve3-rt-eVg" secondAttribute="centerY" id="qbW-lz-CfB"/>
+                                        <constraint firstAttribute="height" constant="54" id="zPR-yt-uk3"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAL-fN-5Qf">
+                                    <rect key="frame" x="178" y="40" width="18" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="18" id="BZ9-5p-RH3"/>
+                                        <constraint firstAttribute="height" constant="14" id="ceV-Bt-LSg"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="予想される" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sln-O4-tLs">
+                                    <rect key="frame" x="0.0" y="0.0" width="85" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="85T-Os-A3e"/>
+                                        <constraint firstAttribute="width" constant="85" id="qmp-Ov-CQ1"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="16"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="nAL-fN-5Qf" firstAttribute="bottom" secondItem="Ve3-rt-eVg" secondAttribute="bottom" id="932-EV-o88"/>
+                                <constraint firstItem="sln-O4-tLs" firstAttribute="leading" secondItem="R9j-wb-uK8" secondAttribute="leading" id="IAa-gw-NJK"/>
+                                <constraint firstItem="Ve3-rt-eVg" firstAttribute="leading" secondItem="sln-O4-tLs" secondAttribute="trailing" constant="3" id="IM2-X9-POD"/>
+                                <constraint firstItem="6Vs-59-HwV" firstAttribute="top" secondItem="sln-O4-tLs" secondAttribute="bottom" constant="2" id="KRc-Lx-Rae"/>
+                                <constraint firstAttribute="width" constant="190" id="UQj-g3-YXM"/>
+                                <constraint firstItem="Ve3-rt-eVg" firstAttribute="top" secondItem="sln-O4-tLs" secondAttribute="top" id="VAF-Pp-uSG"/>
+                                <constraint firstAttribute="height" constant="137" id="W0q-3b-oP7"/>
+                                <constraint firstItem="sln-O4-tLs" firstAttribute="top" secondItem="R9j-wb-uK8" secondAttribute="top" id="clu-ke-EPJ"/>
+                                <constraint firstItem="nAL-fN-5Qf" firstAttribute="leading" secondItem="Ve3-rt-eVg" secondAttribute="trailing" constant="4" id="df3-ei-SbC"/>
+                                <constraint firstItem="6Vs-59-HwV" firstAttribute="leading" secondItem="sln-O4-tLs" secondAttribute="leading" id="hgK-jm-HhP"/>
+                                <constraint firstItem="LdG-2i-2CK" firstAttribute="leading" secondItem="R9j-wb-uK8" secondAttribute="leading" constant="-3" id="ngN-Nr-hA0"/>
+                                <constraint firstItem="LdG-2i-2CK" firstAttribute="top" secondItem="nAL-fN-5Qf" secondAttribute="bottom" constant="4" id="ngf-oM-hIY"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="R9j-wb-uK8" firstAttribute="leading" secondItem="R5Q-bA-5JV" secondAttribute="leading" constant="5" id="Qw9-Yg-sYI"/>
+                        <constraint firstAttribute="trailing" secondItem="Cb6-sh-SAB" secondAttribute="trailing" id="bXk-UO-dpb"/>
+                        <constraint firstAttribute="bottom" secondItem="Cb6-sh-SAB" secondAttribute="bottom" id="eFI-VT-Acm"/>
+                        <constraint firstItem="Cb6-sh-SAB" firstAttribute="top" secondItem="R5Q-bA-5JV" secondAttribute="top" constant="10" id="eaH-h3-SW4"/>
+                        <constraint firstItem="Cb6-sh-SAB" firstAttribute="leading" secondItem="R9j-wb-uK8" secondAttribute="trailing" constant="10" id="hsf-2g-Yhm"/>
+                        <constraint firstItem="R9j-wb-uK8" firstAttribute="top" secondItem="R5Q-bA-5JV" secondAttribute="top" constant="32" id="jvW-ka-yhr"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hsf-2g-Yhm"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.80973522378665885" green="0.92511749652923436" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.82352942228317261" green="0.82352942228317261" blue="0.82352942228317261" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="l5G-HJ-rtO" firstAttribute="centerX" secondItem="TyD-XN-kTK" secondAttribute="centerX" id="Fhc-I3-iHn"/>
-                <constraint firstAttribute="bottom" secondItem="20m-JM-XbV" secondAttribute="bottom" constant="25" id="Jcv-g7-msO"/>
-                <constraint firstItem="l5G-HJ-rtO" firstAttribute="centerY" secondItem="TyD-XN-kTK" secondAttribute="centerY" id="bdb-YO-Fm6"/>
-                <constraint firstAttribute="trailing" secondItem="20m-JM-XbV" secondAttribute="trailing" constant="29" id="zWQ-DJ-THW"/>
+                <constraint firstItem="R5Q-bA-5JV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="CJq-cY-ALa"/>
+                <constraint firstAttribute="bottom" secondItem="R5Q-bA-5JV" secondAttribute="bottom" constant="30" id="RlM-RG-QrN"/>
+                <constraint firstAttribute="trailing" secondItem="R5Q-bA-5JV" secondAttribute="trailing" constant="30" id="dh2-Pk-dvB"/>
+                <constraint firstItem="R5Q-bA-5JV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="qsu-5Q-47H"/>
             </constraints>
             <connections>
-                <outlet property="label" destination="l5G-HJ-rtO" id="09B-Xl-sOU"/>
+                <outlet property="caption" destination="LdG-2i-2CK" id="tJM-UV-vdk"/>
+                <outlet property="depthNum" destination="PMW-zp-jfJ" id="mbM-aN-AC7"/>
+                <outlet property="m" destination="nAL-fN-5Qf" id="1LR-4y-sx5"/>
+                <outlet property="sideView" destination="R9j-wb-uK8" id="1j2-Yy-EU5"/>
+                <outlet property="title1" destination="sln-O4-tLs" id="Io1-6e-8US"/>
+                <outlet property="title2" destination="6Vs-59-HwV" id="NzZ-hF-WnR"/>
             </connections>
-            <point key="canvasLocation" x="513" y="356"/>
         </view>
     </objects>
+    <resources>
+        <image name="classification.png" width="208" height="305"/>
+    </resources>
 </document>

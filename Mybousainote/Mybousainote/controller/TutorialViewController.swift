@@ -13,6 +13,9 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
 
     @IBOutlet weak var startButton: UIButton!
     
+    //アナリティクスのトラッカー
+    let tracker = GAI.sharedInstance().defaultTracker
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +35,17 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
     
     func DeniedAuthorization() {
         transitionToTopView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        trackingScreen()
+    }
+    
+    //スクリーンをトラッキング
+    func trackingScreen() {
+        tracker.set(kGAIScreenName, value: "チュートリアル")
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     //トップ画面へ遷移

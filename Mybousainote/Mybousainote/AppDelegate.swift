@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        initializeAnalytics()
         createGlobalClass()
         
         //ロギング開始
@@ -30,8 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        AFNetworkActivityLogger.sharedLogger().startLogging()
         
         //GoogleMaps API 認証
-        GMSServices.provideAPIKey("AIzaSyDtif4Yiatpbp8VB2pACpCsX3-LzdLR-EM");
+        GMSServices.provideAPIKey(Config().googleAPIKey);
         
+        //最初の起動画面
+        let firstView: UIViewController! = getFirstViewController()
+        window?.rootViewController = firstView
+        
+        //Background fetch
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
+        return true
+    }
+    
+    func getFirstViewController() -> UIViewController {
         let ud = NSUserDefaults.standardUserDefaults()
         
         //初期値を設定
@@ -52,17 +64,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             firstSb = UIStoryboard(name: "Top", bundle: nil)
         }
         
-        let firstView: UIViewController! = firstSb.instantiateInitialViewController()
+        return firstSb.instantiateInitialViewController()!
+    }
+    
+    func initializeAnalytics() {
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
-        window?.rootViewController = firstView
-        
-        
-        
-        /* Background fetch */
-        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-        
-        
-        return true
+        // Optional: configure GAI options.
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
     }
     
     func createGlobalClass() {

@@ -16,6 +16,7 @@ class FacilitiesListButton: UIButton {
     
     
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var num: UILabel!
     
     //コードから初期化
     override init(frame: CGRect) {

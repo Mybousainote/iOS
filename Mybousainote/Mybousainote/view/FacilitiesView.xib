@@ -10,7 +10,7 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FacilitiesView" customModule="Mybousainote" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.81987736461723648" green="1" blue="0.86841546543822079" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
         </view>
     </objects>
 </document>

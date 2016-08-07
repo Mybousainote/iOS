@@ -49,6 +49,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Edn-gT-Fd0" customClass="FacilityMapView" customModule="Mybousainote" customModuleProvider="target">
+                                <rect key="frame" x="415" y="446" width="175" height="146"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="BSh-x1-noq"/>
+                                    <constraint firstAttribute="height" constant="175" id="Uqb-qa-aki"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -58,11 +66,14 @@
                             <constraint firstItem="myd-qM-fwZ" firstAttribute="leading" secondItem="fsf-6N-6zj" secondAttribute="leading" id="Ecw-4u-6Q2"/>
                             <constraint firstAttribute="trailing" secondItem="8UH-6F-eug" secondAttribute="trailing" id="NhL-KI-z2l"/>
                             <constraint firstItem="8UH-6F-eug" firstAttribute="leading" secondItem="fsf-6N-6zj" secondAttribute="leading" id="Zcf-wL-p5L"/>
+                            <constraint firstItem="roU-vd-yAb" firstAttribute="top" secondItem="Edn-gT-Fd0" secondAttribute="bottom" constant="8" id="esZ-zc-gsS"/>
                             <constraint firstItem="myd-qM-fwZ" firstAttribute="top" secondItem="fsf-6N-6zj" secondAttribute="top" id="rF4-Vg-em0"/>
+                            <constraint firstAttribute="trailing" secondItem="Edn-gT-Fd0" secondAttribute="trailing" constant="10" id="vis-4d-tC5"/>
                             <constraint firstAttribute="trailing" secondItem="myd-qM-fwZ" secondAttribute="trailing" id="w71-lU-fEl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="Edn-gT-Fd0" id="CVo-35-gGu"/>
                         <outlet property="streetView" destination="8UH-6F-eug" id="GRQ-Cs-jA6"/>
                         <outlet property="testText" destination="K85-n6-ROh" id="aaT-AZ-Yiq"/>
                     </connections>
