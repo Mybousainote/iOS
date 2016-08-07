@@ -53,17 +53,6 @@
                                     <constraint firstAttribute="width" secondItem="vxn-Z7-D5f" secondAttribute="height" multiplier="340:360" id="3ZE-qK-3pp"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gM8-hL-b6F">
-                                <rect key="frame" x="10" y="78" width="355" height="189"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gM8-hL-b6F" secondAttribute="height" multiplier="334:133" id="VCu-My-7TY"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VCu-My-7TY"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Frh-Xw-87r">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                 <subviews>
@@ -91,6 +80,17 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RtD-wL-kq7" secondAttribute="height" multiplier="340:360" id="fri-Ak-jlh"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gM8-hL-b6F">
+                                <rect key="frame" x="10" y="76" width="355" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gM8-hL-b6F" secondAttribute="height" multiplier="334:133" id="VCu-My-7TY"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VCu-My-7TY"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>

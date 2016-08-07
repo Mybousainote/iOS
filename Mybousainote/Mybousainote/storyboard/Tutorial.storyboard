@@ -3,12 +3,19 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ヒラギノ角ゴOld StdN W6.otf">
+            <string>HiraSansOldStdN-W6</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="9Mr-nu-76X">
             <objects>
-                <navigationController id="q3r-mu-eHJ" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="q3r-mu-eHJ" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lZf-OO-8Yh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -33,21 +40,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-Eq-kuk">
-                                <rect key="frame" x="277" y="361" width="46" height="30"/>
-                                <state key="normal" title="始める"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-Eq-kuk">
+                                <rect key="frame" x="223" y="515" width="155" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="7CN-eQ-eK3"/>
+                                    <constraint firstAttribute="height" constant="40" id="bey-L2-DqI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="18"/>
+                                <state key="normal" title="はじめる">
+                                    <color key="titleColor" red="0.21960784489999999" green="0.80000001190000003" blue="0.71372550729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="didTouchedStartButton:" destination="4aa-yd-zCn" eventType="touchUpInside" id="EW1-cu-Ekz"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="information_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q8L-L4-FGq">
+                                <rect key="frame" x="134" y="20" width="332" height="485"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Q8L-L4-FGq" secondAttribute="height" multiplier="332:485" id="Eoe-7y-QBk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21960784489999999" green="0.80000001190000003" blue="0.71372550729999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="9aY-Eq-kuk" firstAttribute="centerY" secondItem="Wxf-tD-VfK" secondAttribute="centerY" id="0D8-Dc-8Th"/>
+                            <constraint firstItem="Q8L-L4-FGq" firstAttribute="top" secondItem="3CA-eM-R0b" secondAttribute="bottom" constant="50" id="Fbw-kL-vzy"/>
+                            <constraint firstItem="bBt-M0-Tef" firstAttribute="top" secondItem="9aY-Eq-kuk" secondAttribute="bottom" constant="40" id="RwE-fZ-Dz2"/>
+                            <constraint firstItem="Q8L-L4-FGq" firstAttribute="leading" secondItem="Wxf-tD-VfK" secondAttribute="leading" constant="21" id="UJx-A8-Zl2"/>
+                            <constraint firstAttribute="trailing" secondItem="Q8L-L4-FGq" secondAttribute="trailing" constant="21" id="yNT-xe-Pe5"/>
                             <constraint firstItem="9aY-Eq-kuk" firstAttribute="centerX" secondItem="Wxf-tD-VfK" secondAttribute="centerX" id="yq2-oe-gFR"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0D8-Dc-8Th"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ftW-gg-k4F"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="startButton" destination="9aY-Eq-kuk" id="Vh4-Yc-mb1"/>
                     </connections>
@@ -57,4 +88,7 @@
             <point key="canvasLocation" x="356" y="50"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="information_view.png" width="665" height="971"/>
+    </resources>
 </document>

@@ -20,6 +20,9 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
         super.viewDidLoad()
         
         appDelegate.LManager.delegate = self
+        
+        startButton.layer.cornerRadius = 4
+        startButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
     }
     
     @IBAction func didTouchedStartButton(sender: AnyObject) {
@@ -27,6 +30,11 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
         
         //位置情報許可の申請
         appDelegate.LManager.requestAuthorization()
+    }
+    
+    //ステータスバーを白くする
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     func acceptAuthorization() {
@@ -50,6 +58,10 @@ class TutorialViewController: UIViewController, LocationManagerDelegate {
     
     //トップ画面へ遷移
     func transitionToTopView() {
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.setObject(false, forKey: "FIRST_LAUNCH")
+        ud.synchronize()
+        
         print("トップ画面へ遷移")
         let storyboard = UIStoryboard(name: "Top", bundle: nil)
         let modalView: UIViewController! = storyboard.instantiateInitialViewController()

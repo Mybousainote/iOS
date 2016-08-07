@@ -56,14 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //初回起動かどうかの判定
         if ud.boolForKey("FIRST_LAUNCH") {
             print("初回起動判定：true")
-            ud.setObject(false, forKey: "FIRST_LAUNCH")
             firstSb = UIStoryboard(name: "Tutorial", bundle: nil)
         }
         else {
             print("初回起動判定：false")
             firstSb = UIStoryboard(name: "Top", bundle: nil)
         }
-        
         return firstSb.instantiateInitialViewController()!
     }
     

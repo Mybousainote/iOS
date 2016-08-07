@@ -54,10 +54,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-rt-eVg">
-                                    <rect key="frame" x="88" y="0.0" width="86" height="54"/>
+                                    <rect key="frame" x="86" y="0.0" width="88" height="54"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-zp-jfJ">
-                                            <rect key="frame" x="3" y="0.0" width="80" height="54"/>
+                                            <rect key="frame" x="4" y="0.0" width="80" height="54"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="DTG-Fd-Jzz"/>
                                                 <constraint firstAttribute="height" constant="54" id="Ld0-ih-ibb"/>
@@ -70,7 +70,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="PMW-zp-jfJ" firstAttribute="centerX" secondItem="Ve3-rt-eVg" secondAttribute="centerX" id="nhP-Rl-wKN"/>
-                                        <constraint firstAttribute="width" constant="86" id="q59-OM-bqB"/>
+                                        <constraint firstAttribute="width" constant="88" id="q59-OM-bqB"/>
                                         <constraint firstItem="PMW-zp-jfJ" firstAttribute="centerY" secondItem="Ve3-rt-eVg" secondAttribute="centerY" id="qbW-lz-CfB"/>
                                         <constraint firstAttribute="height" constant="54" id="zPR-yt-uk3"/>
                                     </constraints>
@@ -99,7 +99,7 @@
                             <constraints>
                                 <constraint firstItem="nAL-fN-5Qf" firstAttribute="bottom" secondItem="Ve3-rt-eVg" secondAttribute="bottom" id="932-EV-o88"/>
                                 <constraint firstItem="sln-O4-tLs" firstAttribute="leading" secondItem="R9j-wb-uK8" secondAttribute="leading" id="IAa-gw-NJK"/>
-                                <constraint firstItem="Ve3-rt-eVg" firstAttribute="leading" secondItem="sln-O4-tLs" secondAttribute="trailing" constant="3" id="IM2-X9-POD"/>
+                                <constraint firstItem="Ve3-rt-eVg" firstAttribute="leading" secondItem="sln-O4-tLs" secondAttribute="trailing" constant="1" id="IM2-X9-POD"/>
                                 <constraint firstItem="6Vs-59-HwV" firstAttribute="top" secondItem="sln-O4-tLs" secondAttribute="bottom" constant="2" id="KRc-Lx-Rae"/>
                                 <constraint firstAttribute="width" constant="190" id="UQj-g3-YXM"/>
                                 <constraint firstItem="Ve3-rt-eVg" firstAttribute="top" secondItem="sln-O4-tLs" secondAttribute="top" id="VAF-Pp-uSG"/>

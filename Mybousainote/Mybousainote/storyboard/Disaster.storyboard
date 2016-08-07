@@ -23,14 +23,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT8-yM-bCb" customClass="MapView" customModule="Mybousainote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="68" width="600" height="117"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NT8-yM-bCb" secondAttribute="height" multiplier="375:314" id="0C9-nR-fAz"/>
+                                    <constraint firstAttribute="width" secondItem="NT8-yM-bCb" secondAttribute="height" multiplier="375:314" id="2JQ-Sx-Y94"/>
+                                    <constraint firstAttribute="height" constant="469" id="2PN-C1-vN7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0C9-nR-fAz"/>
+                                        <exclude reference="2JQ-Sx-Y94"/>
+                                        <exclude reference="2PN-C1-vN7"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center.png" translatesAutoresizingMaskIntoConstraints="NO" id="Av6-Tz-6uu">
+                                <rect key="frame" x="290" y="117" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="DzJ-mU-NA6"/>
+                                    <constraint firstAttribute="width" constant="20" id="SzB-Ta-t9d"/>
+                                    <constraint firstAttribute="height" constant="20" id="ell-ir-B2P"/>
+                                    <constraint firstAttribute="width" constant="20" id="zPz-1W-0vY"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DzJ-mU-NA6"/>
+                                        <exclude reference="SzB-Ta-t9d"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2h-9b-zSB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
-                                        <rect key="frame" x="13" y="29" width="17" height="30"/>
+                                        <rect key="frame" x="14" y="30" width="16" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="6hU-4g-T1H"/>
-                                            <constraint firstAttribute="width" constant="17" id="c91-eC-3n0"/>
+                                            <constraint firstAttribute="height" constant="28" id="6hU-4g-T1H"/>
+                                            <constraint firstAttribute="width" constant="16" id="c91-eC-3n0"/>
                                         </constraints>
                                         <state key="normal" image="back.png"/>
                                         <connections>
@@ -48,30 +79,14 @@
                                 <constraints>
                                     <constraint firstItem="gpe-H6-XHh" firstAttribute="top" secondItem="Q2h-9b-zSB" secondAttribute="top" constant="19" id="C9m-2O-c6C"/>
                                     <constraint firstAttribute="bottom" secondItem="qQl-Xf-9V0" secondAttribute="bottom" constant="14" id="Lo4-8x-TPK"/>
-                                    <constraint firstAttribute="bottom" secondItem="gpe-H6-XHh" secondAttribute="bottom" constant="9" id="chA-Uo-ACQ"/>
-                                    <constraint firstItem="gpe-H6-XHh" firstAttribute="leading" secondItem="Q2h-9b-zSB" secondAttribute="leading" constant="13" id="lBv-YD-9rH"/>
+                                    <constraint firstAttribute="bottom" secondItem="gpe-H6-XHh" secondAttribute="bottom" constant="10" id="chA-Uo-ACQ"/>
+                                    <constraint firstItem="gpe-H6-XHh" firstAttribute="leading" secondItem="Q2h-9b-zSB" secondAttribute="leading" constant="14" id="lBv-YD-9rH"/>
                                     <constraint firstAttribute="height" constant="68" id="pH8-eb-2w6"/>
                                     <constraint firstItem="qQl-Xf-9V0" firstAttribute="centerX" secondItem="Q2h-9b-zSB" secondAttribute="centerX" id="ygJ-OL-l5l"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="C9m-2O-c6C"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT8-yM-bCb" customClass="MapView" customModule="Mybousainote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="600" height="117"/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NT8-yM-bCb" secondAttribute="height" multiplier="375:314" id="0C9-nR-fAz"/>
-                                    <constraint firstAttribute="width" secondItem="NT8-yM-bCb" secondAttribute="height" multiplier="375:314" id="2JQ-Sx-Y94"/>
-                                    <constraint firstAttribute="height" constant="469" id="2PN-C1-vN7"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="0C9-nR-fAz"/>
-                                        <exclude reference="2JQ-Sx-Y94"/>
-                                        <exclude reference="2PN-C1-vN7"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -282,8 +297,10 @@
                             <constraint firstAttribute="trailing" secondItem="NT8-yM-bCb" secondAttribute="trailing" id="Tkn-8s-qp5"/>
                             <constraint firstItem="Q2h-9b-zSB" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="WIg-T9-5zH"/>
                             <constraint firstItem="NT8-yM-bCb" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="b4Q-kr-Q62"/>
+                            <constraint firstItem="Av6-Tz-6uu" firstAttribute="centerX" secondItem="NT8-yM-bCb" secondAttribute="centerX" id="daL-TK-mpP"/>
                             <constraint firstItem="NT8-yM-bCb" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="exp-oA-wWW"/>
                             <constraint firstAttribute="trailing" secondItem="L3i-VN-H80" secondAttribute="trailing" id="hRG-eI-6uU"/>
+                            <constraint firstItem="Av6-Tz-6uu" firstAttribute="centerY" secondItem="NT8-yM-bCb" secondAttribute="centerY" id="jMX-nP-fLE"/>
                             <constraint firstItem="eW0-0U-XyM" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="ocw-PF-F4o"/>
                             <constraint firstItem="NT8-yM-bCb" firstAttribute="width" secondItem="Q2h-9b-zSB" secondAttribute="width" id="pmG-7r-A47"/>
                             <constraint firstItem="NT8-yM-bCb" firstAttribute="leading" secondItem="acb-Xa-Jhf" secondAttribute="leading" id="rDh-Lg-71q"/>
@@ -323,6 +340,7 @@
     </scenes>
     <resources>
         <image name="back.png" width="35" height="60"/>
+        <image name="center.png" width="40" height="40"/>
         <image name="tabicon_earthquake.png" width="119" height="100"/>
         <image name="tabicon_facility.png" width="120" height="110"/>
         <image name="tabicon_flood.png" width="95" height="90"/>

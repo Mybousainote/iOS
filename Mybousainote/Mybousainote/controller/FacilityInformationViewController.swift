@@ -12,8 +12,6 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
     
     @IBOutlet weak var mapView: FacilityMapView!
     
-    @IBOutlet weak var testText: UITextView!
-    
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var DIManager: DisasterInformationManager!
     var directionAPIManager: DirectionAPIManager!
@@ -21,6 +19,15 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
     //ストリートビュー
     @IBOutlet weak var streetView: StreetView!
     
+    @IBOutlet weak var navigationTitle: UILabel!
+    @IBOutlet weak var facilityName: UILabel!
+    @IBOutlet weak var addressHead: UILabel!
+    @IBOutlet weak var typeHead: UILabel!
+    @IBOutlet weak var capacityHead: UILabel!
+    
+    @IBOutlet weak var addressValue: UILabel!
+    @IBOutlet weak var typeValue: UILabel!
+    @IBOutlet weak var capacityValue: UILabel!
     
     //ルート格納用配列
     var routePoints: NSMutableArray!
@@ -35,6 +42,10 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
 
         //地図のカメラをセット
         mapView.setCameraLocation(appDelegate.global.centerLat, lng: appDelegate.global.centerLng)
+        //地図の枠
+        mapView.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).CGColor
+        mapView.layer.borderWidth = 2.0
+        mapView.layer.cornerRadius = 2.0
         
         
         //デリゲート設定
@@ -46,15 +57,38 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
         directionAPIManager.delegate = self
         
         //避難施設のIDを取得
-        let id = appDelegate.global.selectedFacilityId as! Int
+        let id = appDelegate.global.selectedFacilityId as Int
         
         //IDから情報を取得
         DIManager.getFacilityDataFromId(id)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         trackingScreen()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        stylingFont()
+    }
+    
+    func stylingFont() {
+        navigationTitle.font = UIFont.boldSystemFontOfSize(17)
+        
+        stylingTableText(facilityName, size: 15)
+        
+        stylingTableText(addressHead, size: 12)
+        stylingTableText(typeHead, size: 12)
+        stylingTableText(capacityHead, size: 12)
+        
+        stylingTableText(addressValue, size: 12)
+        stylingTableText(typeValue, size: 12)
+        stylingTableText(capacityValue, size: 12)
+    }
+    
+    func stylingTableText(label: UILabel, size: CGFloat) {
+        label.font = UIFont.boldSystemFontOfSize(size)
+        label.numberOfLines = 0
+        label.sizeToFit()
     }
     
     
@@ -68,8 +102,6 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
     
     //避難施設情報を取得したときに呼ばれる
     func didGetFacilityDataFromId(facility: AnyObject) {
-        print(facility)
-        
         let lat = Double(facility["lat"] as! String)
         let lng = Double(facility["lng"] as! String)
         
@@ -84,10 +116,22 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
         let address = facility["address"] as! String
         let facilityType = facility["facilityType"] as! String
         let seatingCapacity = facility["seatingCapacity"] as! String
-        let facilityScale = facility["facilityScale"] as! String
+//        let facilityScale = facility["facilityScale"] as! String
         
-        testText.text = name+"\n"+address+"\n"+facilityType+"\n"+seatingCapacity+"\n"+facilityScale
-        print(name+"\n"+address+"\n"+facilityType+"\n"+seatingCapacity+"\n"+facilityScale)
+        //ラベルをセットする
+        navigationTitle.text = name
+        navigationTitle.adjustsFontSizeToFitWidth = true
+        
+        setTableText(facilityName, text: name)
+        setTableText(addressValue, text: address)
+        setTableText(typeValue, text: facilityType)
+        setTableText(capacityValue, text: seatingCapacity+"人")
+    }
+    
+    func setTableText(label: UILabel, text: String) {
+        label.text = text
+        label.numberOfLines = 0
+        label.sizeToFit()
     }
     
     //経路を取得する

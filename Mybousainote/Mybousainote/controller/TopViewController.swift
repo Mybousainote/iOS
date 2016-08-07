@@ -240,11 +240,12 @@ class TopViewController: UIViewController {
         //        let bgImageURL = NSURL(string: "https://www.pakutaso.com/shared/img/thumb/KAZ_hugyftdrftyg_TP_V.jpg")!
         //        let bgImage = UIImage(data: NSData(contentsOfURL: bgImageURL)!)
         
+        let image = UIImage(named: "information_view2.png")!
         
         let content1 = OnboardingContentViewController(
-            title: "Title1",
-            body: "Body1",
-            image: nil,
+            title: "",
+            body: "",
+            image: image,
             buttonText: "アンケートのお願い",
             action: {
                 print("アンケート画面を表示")
@@ -257,8 +258,8 @@ class TopViewController: UIViewController {
             }
         )
         let content2 = OnboardingContentViewController(
-            title: "Title2",
-            body: "Body2",
+            title: "",
+            body: "",
             image: nil,
             buttonText: "",
             action: nil

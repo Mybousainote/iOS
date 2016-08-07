@@ -60,7 +60,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         //ヘッダーの地名をセット
         cityNameLabel.text = livingAreaObject["cityName"] as? String
-        cityNameLabel.font = UIFont.boldSystemFontOfSize(16)
+        cityNameLabel.font = UIFont.boldSystemFontOfSize(17)
         
         //地図のカメラをセット
         mapView.setCameraLocation(livingAreaObject["lat"] as! Double, lng: livingAreaObject["lng"] as! Double)
