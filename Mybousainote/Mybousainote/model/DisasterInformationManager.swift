@@ -16,6 +16,7 @@ import AFNetworking
     optional func didGetFloodsData(floods: [AnyObject])
     optional func didGetWaterDepth(waterDepth: String)
     optional func didGetSedimentsData(sediments: [AnyObject])
+    optional func didGetSedimentType(sedimentType: String)
 }
 
 class DisasterInformationManager: NSObject {
@@ -230,6 +231,42 @@ class DisasterInformationManager: NSObject {
         )
     }
     
+    
+    //中心点の土砂災害の種別を取得
+    func getSedimentType(lat: Double, lng: Double) {
+        print("中心点の土砂災害の種別を取得")
+        //リクエスト
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        
+        let serializer:AFHTTPResponseSerializer = AFHTTPResponseSerializer()
+        manager.responseSerializer = serializer
+        
+        let url = "http://taigasano.com/mybousainote/api/sediments/get-sedimenttype.php?lat=\(lat)&lng=\(lng)"
+        
+        print(url)
+        let encodeURL: String! = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        manager.GET(encodeURL, parameters: nil,
+                    success: {(operation: AFHTTPRequestOperation!, responsobject: AnyObject!) in
+                        print("取得に成功")
+                        
+                        let json = (try? NSJSONSerialization.JSONObjectWithData(responsobject as! NSData, options: .MutableContainers))
+                        
+                        //デリゲートメソッドを呼ぶ
+                        if json != nil {
+                            //値を取得
+                            let type = json!["type"] as! String
+                            self.delegate.didGetSedimentType!(type)
+                        }
+                        
+            },
+                    failure: {(operation: AFHTTPRequestOperation?, error: NSError!) in
+                        print("エラー！")
+                        print(operation?.responseObject)
+                        print(operation?.responseString)
+            }
+        )
+    }
     
     
     

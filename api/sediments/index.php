@@ -16,7 +16,7 @@ $half = $rectSize/2;
 $containRect = "GeomFromText('Polygon((".(string)($lat-$half)." ".(string)($lng-$half).",".(string)($lat+$half)." ".(string)($lng-$half).",".(string)($lat+$half)." ".(string)($lng+$half).",".(string)($lat-$half)." ".(string)($lng+$half).",".(string)($lat-$half)." ".(string)($lng-$half)."))')";
 
 // echo $containRect;
-$query = "SELECT id, prefectures, AsText(posList) as posList, waterDepth FROM MyBS_FLOODS WHERE MBRContains(".$containRect.", posList)";
+$query = "SELECT id, prefectures, AsText(posList) as posList, type, vigilanceDivision FROM MyBS_SEDIMENTS WHERE MBRContains(".$containRect.", posList)";
 
 $result = mysql_query($query) or die(mysql_error());
 
@@ -29,7 +29,8 @@ while ($row = mysql_fetch_assoc($result)) {
     	"id" => $row["id"],
         "prefectures" => $row["prefectures"],
         "posList" => $row["posList"],
-        "waterDepth" => $row["waterDepth"]
+        "type" => $row["type"],
+        "vigilanceDivision" => $row["vigilanceDivision"]
     	);
     array_push($responseArray, $responseRowArray);
 }

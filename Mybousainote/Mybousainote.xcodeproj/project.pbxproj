@@ -42,6 +42,7 @@
 		7887EB891D18F4010019BC8E /* FloodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887EB881D18F4010019BC8E /* FloodsView.swift */; };
 		78A2C0D31D56CE7600B6ABE8 /* classification.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D21D56CE7600B6ABE8 /* classification.png */; };
 		78A2C0D51D5700A700B6ABE8 /* classification_sediment.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */; };
+		78A2C0D71D570DA300B6ABE8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D61D570DA300B6ABE8 /* back.png */; };
 		78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */; };
 		78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B2F1CBA3F3500371566 /* TopViewController.swift */; };
 		78C47B321CBA3F4E00371566 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B311CBA3F4E00371566 /* TutorialViewController.swift */; };
@@ -121,6 +122,7 @@
 		7887EB881D18F4010019BC8E /* FloodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloodsView.swift; path = view/FloodsView.swift; sourceTree = "<group>"; };
 		78A2C0D21D56CE7600B6ABE8 /* classification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classification.png; sourceTree = "<group>"; };
 		78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classification_sediment.png; sourceTree = "<group>"; };
+		78A2C0D61D570DA300B6ABE8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterInformationManager.swift; path = model/DisasterInformationManager.swift; sourceTree = "<group>"; };
 		78C47B2A1CBA3DF900371566 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		78C47B2F1CBA3F3500371566 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopViewController.swift; path = controller/TopViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		7821024B1D0509FC00C61152 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				78A2C0D61D570DA300B6ABE8 /* back.png */,
 				78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */,
 				78A2C0D21D56CE7600B6ABE8 /* classification.png */,
 				7841DF561D49F62100500593 /* tabicon_earthquake.png */,
@@ -465,6 +468,7 @@
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
 				784DBD6A1D33544800D5C6AA /* FloodsView.xib in Resources */,
 				78EDFD1D1D11349C00CE4E33 /* test.xib in Resources */,
+				78A2C0D71D570DA300B6ABE8 /* back.png in Resources */,
 				784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */,

@@ -60,6 +60,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         
         //ヘッダーの地名をセット
         cityNameLabel.text = livingAreaObject["cityName"] as? String
+        cityNameLabel.font = UIFont.boldSystemFontOfSize(16)
         
         //地図のカメラをセット
         mapView.setCameraLocation(livingAreaObject["lat"] as! Double, lng: livingAreaObject["lng"] as! Double)
@@ -72,6 +73,11 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         stylingTabButtonAlpha(facilityIcon)
     }
     
+    //ステータスバーを白くする
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewWillAppear(animated: Bool) {
         trackingScreen()
     }
@@ -82,6 +88,10 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
+    
+    
+    
+    
     
     //地図の移動が終わったときに呼ばれる
     func didFinishChangeCameraPosition() {
@@ -110,6 +120,9 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
             break
         case "floods":
             getWaterDepth() //浸水深の取得
+            break
+        case "sediments":
+            getSedimentType() //土砂災害の種別の取得
             break
         default:
             break
@@ -399,7 +412,15 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         appDelegate.global.removeLoadingView() //ローディング画面を削除
     }
     
+    //中心点の土砂災害の種別を取得
+    func getSedimentType() {
+        DIManager.getSedimentType(mapView.centerLat, lng: mapView.centerLng)
+    }
     
+    //中心点の土砂災害の種別を取得したときに呼ばれる
+    func didGetSedimentType(sedimentType: String) {
+        sedimentsView.setInformation(sedimentType)
+    }
     
     
     

@@ -39,6 +39,7 @@ class FloodsView: UIView {
         title2.font = UIFont.boldSystemFontOfSize(25)
         m.font = UIFont.boldSystemFontOfSize(15)
         caption.font = UIFont.boldSystemFontOfSize(12)
+        depthNum.font = UIFont.boldSystemFontOfSize(22)
         
         if self.frame.width == 320 {
             sideView.translatesAutoresizingMaskIntoConstraints = true

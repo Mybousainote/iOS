@@ -31,20 +31,20 @@ class SedimentsView: UIView {
         type3.font = UIFont.boldSystemFontOfSize(22)
     }
     
-    func setInformation(num: String) {
+    func setInformation(typeNum: String) {
         type1.textColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
          type2.textColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
          type3.textColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
         
-        switch num {
+        switch typeNum {
         case "1":
-            type1.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+            type1.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             break
         case "2":
-            type2.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+            type2.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             break
         case "3":
-            type3.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+            type3.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             break
         default:
             break

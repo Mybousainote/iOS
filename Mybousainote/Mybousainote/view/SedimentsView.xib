@@ -135,8 +135,8 @@
             </constraints>
             <connections>
                 <outlet property="title" destination="jvR-8V-eR3" id="Hk5-RW-DrV"/>
-                <outlet property="type1" destination="CIV-ir-Xph" id="0q5-Py-Nsx"/>
-                <outlet property="type2" destination="rFz-zn-5pJ" id="7qj-O7-YuU"/>
+                <outlet property="type1" destination="rFz-zn-5pJ" id="nJI-Mk-qC4"/>
+                <outlet property="type2" destination="CIV-ir-Xph" id="Hg4-op-bg5"/>
                 <outlet property="type3" destination="4cv-yS-g8i" id="XZ9-Ep-waA"/>
             </connections>
             <point key="canvasLocation" x="525" y="388"/>

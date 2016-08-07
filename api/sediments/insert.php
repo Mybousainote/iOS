@@ -2,10 +2,10 @@
 
 header("Content-Type: text/html; charset=UTF-8");
 
-// require_once('../config.php');
-// $con = mysql_connect(server, user, pass) or die(mysql_error());
-// mysql_select_db(myDatabase, $con) or die(mysql_error());
-// mysql_query('set names utf8',$con);
+require_once('../config.php');
+$con = mysql_connect(server, user, pass) or die(mysql_error());
+mysql_select_db(myDatabase, $con) or die(mysql_error());
+mysql_query('set names utf8',$con);
 
 for ($num=14; $num < 15; $num++) {
 
@@ -89,14 +89,13 @@ for ($num=14; $num < 15; $num++) {
 				)";
 
 				echo $query;
-				// mysql_query($query) or die(mysql_error());	
+				mysql_query($query) or die(mysql_error());	
 			}
 		}		
 	}
-
 }
 
-// echo "完了！";
+echo "完了！";
 
 
  ?>

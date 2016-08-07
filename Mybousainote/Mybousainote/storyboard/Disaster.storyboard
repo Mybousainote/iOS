@@ -26,9 +26,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2h-9b-zSB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
-                                        <rect key="frame" x="20" y="24" width="30" height="30"/>
-                                        <state key="normal" title="戻る"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-H6-XHh">
+                                        <rect key="frame" x="13" y="29" width="17" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="6hU-4g-T1H"/>
+                                            <constraint firstAttribute="width" constant="17" id="c91-eC-3n0"/>
+                                        </constraints>
+                                        <state key="normal" image="back.png"/>
                                         <connections>
                                             <action selector="touchedBackButton:" destination="kyp-NG-6l6" eventType="touchUpInside" id="ugp-xp-PSo"/>
                                         </connections>
@@ -44,8 +48,8 @@
                                 <constraints>
                                     <constraint firstItem="gpe-H6-XHh" firstAttribute="top" secondItem="Q2h-9b-zSB" secondAttribute="top" constant="19" id="C9m-2O-c6C"/>
                                     <constraint firstAttribute="bottom" secondItem="qQl-Xf-9V0" secondAttribute="bottom" constant="14" id="Lo4-8x-TPK"/>
-                                    <constraint firstAttribute="bottom" secondItem="gpe-H6-XHh" secondAttribute="bottom" constant="14" id="chA-Uo-ACQ"/>
-                                    <constraint firstItem="gpe-H6-XHh" firstAttribute="leading" secondItem="Q2h-9b-zSB" secondAttribute="leading" constant="20" id="lBv-YD-9rH"/>
+                                    <constraint firstAttribute="bottom" secondItem="gpe-H6-XHh" secondAttribute="bottom" constant="9" id="chA-Uo-ACQ"/>
+                                    <constraint firstItem="gpe-H6-XHh" firstAttribute="leading" secondItem="Q2h-9b-zSB" secondAttribute="leading" constant="13" id="lBv-YD-9rH"/>
                                     <constraint firstAttribute="height" constant="68" id="pH8-eb-2w6"/>
                                     <constraint firstItem="qQl-Xf-9V0" firstAttribute="centerX" secondItem="Q2h-9b-zSB" secondAttribute="centerX" id="ygJ-OL-l5l"/>
                                 </constraints>
@@ -318,6 +322,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back.png" width="35" height="60"/>
         <image name="tabicon_earthquake.png" width="119" height="100"/>
         <image name="tabicon_facility.png" width="120" height="110"/>
         <image name="tabicon_flood.png" width="95" height="90"/>

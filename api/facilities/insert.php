@@ -24,51 +24,53 @@ for ($num=1; $num < 48; $num++) {
 	$xml = simplexml_load_file($rss);
 	$data = get_object_vars($xml);
 
-	// for ($i=0; $i < count($data["Point"]); $i++) { 
-	// 	echo "<br>";
-	// 	echo "<br>";
+	for ($i=0; $i < count($data["Point"]); $i++) { 
+		// echo "<br>";
+		// echo "<br>";
 
-	// 	$evacuationFacilities = $data["EvacuationFacilities"];
-	// 	$point = $data["Point"];
+		$evacuationFacilities = $data["EvacuationFacilities"];
+		$point = $data["Point"];
 
-	// 	// echo $evacuationFacilities[$i]->name;
-	// 	// echo $evacuationFacilities[$i]->address;
-	// 	// echo $point[$i]->pos;
+		// echo $evacuationFacilities[$i]->name;
+		// echo $evacuationFacilities[$i]->address;
+		// echo $point[$i]->pos;
 
 
-	// 	$position = explode(" ", $point[$i]->pos);
-	// 	$basic = $evacuationFacilities[$i];
-	// 	$hazardClassification = $evacuationFacilities[$i]->hazardClassification->Classification;
+		$position = explode(" ", $point[$i]->pos);
+		$basic = $evacuationFacilities[$i];
+		$hazardClassification = $evacuationFacilities[$i]->hazardClassification->Classification;
 
-	// 	$query = "INSERT INTO MyBS_FACILITIES(
-	// 	position,
-	// 	name,
-	// 	address,
-	// 	facilityType,
-	// 	seatingCapacity,
-	// 	facilityScale,
-	// 	earthquakeHazard,
-	// 	tsunamiHazard,
-	// 	windAndFloodDamage,
-	// 	volcanicHazard,
-	// 	other
-	// 	) VALUES(
-	// 	GeomFromText('POINT(".$position[0]." ".$position[1].")'),
-	// 	'".$basic->name."',
-	// 	'".$basic->address."',
-	// 	'".$basic->facilityType."',
-	// 	".$basic->seatingCapacity.",
-	// 	".$basic->facilityScale.",
-	// 	'".$hazardClassification->earthquakeHazard."',
-	// 	'".$hazardClassification->tsunamiHazard."',
-	// 	'".$hazardClassification->windAndFloodDamage."',
-	// 	'".$hazardClassification->volcanicHazard."',
-	// 	'".$hazardClassification->other."'
-	// 	)";
+		$query = "INSERT INTO MyBS_FACILITIES(
+		position,
+		name,
+		address,
+		facilityType,
+		seatingCapacity,
+		facilityScale,
+		earthquakeHazard,
+		tsunamiHazard,
+		windAndFloodDamage,
+		volcanicHazard,
+		other
+		) VALUES(
+		GeomFromText('POINT(".$position[0]." ".$position[1].")'),
+		'".$basic->name."',
+		'".$basic->address."',
+		'".$basic->facilityType."',
+		".$basic->seatingCapacity.",
+		".$basic->facilityScale.",
+		'".$hazardClassification->earthquakeHazard."',
+		'".$hazardClassification->tsunamiHazard."',
+		'".$hazardClassification->windAndFloodDamage."',
+		'".$hazardClassification->volcanicHazard."',
+		'".$hazardClassification->other."'
+		)";
 
-	// 	echo $query;
-	// 	mysql_query($query) or die(mysql_error());
-	// }
+		// echo $query;
+
+		//DBに挿入
+		// mysql_query($query) or die(mysql_error());
+	}
 
 }
 
