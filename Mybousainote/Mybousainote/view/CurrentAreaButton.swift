@@ -11,6 +11,7 @@ import UIKit
 class CurrentAreaButton: UIButton {
 
     @IBOutlet weak var streetView: UIImageView!
+    @IBOutlet weak var currentPosition: UILabel!
     
     //コードから初期化
     override init(frame: CGRect) {
@@ -35,8 +36,11 @@ class CurrentAreaButton: UIButton {
         self.clipsToBounds = true
     }
     
+    func setLocationName() {
+        currentPosition.font = UIFont.boldSystemFontOfSize(18)
+    }
+    
     func setStreetViewImage(lat: Double, lng: Double, width: CGFloat, height: CGFloat) {
-        
         let apiKey = "AIzaSyCslSIWQG0dnhS8BaeCIQyUxttCliecBdA"
         let heading = arc4random_uniform(360)
         let urlString = "http://maps.googleapis.com/maps/api/streetview?size=\(Int(width*2))x\(Int(height*2))&location=\(lat),\(lng)&heading=\(heading)&pitch=-0.76&sensor=true&fov=90&key=\(apiKey)"

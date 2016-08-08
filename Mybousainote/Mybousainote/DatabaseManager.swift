@@ -9,12 +9,24 @@
 import UIKit
 import RealmSwift
 
+//一時的に緯度経度だけ保存しておくテーブル
 class Location_Table: Object {
     dynamic var createdDate: NSDate = NSDate()
     dynamic var lat: Double = 0
     dynamic var lng: Double = 0
 }
 
+//緯度経度を地名と合わせた一定期間保存しておくテーブル
+class CityName_Table: Object {
+    dynamic var createdDate: NSDate = NSDate()
+    dynamic var lat: Double = 0
+    dynamic var lng: Double = 0
+    dynamic var locality: String = ""
+    dynamic var subLocality: String = ""
+    dynamic var cityName: String = ""
+}
+
+//各地域の滞在頻度のテーブル
 class CityFrequency_Table: Object {
     dynamic var cityName: String = ""
     dynamic var locality: String = ""
@@ -25,7 +37,7 @@ class CityFrequency_Table: Object {
 }
 
 protocol DatabaseManagerDelegate {
-    func didGettedData(data: NSString)
+    func didRefreshData()
 }
 
 class DatabaseManager: NSObject {
@@ -36,6 +48,7 @@ class DatabaseManager: NSObject {
     override init() {
         super.init()
         showTableContent(Location_Table)
+        showTableContent(CityName_Table)
         showTableContent(CityFrequency_Table)
     }
     
@@ -73,7 +86,7 @@ class DatabaseManager: NSObject {
         myLocations.lat = lat
         myLocations.lng = lng
         
-//        print("【更新】緯度：\(lat) 経度：\(lng) 時間：\(myLocations.createdDate)")
+        print("現在地データ追加　緯度：\(lat) 経度：\(lng)")
         
         let myRealm = try! Realm()
         try! myRealm.write {
@@ -82,24 +95,22 @@ class DatabaseManager: NSObject {
     }
     
     //一定期間より古い位置情報履歴を削除する
-    func deleteOldDataFromLocationTable() {
+    func deleteOldDataFromCityNameTable() {
         print("古い履歴を削除")
         let myRealm = try! Realm()
         
         let pastDate = NSDate(timeInterval: -60*60*24*(Config().timeIntervalHoldData), sinceDate: NSDate())
-        let rows = myRealm.objects(Location_Table).filter("createdDate <= %@", pastDate)
+        let rows = myRealm.objects(CityName_Table).filter("createdDate <= %@", pastDate)
     
         try! myRealm.write {
             myRealm.delete(rows)
         }
     }
     
-    //頻度を更新する
-    func refreshCityFrequency() {
-        print("頻度を更新")
-        //既存のテーブルを削除
-        deleteTable(CityFrequency_Table)
-        
+    
+    
+    //緯度経度データに地名を付与して別テーブルに保存
+    func addCityName() {
         //位置情報履歴を取得
         let myRealm = try! Realm()
         let rows = myRealm.objects(Location_Table)
@@ -109,11 +120,69 @@ class DatabaseManager: NSObject {
             let lng = row.lng
             appDelegate.LManager.revGeocoding(lat, lng: lng)
         }
+        //中身を削除
+        deleteTable(Location_Table)
     }
     
-    //変換された地名と頻度をテーブルに保存
-    func insertFrequencyTable(cityName: String, locality: String, subLocality: String, lat: Double, lng: Double) {
+    
+    var timer: NSTimer!
+    
+    //地名を取得したとき、テーブルに保存する
+    func insertCityNameTable(cityName: String, locality: String, subLocality: String, lat: Double, lng: Double) {
+        let cityNames = CityName_Table()
+    
+        cityNames.createdDate = NSDate()
+        cityNames.lat = lat
+        cityNames.lng = lng
+        cityNames.locality = locality
+        cityNames.subLocality = subLocality
+        cityNames.cityName = cityName
         
+        let myRealm = try! Realm()
+        try! myRealm.write {
+            myRealm.add(cityNames)
+        }
+        
+        if timer != nil {
+            timer.invalidate()
+        }
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "finishInsertCityName", userInfo: nil, repeats: false)
+    }
+    
+    //地名取得＆保存完了
+    func finishInsertCityName() {
+        //古いデータを削除
+        deleteOldDataFromCityNameTable()
+        //頻度を更新
+        refreshCityFrequency()
+    }
+    
+    //頻度を更新する
+    func refreshCityFrequency() {
+        print("頻度を更新")
+        
+        //既存のテーブルを削除
+        deleteTable(CityFrequency_Table)
+        
+        //位置情報履歴を取得
+        let myRealm = try! Realm()
+        let rows = myRealm.objects(CityName_Table)
+        
+        for row in rows {
+            let lat = row.lat
+            let lng = row.lng
+            let cityName = row.cityName
+            let locality = row.locality
+            let subLocality = row.subLocality
+            
+            insertFrequencyTable(cityName, locality: locality, subLocality: subLocality, lat: lat, lng: lng)
+        }
+        //デリゲート
+        delegate.didRefreshData()
+    }
+    
+    //地名と頻度をテーブルに保存
+    func insertFrequencyTable(cityName: String, locality: String, subLocality: String, lat: Double, lng: Double) {
         let myRealm = try! Realm()
         
         //指定した地名がある場合は頻度を取り出す
@@ -142,7 +211,7 @@ class DatabaseManager: NSObject {
         try! myRealm.write {
             myRealm.add(myFrequencies)
         }
-        print("【保存】地名：\(cityName) 頻度：\(frequency)")
+//        print("【保存】地名：\(cityName) 頻度：\(frequency)")
     }
     
     //上位4つの地域の情報を取得
@@ -156,7 +225,7 @@ class DatabaseManager: NSObject {
         for row in tableContents {
             let livingArea = [
                 "cityName": row.cityName,
-                "sublocality": row.subLocality,
+                "subLocality": row.subLocality,
                 "lat": row.lat,
                 "lng": row.lng,
             ]

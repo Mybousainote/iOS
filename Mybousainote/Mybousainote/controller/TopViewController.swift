@@ -9,7 +9,7 @@
 import UIKit
 import Onboard
 
-class TopViewController: UIViewController {
+class TopViewController: UIViewController, DatabaseManagerDelegate, LocationManagerDelegate {
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let ud = NSUserDefaults.standardUserDefaults()
     
@@ -23,11 +23,20 @@ class TopViewController: UIViewController {
     @IBOutlet weak var livingAreaView3: UIView!
     @IBOutlet weak var livingAreaView4: UIView!
     
+    var isFirstUpdatingLocation: Bool = true
+    
+    
     //アナリティクスのトラッカー
     let tracker = GAI.sharedInstance().defaultTracker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate.LManager.delegate = self
+        
+        //データベースを更新する
+        appDelegate.DBManager.delegate = self
+        appDelegate.DBManager.addCityName()
         
         //初回画面からの画面遷移の判定用
         appDelegate.LManager.isTopView = true
@@ -50,11 +59,34 @@ class TopViewController: UIViewController {
 //        setLivingAreaButtons()
     }
     override func viewDidAppear(animated: Bool) {
+        setUI()
+        trackingScreen()
+    }
+    
+    func setUI() {
+        removeAllSubviews(currentAreaView)
+        removeAllSubviews(livingAreaView1)
+        removeAllSubviews(livingAreaView2)
+        removeAllSubviews(livingAreaView3)
+        removeAllSubviews(livingAreaView4)
+        
         setLivingAreaBg()
         setCurrentAreaButton()
         setLivingAreaButtons()
-        
-        trackingScreen()
+    }
+    
+    //位置情報を取得した時よばれる
+    func didUpdatingLocation() {
+        if isFirstUpdatingLocation == true {
+            //現在地ボタンをセット
+            setCurrentAreaButton()
+            isFirstUpdatingLocation = false
+            
+            let livingAreaObjects0 = appDelegate.DBManager.getFourLivingArea()
+            if livingAreaObjects0.count == 0 {
+                appDelegate.DBManager.addCityName()
+            }
+        }
     }
     
     //スクリーンをトラッキング
@@ -64,21 +96,38 @@ class TopViewController: UIViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
+    //頻度の更新が終わったときに呼ばれる
+    func didRefreshData() {
+        print("UIをリセット")
+        setUI()
+    }
+    
+    func removeAllSubviews(parentView: UIView){
+        var subviews = parentView.subviews
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+    }
+    
     //各ボタンの背景を作成
     func setLivingAreaBg() {
-        var livingAreaBg = UIView()
-        livingAreaBg.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
-        livingAreaBg = stylingAreaBg(livingAreaBg)
-        
-        livingAreaView1.addSubview(livingAreaBg)
-        livingAreaView2.addSubview(livingAreaBg)
-        livingAreaView3.addSubview(livingAreaBg)
-        livingAreaView4.addSubview(livingAreaBg)
+        livingAreaView1.addSubview(getLivingAreaBg())
+        livingAreaView2.addSubview(getLivingAreaBg())
+        livingAreaView3.addSubview(getLivingAreaBg())
+        livingAreaView4.addSubview(getLivingAreaBg())
         
         var currentAreaBg = UIView()
         currentAreaBg.frame = CGRectMake(0, 0, currentAreaView.frame.width, currentAreaView.frame.height)
         currentAreaBg = stylingAreaBg(currentAreaBg)
         currentAreaView.addSubview(currentAreaBg)
+    }
+    
+    func getLivingAreaBg() -> UIView {
+        var livingAreaBg = UIView()
+        livingAreaBg.frame = CGRectMake(0, 0, livingAreaView1.frame.width, livingAreaView1.frame.height)
+        livingAreaBg = stylingAreaBg(livingAreaBg)
+        
+        return livingAreaBg
     }
     
     func stylingAreaBg(view: UIView) -> UIView {
@@ -108,6 +157,7 @@ class TopViewController: UIViewController {
     func setCurrentAreaButton() {
         let currentAreaButton = CurrentAreaButton.instance()
         currentAreaButton.tag = 0
+        currentAreaButton.setLocationName()
         currentAreaButton.setStreetViewImage(appDelegate.LManager.lat, lng: appDelegate.LManager.lng, width: currentAreaView.frame.width, height: currentAreaView.frame.height-(20+7*2))
         currentAreaButton.frame = CGRectMake(0, 0, currentAreaView.frame.width, currentAreaView.frame.height)
         currentAreaView.addSubview(currentAreaButton)
@@ -119,7 +169,6 @@ class TopViewController: UIViewController {
     func setLivingAreaButtons() {
         //DBから生活圏上位4つを取得
         livingAreaObjects = appDelegate.DBManager.getFourLivingArea()
-        
         var num = 0
         
         for livingAreaObject in livingAreaObjects {
@@ -235,7 +284,6 @@ class TopViewController: UIViewController {
         showInformationView()
     }
     
-    
     func showInformationView() {
         //        let bgImageURL = NSURL(string: "https://www.pakutaso.com/shared/img/thumb/KAZ_hugyftdrftyg_TP_V.jpg")!
         //        let bgImage = UIImage(data: NSData(contentsOfURL: bgImageURL)!)
@@ -260,8 +308,8 @@ class TopViewController: UIViewController {
         let content2 = OnboardingContentViewController(
             title: "",
             body: "",
-            image: nil,
-            buttonText: "",
+            image: image,
+            buttonText: nil,
             action: nil
         )
         

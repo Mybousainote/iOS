@@ -18,6 +18,9 @@ public class Config {
     //位置情報履歴を保存する期間（日）
     let timeIntervalHoldData: Double = 30
     
+    //アプリ起動時に位置情報を取得するインターバル（秒）
+    let timeIntervalUpdatingLocation: NSTimeInterval = 60
+    
     //避難施設を取得する中心点からの範囲（m）
     let BoundForGetFacilities: Int = 3000
     
@@ -28,7 +31,7 @@ public class Config {
     let thresholdShowMarkerZoomLevel: Float = 12
     
     //仮想ペルソナの生活圏を表示するか否か
-    let isVirtualPersona: Bool = true
+    let isVirtualPersona: Bool = false
     
     //仮想ペルソナの生活圏
     let virtualLivingArea: [AnyObject] = [
@@ -49,13 +52,13 @@ public class Config {
             "subLocality": "鎌倉山",
             "lat": 35.318271,
             "lng": 139.514939
+        ],
+        [
+            "cityName": "鎌倉市小町", //スポーツクラブ
+            "subLocality": "小町",
+            "lat": 35.318734,
+            "lng": 139.552864
         ]
-//        [
-//            "cityName": "鎌倉市小町", //スポーツクラブ
-//            "subLocality": "小町",
-//            "lat": 35.318734,
-//            "lng": 139.552864
-//        ]
     ]
     
     //各浸水深の値

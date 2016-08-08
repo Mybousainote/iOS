@@ -28,7 +28,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>防災情報をカスタマイズするために位置情報を利用します。</string>
+	<string>防災情報をカスタマイズするために位置情報を利用します。（バッテリーの消費量を抑える設計にしています。）</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

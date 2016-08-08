@@ -34,11 +34,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myd-qM-fwZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-D0-34t">
-                                        <rect key="frame" x="13" y="31" width="16" height="28"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-D0-34t">
+                                        <rect key="frame" x="7" y="30" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="8Ek-Xe-ftu"/>
-                                            <constraint firstAttribute="width" constant="16" id="gTn-iU-mK2"/>
+                                            <constraint firstAttribute="width" constant="28" id="gTn-iU-mK2"/>
                                         </constraints>
                                         <state key="normal" image="back.png"/>
                                         <connections>
@@ -69,7 +69,7 @@
                                     <constraint firstAttribute="bottom" secondItem="0gd-D0-34t" secondAttribute="bottom" constant="9" id="bLF-Pu-gEw"/>
                                     <constraint firstItem="0gd-D0-34t" firstAttribute="leading" secondItem="myd-qM-fwZ" secondAttribute="leading" constant="13" id="jkD-bb-WRv"/>
                                     <constraint firstAttribute="trailing" secondItem="CjC-kk-mRS" secondAttribute="trailing" constant="50" id="trX-Fj-afv"/>
-                                    <constraint firstItem="0gd-D0-34t" firstAttribute="leading" secondItem="myd-qM-fwZ" secondAttribute="leading" constant="14" id="vFp-fz-nx1"/>
+                                    <constraint firstItem="0gd-D0-34t" firstAttribute="leading" secondItem="myd-qM-fwZ" secondAttribute="leading" constant="7" id="vFp-fz-nx1"/>
                                     <constraint firstAttribute="bottom" secondItem="0gd-D0-34t" secondAttribute="bottom" constant="10" id="vI0-Ip-uZs"/>
                                 </constraints>
                                 <variation key="default">
@@ -358,6 +358,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back.png" width="35" height="60"/>
+        <image name="back.png" width="60" height="60"/>
     </resources>
 </document>

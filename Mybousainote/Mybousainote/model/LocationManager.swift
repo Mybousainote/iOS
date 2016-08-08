@@ -9,9 +9,10 @@
 import UIKit
 import CoreLocation
 
-protocol LocationManagerDelegate {
-    func DeniedAuthorization()
-    func acceptAuthorization()
+@objc protocol LocationManagerDelegate {
+    optional func DeniedAuthorization()
+    optional func acceptAuthorization()
+    optional func didUpdatingLocation()
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -26,6 +27,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     //位置情報許可時の画面遷移の判定用
     var isTopView: Bool = false
+    
+    //
+    var canInsertData: Bool = true
     
     override init() {
         locationManager = CLLocationManager()
@@ -75,7 +79,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             ud.synchronize()
             
             if  isTopView == false {
-                self.delegate.DeniedAuthorization()
+                self.delegate.DeniedAuthorization!()
             }
             
         case .AuthorizedAlways:
@@ -84,7 +88,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             ud.synchronize()
             
             if isTopView == false {
-                self.delegate.acceptAuthorization()
+                self.delegate.acceptAuthorization!()
             }
             
         case .AuthorizedWhenInUse:
@@ -102,19 +106,35 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 lng = (currentLocation?.coordinate.longitude)!
 //                print("緯度:\(lat) 経度:\(lng)")
                 
-                //テスト用
-                //渋谷
-//                lat = 35.659500
-//                lng = 139.699554
-                //北海道
-//                lat = 43.064615
-//                lng = 141.346807
+                //一度停止する
+                locationManager.stopUpdatingLocation()
                 
-                //データベースに保存
-                appDelegate.DBManager.insertLocationTable(lat, lng: lng)
+                //一定時間後に再び取得する
+                let updatingTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(Config().timeIntervalUpdatingLocation, target: self, selector: "restartUpdatingLocation", userInfo: nil, repeats: false)
+                
+                //データベースに保存（緯度経度取得時 複数のデータが来るので1個だけ保存されるようにする）
+                if canInsertData == true {
+                    //データベースに保存する
+                    appDelegate.DBManager.insertLocationTable(lat, lng: lng)
+                    
+                    canInsertData = false
+                    let aroowInsertTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "arrowInsertData", userInfo: nil, repeats: false)
+                    
+                    //Topviewcontorollerに緯度経度を取得したことを知らせる
+                    self.delegate.didUpdatingLocation!()
+                }
             }
         }
     }
+    
+    func restartUpdatingLocation() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func arrowInsertData() {
+        canInsertData = true
+    }
+    
     
     // 位置情報取得に失敗したとき
     func locationManager(manager: CLLocationManager,didFailWithError error: NSError){
@@ -148,7 +168,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 subLocality = placemark.subLocality!
                 
                 //取得した地名をDatabaseManagerの方で保存する
-                self.appDelegate.DBManager.insertFrequencyTable(locality+subLocality, locality: locality, subLocality: subLocality, lat: lat, lng: lng)
+                self.appDelegate.DBManager.insertCityNameTable(locality+subLocality, locality: locality, subLocality: subLocality, lat: lat, lng: lng)
                 
             } else {
                 print("Problem with the data received from geocoder")

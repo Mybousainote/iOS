@@ -42,6 +42,7 @@ class LivingAreaButton: UIButton {
 
     func setLocationName(name: String) {
         cityName.text = name
+        cityName.font = UIFont.boldSystemFontOfSize(18)
     }
     
     func setRank(rank: Int) {

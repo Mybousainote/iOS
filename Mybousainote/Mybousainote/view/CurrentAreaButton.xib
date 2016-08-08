@@ -49,6 +49,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="currentPosition" destination="Bzj-Cv-D5B" id="zhs-bB-KP6"/>
                 <outlet property="streetView" destination="Gvl-oT-57v" id="YsN-2T-bM8"/>
             </connections>
         </view>

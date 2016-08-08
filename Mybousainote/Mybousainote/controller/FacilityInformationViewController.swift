@@ -72,7 +72,7 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
     }
     
     func stylingFont() {
-        navigationTitle.font = UIFont.boldSystemFontOfSize(17)
+        navigationTitle.font = UIFont.boldSystemFontOfSize(18)
         
         stylingTableText(facilityName, size: 15)
         
@@ -115,23 +115,38 @@ class FacilityInformationViewController: UIViewController, DisasterInformationMa
         let name = facility["name"] as! String
         let address = facility["address"] as! String
         let facilityType = facility["facilityType"] as! String
-        let seatingCapacity = facility["seatingCapacity"] as! String
+        var seatingCapacity = facility["seatingCapacity"] as! String
+        if seatingCapacity == "-1" {
+            seatingCapacity = "不明"
+        }
+        else {
+            seatingCapacity += "人"
+        }
 //        let facilityScale = facility["facilityScale"] as! String
+        
+        
         
         //ラベルをセットする
         navigationTitle.text = name
         navigationTitle.adjustsFontSizeToFitWidth = true
         
-        setTableText(facilityName, text: name)
-        setTableText(addressValue, text: address)
-        setTableText(typeValue, text: facilityType)
-        setTableText(capacityValue, text: seatingCapacity+"人")
+        facilityName.text = name
+        addressValue.text = address
+        typeValue.text = facilityType
+        capacityValue.text = seatingCapacity
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "sizeToFit", userInfo: nil, repeats: false)
     }
     
-    func setTableText(label: UILabel, text: String) {
-        label.text = text
-        label.numberOfLines = 0
-        label.sizeToFit()
+    func sizeToFit() {
+        facilityName.numberOfLines = 0
+        facilityName.sizeToFit()
+        addressValue.numberOfLines = 0
+        addressValue.sizeToFit()
+        typeValue.numberOfLines = 0
+        typeValue.sizeToFit()
+        capacityValue.numberOfLines = 0
+        capacityValue.sizeToFit()
     }
     
     //経路を取得する
