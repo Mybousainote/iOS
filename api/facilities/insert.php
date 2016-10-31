@@ -3,13 +3,13 @@
 header("Content-Type: text/html; charset=UTF-8");
 
 
-require_once('../config.php');
-$con = mysql_connect(server, user, pass) or die(mysql_error());
-mysql_select_db(myDatabase, $con) or die(mysql_error());
-mysql_query('set names utf8',$con);
+// require_once('../config.php');
+// $con = mysql_connect(server, user, pass) or die(mysql_error());
+// mysql_select_db(myDatabase, $con) or die(mysql_error());
+// mysql_query('set names utf8',$con);
 
 
-for ($num=1; $num < 48; $num++) { 
+for ($num=40; $num < 48; $num++) { 
 
 	$fileName;
 	if ($num < 10) {
@@ -71,6 +71,8 @@ for ($num=1; $num < 48; $num++) {
 		//DBに挿入
 		// mysql_query($query) or die(mysql_error());
 	}
+
+echo "完了！";
 
 }
 

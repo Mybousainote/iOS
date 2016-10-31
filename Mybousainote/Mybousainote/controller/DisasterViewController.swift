@@ -41,6 +41,11 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     @IBOutlet weak var sedimentIcon: UIImageView!
     @IBOutlet weak var floodIcon: UIImageView!
     
+    @IBOutlet weak var facilityText: UILabel!
+    @IBOutlet weak var earthquakeText: UILabel!
+    @IBOutlet weak var sedimentText: UILabel!
+    @IBOutlet weak var floodText: UILabel!
+    
     //タブボタンの背景
     @IBOutlet weak var facilityButtonBg: UIView!
     @IBOutlet weak var earthquakeButtonBg: UIView!
@@ -62,15 +67,20 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         cityNameLabel.text = livingAreaObject["cityName"] as? String
         cityNameLabel.font = UIFont.boldSystemFontOfSize(18)
         
+        //タブのテキストを太字に
+        facilityText.font = UIFont.boldSystemFontOfSize(12)
+        earthquakeText.font = UIFont.boldSystemFontOfSize(12)
+        sedimentText.font = UIFont.boldSystemFontOfSize(12)
+        floodText.font = UIFont.boldSystemFontOfSize(12)
+        
         //地図のカメラをセット
         mapView.setCameraLocation(livingAreaObject["lat"] as! Double, lng: livingAreaObject["lng"] as! Double)
         mapView.mapViewDelegate = self
         
-        
         //まず避難施設情報をセット
         createFacilitesView()
         getFacilitiesData()
-        stylingTabButtonAlpha(facilityIcon)
+        stylingTabButton(facilityIcon, text: facilityText)
     }
     
     //ステータスバーを白くする
@@ -341,13 +351,15 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
     
     //中心点の浸水深を取得
     func getWaterDepth() {
-        DIManager.getWaterDepth(mapView.centerLat, lng: mapView.centerLng)
+//        DIManager.getWaterDepth(mapView.centerLat, lng: mapView.centerLng)
+        DIManager.getWaterDepthV2(mapView.centerLat, lng: mapView.centerLng)
     }
     
     //中心点の浸水深を取得したときに呼ばれる
     func didGetWaterDepth(waterDepth: String) {
         //ラベルをセット
-        floodsView.setInformation(Config().warterDepthValues[waterDepth] as! String)
+//        floodsView.setInformation(Config().warterDepthValues[waterDepth] as! String)
+        floodsView.setInformation(waterDepth)
     }
     
     
@@ -444,7 +456,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         mapView.hiddenAllSedimentsPolygons()
         
         //アイコンの透明度を変える
-        stylingTabButtonAlpha(facilityIcon)
+        stylingTabButton(facilityIcon, text: facilityText)
     }
     
     func createFacilitesView() {
@@ -477,7 +489,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         mapView.hiddenAllSedimentsPolygons()
         
         //アイコンの透明度を変える
-        stylingTabButtonAlpha(earthquakeIcon)
+        stylingTabButton(earthquakeIcon, text: earthquakeText)
     }
     
     //浸水ボタン
@@ -508,7 +520,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         mapView.hiddenAllSedimentsPolygons()
         
         //アイコンの透明度を変える
-        stylingTabButtonAlpha(floodIcon)
+        stylingTabButton(floodIcon, text: floodText)
     }
     
     //浸水タイル再読み込みボタン
@@ -540,7 +552,7 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
         mapView.hiddenAllFloodPolygons()
         
         //アイコンの透明度を変える
-        stylingTabButtonAlpha(sedimentIcon)
+        stylingTabButton(sedimentIcon, text: sedimentText)
     }
     
     //防災画面の切り替えをトラッキング
@@ -558,13 +570,20 @@ class DisasterViewController: UIViewController,DisasterInformationManagerDelegat
 //        floodButtonBg.backgroundColor = nil
 //    }
     
-    func stylingTabButtonAlpha(icon: UIImageView) {
-        facilityIcon.alpha = 0.7
-        earthquakeIcon.alpha = 0.7
-        sedimentIcon.alpha = 0.7
-        floodIcon.alpha = 0.7
-        
+    func stylingTabButton(icon: UIImageView, text: UILabel) {
+        facilityIcon.alpha = 0.6
+        earthquakeIcon.alpha = 0.6
+        sedimentIcon.alpha = 0.6
+        floodIcon.alpha = 0.6
         icon.alpha = 1.0
+        
+        let gray = UIColor.init(red: 190/255, green: 190/255, blue: 190/255, alpha: 1.0)
+        facilityText.textColor = gray
+        earthquakeText.textColor = gray
+        sedimentText.textColor = gray
+        floodText.textColor = gray
+        text.textColor = UIColor.init(red: 17/255, green: 17/255, blue: 17/255, alpha: 1.0)
+        
     }
     
     

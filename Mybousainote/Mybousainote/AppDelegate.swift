@@ -88,7 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // ここに処理内容
         print("Background fetch foo")
-        LManager.locationManager.startUpdatingLocation()
+//        LManager.locationManager.startUpdatingLocation()
+        LManager.locationManager.startMonitoringSignificantLocationChanges()
 //        DBManager.refreshCityFrequency()
 //        DBManager.deleteOldDataFromLocationTable()
         

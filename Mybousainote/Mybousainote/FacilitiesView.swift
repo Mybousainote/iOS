@@ -39,6 +39,7 @@ class FacilitiesView: UIView {
             listButton.tag = Int(buttonInformation["id"] as! String)!
             listButton.num.text = buttonInformation["num"] as? String
             listButton.num.font = UIFont.boldSystemFontOfSize(18)
+            listButton.name.adjustsFontSizeToFitWidth = true
 
             self.addSubview(listButton)
             

@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q3r-mu-eHJ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q3r-mu-eHJ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ヒラギノ角ゴOld StdN W6.otf">
+        <array key="ヒラギノ角ゴOld StdN W6.otf">
             <string>HiraSansOldStdN-W6</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
@@ -37,32 +38,30 @@
                         <viewControllerLayoutGuide type="bottom" id="bBt-M0-Tef"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wxf-tD-VfK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-Eq-kuk">
-                                <rect key="frame" x="223" y="515" width="155" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-Eq-kuk">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="7CN-eQ-eK3"/>
                                     <constraint firstAttribute="height" constant="40" id="bey-L2-DqI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraSansOldStdN-W6" family="Hiragino Sans Old StdN" pointSize="18"/>
                                 <state key="normal" title="はじめる">
-                                    <color key="titleColor" red="0.21960784489999999" green="0.80000001190000003" blue="0.71372550729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.21960784489999999" green="0.80000001190000003" blue="0.71372550729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didTouchedStartButton:" destination="4aa-yd-zCn" eventType="touchUpInside" id="EW1-cu-Ekz"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="information_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q8L-L4-FGq">
-                                <rect key="frame" x="134" y="20" width="332" height="485"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="information_view.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q8L-L4-FGq">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Q8L-L4-FGq" secondAttribute="height" multiplier="332:485" id="Eoe-7y-QBk"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.21960784489999999" green="0.80000001190000003" blue="0.71372550729999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.21960784489999999" green="0.80000001190000003" blue="0.71372550729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9aY-Eq-kuk" firstAttribute="centerY" secondItem="Wxf-tD-VfK" secondAttribute="centerY" id="0D8-Dc-8Th"/>
                             <constraint firstItem="Q8L-L4-FGq" firstAttribute="top" secondItem="3CA-eM-R0b" secondAttribute="bottom" constant="50" id="Fbw-kL-vzy"/>

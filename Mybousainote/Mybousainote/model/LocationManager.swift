@@ -38,7 +38,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         //位置情報の精度
-//        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     }
     
     //位置情報許可のリクエスト
@@ -48,6 +48,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if(status == CLAuthorizationStatus.NotDetermined) {
             if #available(iOS 8.0, *) {
                 locationManager.requestAlwaysAuthorization()
+//                locationManager.requestWhenInUseAuthorization()
             } else {
                 // Fallback on earlier versions
             }
@@ -61,7 +62,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     //位置情報の取得を開始する
     func startUpdatingLocation() {
-        locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -104,13 +106,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if let currentLocation = (locations.last as? CLLocation?) {
                 lat = (currentLocation?.coordinate.latitude)!
                 lng = (currentLocation?.coordinate.longitude)!
-//                print("緯度:\(lat) 経度:\(lng)")
+                print("緯度:\(lat) 経度:\(lng)")
                 
                 //一度停止する
-                locationManager.stopUpdatingLocation()
+//                locationManager.stopUpdatingLocation()
+                locationManager.stopMonitoringSignificantLocationChanges()
                 
                 //一定時間後に再び取得する
-                let updatingTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(Config().timeIntervalUpdatingLocation, target: self, selector: "restartUpdatingLocation", userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(Config().timeIntervalUpdatingLocation, target: self, selector: "restartUpdatingLocation", userInfo: nil, repeats: false)
                 
                 //データベースに保存（緯度経度取得時 複数のデータが来るので1個だけ保存されるようにする）
                 if canInsertData == true {
@@ -128,7 +131,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func restartUpdatingLocation() {
-        locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func arrowInsertData() {
@@ -165,7 +169,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 //                print("Throughfare = \(placemark.thoroughfare)")
                 
                 locality = placemark.locality!
-                subLocality = placemark.subLocality!
+                if placemark.subLocality != nil {
+                    subLocality = placemark.subLocality!
+                }
                 
                 //取得した地名をDatabaseManagerの方で保存する
                 self.appDelegate.DBManager.insertCityNameTable(locality+subLocality, locality: locality, subLocality: subLocality, lat: lat, lng: lng)

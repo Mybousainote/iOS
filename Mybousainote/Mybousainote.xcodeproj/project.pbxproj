@@ -18,25 +18,24 @@
 		783C54091D26551E00961F19 /* BlackBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C54081D26551E00961F19 /* BlackBgView.swift */; };
 		7841DF531D49B6CF00500593 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF521D49B6CF00500593 /* GoogleService-Info.plist */; };
 		7841DF551D49F04600500593 /* faclitylist_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF541D49F04600500593 /* faclitylist_arrow.png */; };
-		7841DF5A1D49F62100500593 /* tabicon_earthquake.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF561D49F62100500593 /* tabicon_earthquake.png */; };
-		7841DF5B1D49F62100500593 /* tabicon_facility.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF571D49F62100500593 /* tabicon_facility.png */; };
-		7841DF5C1D49F62100500593 /* tabicon_flood.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF581D49F62100500593 /* tabicon_flood.png */; };
-		7841DF5D1D49F62100500593 /* tabicon_sediment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7841DF591D49F62100500593 /* tabicon_sediment.png */; };
 		784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */; };
 		784A2DB11D2CB09800EDB81A /* FacilitiesListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */; };
 		784A2DB31D2CBA8100EDB81A /* FacilityInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */; };
 		784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */; };
 		784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784DBD671D33543600D5C6AA /* SedimentsView.swift */; };
 		784DBD6A1D33544800D5C6AA /* FloodsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784DBD691D33544800D5C6AA /* FloodsView.xib */; };
-		7851407E1D581DC7007E7E28 /* information_view2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7851407D1D581DC7007E7E28 /* information_view2@2x.png */; };
+		7851407E1D581DC7007E7E28 /* information_view01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7851407D1D581DC7007E7E28 /* information_view01@2x.png */; };
 		785140801D583065007E7E28 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7851407F1D583065007E7E28 /* back.png */; };
 		7857CFE31D2CDEDE00D65B76 /* StreetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857CFE21D2CDEDE00D65B76 /* StreetView.swift */; };
 		7862F29B1CE71311000E4682 /* LivingAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7862F29A1CE71311000E4682 /* LivingAreaButton.swift */; };
 		7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7862F29C1CE71436000E4682 /* LivingAreaButton.xib */; };
 		7866D09B1CF6C8A800E2CB1E /* DisasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */; };
 		7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */; };
+		786CDA821DB9269F00632956 /* information_view01_4s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 786CDA801DB9269F00632956 /* information_view01_4s@3x.png */; };
+		786CDA831DB9269F00632956 /* information_view02_4s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 786CDA811DB9269F00632956 /* information_view02_4s@3x.png */; };
 		7887EB871D18F3EA0019BC8E /* SedimentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7887EB861D18F3EA0019BC8E /* SedimentsView.xib */; };
 		7887EB891D18F4010019BC8E /* FloodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887EB881D18F4010019BC8E /* FloodsView.swift */; };
+		788E6B351DA3A2710014F732 /* information_view02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 788E6B341DA3A2710014F732 /* information_view02@2x.png */; };
 		78A2C0D31D56CE7600B6ABE8 /* classification.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D21D56CE7600B6ABE8 /* classification.png */; };
 		78A2C0D51D5700A700B6ABE8 /* classification_sediment.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */; };
 		78A2C0D91D57291100B6ABE8 /* current_nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0D81D57291100B6ABE8 /* current_nav@2x.png */; };
@@ -47,7 +46,6 @@
 		78A2C0E31D572AAE00B6ABE8 /* pin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0DE1D572AAE00B6ABE8 /* pin_4@2x.png */; };
 		78A2C0E51D572AC500B6ABE8 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0E41D572AC500B6ABE8 /* center.png */; };
 		78A2C0E71D576E9C00B6ABE8 /* pin_nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0E61D576E9C00B6ABE8 /* pin_nav@2x.png */; };
-		78A2C0E91D5777AA00B6ABE8 /* information_view.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0E81D5777AA00B6ABE8 /* information_view.png */; };
 		78A2C0EF1D57825300B6ABE8 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A2C0EE1D57825300B6ABE8 /* cancel@2x.png */; };
 		78C1CE601CD74D12000B8EEA /* DisasterInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */; };
 		78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47B2F1CBA3F3500371566 /* TopViewController.swift */; };
@@ -70,6 +68,11 @@
 		78EDFD191D1105FB00CE4E33 /* EarthquakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */; };
 		78EDFD1B1D11348C00CE4E33 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EDFD1A1D11348C00CE4E33 /* test.swift */; };
 		78EDFD1D1D11349C00CE4E33 /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EDFD1C1D11349C00CE4E33 /* test.xib */; };
+		78EF8E871DA49B1B008D2189 /* tabicon_earthquake.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EF8E831DA49B1B008D2189 /* tabicon_earthquake.png */; };
+		78EF8E881DA49B1B008D2189 /* tabicon_facility.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EF8E841DA49B1B008D2189 /* tabicon_facility.png */; };
+		78EF8E891DA49B1B008D2189 /* tabicon_flood.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EF8E851DA49B1B008D2189 /* tabicon_flood.png */; };
+		78EF8E8A1DA49B1B008D2189 /* tabicon_sediment.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EF8E861DA49B1B008D2189 /* tabicon_sediment.png */; };
+		78EF8E8C1DA4AC39008D2189 /* information_view.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EF8E8B1DA4AC39008D2189 /* information_view.png */; };
 		78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EFE5F21D014DD7005B16BD /* MapView.swift */; };
 		78F418DF1D30D5FB00ECB4E0 /* font in Resources */ = {isa = PBXBuildFile; fileRef = 78F418DE1D30D5FB00ECB4E0 /* font */; };
 /* End PBXBuildFile section */
@@ -104,25 +107,24 @@
 		783C54081D26551E00961F19 /* BlackBgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackBgView.swift; sourceTree = "<group>"; };
 		7841DF521D49B6CF00500593 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7841DF541D49F04600500593 /* faclitylist_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faclitylist_arrow.png; sourceTree = "<group>"; };
-		7841DF561D49F62100500593 /* tabicon_earthquake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_earthquake.png; sourceTree = "<group>"; };
-		7841DF571D49F62100500593 /* tabicon_facility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_facility.png; sourceTree = "<group>"; };
-		7841DF581D49F62100500593 /* tabicon_flood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_flood.png; sourceTree = "<group>"; };
-		7841DF591D49F62100500593 /* tabicon_sediment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_sediment.png; sourceTree = "<group>"; };
 		784A2DAE1D2CB08100EDB81A /* FacilitiesListButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FacilitiesListButton.xib; path = view/FacilitiesListButton.xib; sourceTree = "<group>"; };
 		784A2DB01D2CB09800EDB81A /* FacilitiesListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesListButton.swift; path = view/FacilitiesListButton.swift; sourceTree = "<group>"; };
 		784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilityInformationViewController.swift; path = controller/FacilityInformationViewController.swift; sourceTree = "<group>"; };
 		784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FacilityInformation.storyboard; path = storyboard/FacilityInformation.storyboard; sourceTree = "<group>"; };
 		784DBD671D33543600D5C6AA /* SedimentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SedimentsView.swift; path = view/SedimentsView.swift; sourceTree = "<group>"; };
 		784DBD691D33544800D5C6AA /* FloodsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FloodsView.xib; path = view/FloodsView.xib; sourceTree = "<group>"; };
-		7851407D1D581DC7007E7E28 /* information_view2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information_view2@2x.png"; sourceTree = "<group>"; };
+		7851407D1D581DC7007E7E28 /* information_view01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information_view01@2x.png"; sourceTree = "<group>"; };
 		7851407F1D583065007E7E28 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		7857CFE21D2CDEDE00D65B76 /* StreetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreetView.swift; path = view/StreetView.swift; sourceTree = "<group>"; };
 		7862F29A1CE71311000E4682 /* LivingAreaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LivingAreaButton.swift; path = view/LivingAreaButton.swift; sourceTree = "<group>"; };
 		7862F29C1CE71436000E4682 /* LivingAreaButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LivingAreaButton.xib; path = view/LivingAreaButton.xib; sourceTree = "<group>"; };
 		7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterViewController.swift; path = controller/DisasterViewController.swift; sourceTree = "<group>"; };
 		7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Disaster.storyboard; path = storyboard/Disaster.storyboard; sourceTree = "<group>"; };
+		786CDA801DB9269F00632956 /* information_view01_4s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information_view01_4s@3x.png"; sourceTree = "<group>"; };
+		786CDA811DB9269F00632956 /* information_view02_4s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information_view02_4s@3x.png"; sourceTree = "<group>"; };
 		7887EB861D18F3EA0019BC8E /* SedimentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SedimentsView.xib; path = view/SedimentsView.xib; sourceTree = "<group>"; };
 		7887EB881D18F4010019BC8E /* FloodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloodsView.swift; path = view/FloodsView.swift; sourceTree = "<group>"; };
+		788E6B341DA3A2710014F732 /* information_view02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information_view02@2x.png"; sourceTree = "<group>"; };
 		78A2C0D21D56CE7600B6ABE8 /* classification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classification.png; sourceTree = "<group>"; };
 		78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classification_sediment.png; sourceTree = "<group>"; };
 		78A2C0D81D57291100B6ABE8 /* current_nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "current_nav@2x.png"; sourceTree = "<group>"; };
@@ -133,7 +135,6 @@
 		78A2C0DE1D572AAE00B6ABE8 /* pin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin_4@2x.png"; sourceTree = "<group>"; };
 		78A2C0E41D572AC500B6ABE8 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center.png; sourceTree = "<group>"; };
 		78A2C0E61D576E9C00B6ABE8 /* pin_nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin_nav@2x.png"; sourceTree = "<group>"; };
-		78A2C0E81D5777AA00B6ABE8 /* information_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information_view.png; sourceTree = "<group>"; };
 		78A2C0EE1D57825300B6ABE8 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		78C1CE5F1CD74D12000B8EEA /* DisasterInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisasterInformationManager.swift; path = model/DisasterInformationManager.swift; sourceTree = "<group>"; };
 		78C47B2A1CBA3DF900371566 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -163,6 +164,11 @@
 		78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EarthquakeView.swift; path = view/EarthquakeView.swift; sourceTree = "<group>"; };
 		78EDFD1A1D11348C00CE4E33 /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = test.swift; path = view/test.swift; sourceTree = "<group>"; };
 		78EDFD1C1D11349C00CE4E33 /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = test.xib; path = view/test.xib; sourceTree = "<group>"; };
+		78EF8E831DA49B1B008D2189 /* tabicon_earthquake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_earthquake.png; sourceTree = "<group>"; };
+		78EF8E841DA49B1B008D2189 /* tabicon_facility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_facility.png; sourceTree = "<group>"; };
+		78EF8E851DA49B1B008D2189 /* tabicon_flood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_flood.png; sourceTree = "<group>"; };
+		78EF8E861DA49B1B008D2189 /* tabicon_sediment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabicon_sediment.png; sourceTree = "<group>"; };
+		78EF8E8B1DA4AC39008D2189 /* information_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information_view.png; sourceTree = "<group>"; };
 		78EFE5F21D014DD7005B16BD /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = view/MapView.swift; sourceTree = "<group>"; };
 		78F418DE1D30D5FB00ECB4E0 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		E347EA0DD9952B34891828F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,10 +204,17 @@
 		7821024B1D0509FC00C61152 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				78EF8E8B1DA4AC39008D2189 /* information_view.png */,
+				78EF8E831DA49B1B008D2189 /* tabicon_earthquake.png */,
+				78EF8E841DA49B1B008D2189 /* tabicon_facility.png */,
+				78EF8E851DA49B1B008D2189 /* tabicon_flood.png */,
+				78EF8E861DA49B1B008D2189 /* tabicon_sediment.png */,
 				7851407F1D583065007E7E28 /* back.png */,
-				7851407D1D581DC7007E7E28 /* information_view2@2x.png */,
+				786CDA801DB9269F00632956 /* information_view01_4s@3x.png */,
+				786CDA811DB9269F00632956 /* information_view02_4s@3x.png */,
+				7851407D1D581DC7007E7E28 /* information_view01@2x.png */,
+				788E6B341DA3A2710014F732 /* information_view02@2x.png */,
 				78A2C0EE1D57825300B6ABE8 /* cancel@2x.png */,
-				78A2C0E81D5777AA00B6ABE8 /* information_view.png */,
 				78A2C0E61D576E9C00B6ABE8 /* pin_nav@2x.png */,
 				78A2C0E41D572AC500B6ABE8 /* center.png */,
 				78A2C0DA1D572AAE00B6ABE8 /* pin_0@2x.png */,
@@ -212,10 +225,6 @@
 				78A2C0D81D57291100B6ABE8 /* current_nav@2x.png */,
 				78A2C0D41D5700A700B6ABE8 /* classification_sediment.png */,
 				78A2C0D21D56CE7600B6ABE8 /* classification.png */,
-				7841DF561D49F62100500593 /* tabicon_earthquake.png */,
-				7841DF571D49F62100500593 /* tabicon_facility.png */,
-				7841DF581D49F62100500593 /* tabicon_flood.png */,
-				7841DF591D49F62100500593 /* tabicon_sediment.png */,
 				7841DF541D49F04600500593 /* faclitylist_arrow.png */,
 				782DE97E1D40683D007F698E /* information.png */,
 			);
@@ -433,6 +442,9 @@
 				TargetAttributes = {
 					78D2BC941CBA2D3A00905E3D = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = T66965A94D;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -441,10 +453,12 @@
 					};
 					78D2BCA81CBA2D3A00905E3D = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 78D2BC941CBA2D3A00905E3D;
 					};
 					78D2BCB31CBA2D3A00905E3D = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 78D2BC941CBA2D3A00905E3D;
 					};
 				};
@@ -475,35 +489,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A2C0D51D5700A700B6ABE8 /* classification_sediment.png in Resources */,
-				7841DF5D1D49F62100500593 /* tabicon_sediment.png in Resources */,
+				78EF8E8A1DA49B1B008D2189 /* tabicon_sediment.png in Resources */,
 				78A2C0E21D572AAE00B6ABE8 /* pin_3@2x.png in Resources */,
 				78A2C0E01D572AAE00B6ABE8 /* pin_1@2x.png in Resources */,
+				78EF8E891DA49B1B008D2189 /* tabicon_flood.png in Resources */,
 				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
 				78A2C0D31D56CE7600B6ABE8 /* classification.png in Resources */,
+				788E6B351DA3A2710014F732 /* information_view02@2x.png in Resources */,
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
-				7841DF5C1D49F62100500593 /* tabicon_flood.png in Resources */,
+				78EF8E881DA49B1B008D2189 /* tabicon_facility.png in Resources */,
 				78A2C0DF1D572AAE00B6ABE8 /* pin_0@2x.png in Resources */,
 				782DE97F1D40683D007F698E /* information.png in Resources */,
+				786CDA831DB9269F00632956 /* information_view02_4s@3x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
-				78A2C0E91D5777AA00B6ABE8 /* information_view.png in Resources */,
 				785140801D583065007E7E28 /* back.png in Resources */,
 				784DBD6A1D33544800D5C6AA /* FloodsView.xib in Resources */,
+				786CDA821DB9269F00632956 /* information_view01_4s@3x.png in Resources */,
 				78EDFD1D1D11349C00CE4E33 /* test.xib in Resources */,
+				78EF8E871DA49B1B008D2189 /* tabicon_earthquake.png in Resources */,
 				78A2C0EF1D57825300B6ABE8 /* cancel@2x.png in Resources */,
 				784A2DB51D2CBA9600EDB81A /* FacilityInformation.storyboard in Resources */,
 				78A2C0E71D576E9C00B6ABE8 /* pin_nav@2x.png in Resources */,
 				78D2BCA31CBA2D3A00905E3D /* LaunchScreen.storyboard in Resources */,
 				780FB4561D07BA9F00E5C58E /* CurrentAreaButton.xib in Resources */,
 				78A2C0D91D57291100B6ABE8 /* current_nav@2x.png in Resources */,
-				7841DF5A1D49F62100500593 /* tabicon_earthquake.png in Resources */,
 				78A2C0E11D572AAE00B6ABE8 /* pin_2@2x.png in Resources */,
 				78A2C0E51D572AC500B6ABE8 /* center.png in Resources */,
 				7887EB871D18F3EA0019BC8E /* SedimentsView.xib in Resources */,
 				782DE9831D406976007F698E /* Information.storyboard in Resources */,
 				7841DF551D49F04600500593 /* faclitylist_arrow.png in Resources */,
-				7841DF5B1D49F62100500593 /* tabicon_facility.png in Resources */,
 				78EDFD171D1105D000CE4E33 /* EarthquakeView.xib in Resources */,
-				7851407E1D581DC7007E7E28 /* information_view2@2x.png in Resources */,
+				7851407E1D581DC7007E7E28 /* information_view01@2x.png in Resources */,
 				78A2C0E31D572AAE00B6ABE8 /* pin_4@2x.png in Resources */,
 				78CF602B1D1A69C700119A13 /* FacilitiesView.xib in Resources */,
 				784A2DAF1D2CB08100EDB81A /* FacilitiesListButton.xib in Resources */,
@@ -512,6 +528,7 @@
 				78D2BCA01CBA2D3A00905E3D /* Assets.xcassets in Resources */,
 				782DE98A1D40A4FA007F698E /* Info.plist in Resources */,
 				7866D09D1CF6C8BA00E2CB1E /* Disaster.storyboard in Resources */,
+				78EF8E8C1DA4AC39008D2189 /* information_view.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,12 +757,17 @@
 			baseConfigurationReference = E347EA0DD9952B34891828F9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Mybousainote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.Mybousainote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Mybousainote/Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -754,12 +776,17 @@
 			baseConfigurationReference = 2C8825168BBBC41CF0C1DDA4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Mybousainote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.Mybousainote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)/Mybousainote/Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -771,6 +798,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.MybousainoteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mybousainote.app/Mybousainote";
 			};
 			name = Debug;
@@ -783,6 +811,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.MybousainoteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mybousainote.app/Mybousainote";
 			};
 			name = Release;
@@ -794,6 +823,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.MybousainoteUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = Mybousainote;
 				USES_XCTRUNNER = YES;
 			};
@@ -806,6 +836,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TaigaSano.MybousainoteUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = Mybousainote;
 				USES_XCTRUNNER = YES;
 			};

@@ -1,13 +1,15 @@
 <?php 
 
 header("Content-Type: text/html; charset=UTF-8");
+// define('WP_MEMORY_LIMIT', '64M');
+ini_set('memory_limit', '512M');
 
-require_once('../config.php');
-$con = mysql_connect(server, user, pass) or die(mysql_error());
-mysql_select_db(myDatabase, $con) or die(mysql_error());
-mysql_query('set names utf8',$con);
+// require_once('../config.php');
+// $con = mysql_connect(server, user, pass) or die(mysql_error());
+// mysql_select_db(myDatabase, $con) or die(mysql_error());
+// mysql_query('set names utf8',$con);
 
-for ($num=15; $num < 23; $num++) {
+for ($num=3; $num < 4; $num++) {
 
 	$fileName;
 	if ($num < 10) {
@@ -17,7 +19,9 @@ for ($num=15; $num < 23; $num++) {
 		$fileName = "A31-12_".$num.".xml";
 	}
 	echo $fileName;
-	echo "<br>";
+	// echo "<br>";
+
+	// $fileName = "A31-12_23_2.xml";
 
 	$rss =  '../xml/floods/'.$fileName;
 	$xml = simplexml_load_file($rss);
@@ -66,14 +70,12 @@ for ($num=15; $num < 23; $num++) {
 				)";
 
 				// echo $query;
-				mysql_query($query) or die(mysql_error());	
+				// mysql_query($query) or die(mysql_error());	
 			}
 		}		
 	}
-
+	echo "完了！";
 }
-
-echo "完了！";
 
 
  ?>

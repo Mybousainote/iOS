@@ -2,12 +2,12 @@
 
 header("Content-Type: text/html; charset=UTF-8");
 
-require_once('../config.php');
-$con = mysql_connect(server, user, pass) or die(mysql_error());
-mysql_select_db(myDatabase, $con) or die(mysql_error());
-mysql_query('set names utf8',$con);
+// require_once('../config.php');
+// $con = mysql_connect(server, user, pass) or die(mysql_error());
+// mysql_select_db(myDatabase, $con) or die(mysql_error());
+// mysql_query('set names utf8',$con);
 
-for ($num=14; $num < 15; $num++) {
+for ($num=40; $num < 48; $num++) {
 
 	$fileName;
 	if ($num < 10) {
@@ -17,7 +17,7 @@ for ($num=14; $num < 15; $num++) {
 		$fileName = "A33-13_".$num.".xml";
 	}
 	echo $fileName;
-	echo "<br>";
+	// echo "<br>";
 
 	$rss =  '../xml/sediments/'.$fileName;
 	$xml = simplexml_load_file($rss);
@@ -26,7 +26,7 @@ for ($num=14; $num < 15; $num++) {
 
 	for ($i=0; $i < count($data["SedimentRelatedDisasterWarningAreasPolygon"]); $i++) { 
 		// echo "<br>";
-		echo "<br>";
+		// echo "<br>";
 
 		$curve = $data["Area"][$i]->Curve;
 
@@ -41,7 +41,7 @@ for ($num=14; $num < 15; $num++) {
 			// echo "地滑り";
 		}else {
 		}
-		echo "<br>";
+		// echo "<br>";
 
 		//区域区分
 		$vigilanceDivision = $data["SedimentRelatedDisasterWarningAreasPolygon"][$i]->coz;
@@ -56,6 +56,7 @@ for ($num=14; $num < 15; $num++) {
 		}else {
 		}
 
+		echo count($curve);
 		// //それに付随するポリゴン（複数ある場合もあり）
 		for ($j=0; $j < count($curve); $j++) {
 
@@ -88,14 +89,13 @@ for ($num=14; $num < 15; $num++) {
 				".$vigilanceDivision."
 				)";
 
-				echo $query;
-				mysql_query($query) or die(mysql_error());	
+				// echo $query;
+				// mysql_query($query) or die(mysql_error());	
 			}
 		}		
 	}
+	echo "完了！";
 }
-
-echo "完了！";
 
 
  ?>
