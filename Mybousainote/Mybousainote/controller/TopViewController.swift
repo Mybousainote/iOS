@@ -209,9 +209,8 @@ class TopViewController: UIViewController, DatabaseManagerDelegate, LocationMana
                 addShadowAreaView(livingAreaView4)
                 livingAreaView4.addSubview(livingAreaButton)
                 break
-                
             default:
-                break
+                return
             }
         }
     }

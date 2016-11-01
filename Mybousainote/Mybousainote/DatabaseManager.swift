@@ -80,13 +80,12 @@ class DatabaseManager: NSObject {
     
     //取得した位置情報をDBに保存する
     func insertLocationTable(lat: Double, lng: Double) {
+        print("現在の位置情報を保存：\(lat), \(lng)")
         let myLocations = Location_Table()
         
         myLocations.createdDate = NSDate()
         myLocations.lat = lat
         myLocations.lng = lng
-        
-        print("現在地データ追加　緯度：\(lat) 経度：\(lng)")
         
         let myRealm = try! Realm()
         try! myRealm.write {
@@ -129,6 +128,7 @@ class DatabaseManager: NSObject {
     
     //地名を取得したとき、テーブルに保存する
     func insertCityNameTable(cityName: String, locality: String, subLocality: String, lat: Double, lng: Double) {
+        print("地名を保存：\(cityName)")
         let cityNames = CityName_Table()
     
         cityNames.createdDate = NSDate()

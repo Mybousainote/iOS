@@ -106,7 +106,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if let currentLocation = (locations.last as? CLLocation?) {
                 lat = (currentLocation?.coordinate.latitude)!
                 lng = (currentLocation?.coordinate.longitude)!
-                print("緯度:\(lat) 経度:\(lng)")
+//                print("緯度:\(lat) 経度:\(lng)")
                 
                 //一度停止する
 //                locationManager.stopUpdatingLocation()
@@ -119,6 +119,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 if canInsertData == true {
                     //データベースに保存する
                     appDelegate.DBManager.insertLocationTable(lat, lng: lng)
+                    locationManager.stopMonitoringSignificantLocationChanges()
                     
                     canInsertData = false
                     let aroowInsertTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "arrowInsertData", userInfo: nil, repeats: false)

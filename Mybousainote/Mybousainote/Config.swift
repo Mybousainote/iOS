@@ -18,7 +18,7 @@ public class Config {
     //位置情報履歴を保存する期間（日）
     let timeIntervalHoldData: Double = 30
     
-    //アプリ起動時に位置情報を取得するインターバル（秒）
+    //フォアグラウンド時に位置情報を取得するインターバル（秒）
     let timeIntervalUpdatingLocation: NSTimeInterval = 60
     
     //避難施設を取得する中心点からの範囲（m）
