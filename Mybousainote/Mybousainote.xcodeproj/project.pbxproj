@@ -64,6 +64,9 @@
 		78D81B721CD6254800CA9498 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D81B711CD6254800CA9498 /* Config.swift */; };
 		78DD68281CBB65E900444C65 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD68271CBB65E900444C65 /* LocationManager.swift */; };
 		78DD682A1CBB667C00444C65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DD68291CBB667C00444C65 /* CoreLocation.framework */; };
+		78EB20B81DC9DFD500E0C1E1 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EB20B71DC9DFD500E0C1E1 /* LogViewController.swift */; };
+		78EB20BA1DC9DFE400E0C1E1 /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78EB20B91DC9DFE400E0C1E1 /* Log.storyboard */; };
+		78EB20BC1DC9E07500E0C1E1 /* batsu.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EB20BB1DC9E07500E0C1E1 /* batsu.png */; };
 		78EDFD171D1105D000CE4E33 /* EarthquakeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EDFD161D1105D000CE4E33 /* EarthquakeView.xib */; };
 		78EDFD191D1105FB00CE4E33 /* EarthquakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */; };
 		78EDFD1B1D11348C00CE4E33 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EDFD1A1D11348C00CE4E33 /* test.swift */; };
@@ -160,6 +163,9 @@
 		78D81B711CD6254800CA9498 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		78DD68271CBB65E900444C65 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = model/LocationManager.swift; sourceTree = "<group>"; };
 		78DD68291CBB667C00444C65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		78EB20B71DC9DFD500E0C1E1 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogViewController.swift; path = controller/LogViewController.swift; sourceTree = "<group>"; };
+		78EB20B91DC9DFE400E0C1E1 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Log.storyboard; path = storyboard/Log.storyboard; sourceTree = "<group>"; };
+		78EB20BB1DC9E07500E0C1E1 /* batsu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batsu.png; sourceTree = "<group>"; };
 		78EDFD161D1105D000CE4E33 /* EarthquakeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EarthquakeView.xib; path = view/EarthquakeView.xib; sourceTree = "<group>"; };
 		78EDFD181D1105FB00CE4E33 /* EarthquakeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EarthquakeView.swift; path = view/EarthquakeView.swift; sourceTree = "<group>"; };
 		78EDFD1A1D11348C00CE4E33 /* test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = test.swift; path = view/test.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 		7821024B1D0509FC00C61152 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				78EB20BB1DC9E07500E0C1E1 /* batsu.png */,
 				78EF8E8B1DA4AC39008D2189 /* information_view.png */,
 				78EF8E831DA49B1B008D2189 /* tabicon_earthquake.png */,
 				78EF8E841DA49B1B008D2189 /* tabicon_facility.png */,
@@ -278,6 +285,7 @@
 				78C47B311CBA3F4E00371566 /* TutorialViewController.swift */,
 				7866D09A1CF6C8A800E2CB1E /* DisasterViewController.swift */,
 				784A2DB21D2CBA8100EDB81A /* FacilityInformationViewController.swift */,
+				78EB20B71DC9DFD500E0C1E1 /* LogViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 				7866D09C1CF6C8BA00E2CB1E /* Disaster.storyboard */,
 				784A2DB41D2CBA9600EDB81A /* FacilityInformation.storyboard */,
 				782DE9821D406976007F698E /* Information.storyboard */,
+				78EB20B91DC9DFE400E0C1E1 /* Log.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -495,10 +504,12 @@
 				78EF8E891DA49B1B008D2189 /* tabicon_flood.png in Resources */,
 				78C47B3A1CBA430200371566 /* Tutorial.storyboard in Resources */,
 				78A2C0D31D56CE7600B6ABE8 /* classification.png in Resources */,
+				78EB20BC1DC9E07500E0C1E1 /* batsu.png in Resources */,
 				788E6B351DA3A2710014F732 /* information_view02@2x.png in Resources */,
 				78C47B341CBA3F9100371566 /* Top.storyboard in Resources */,
 				78EF8E881DA49B1B008D2189 /* tabicon_facility.png in Resources */,
 				78A2C0DF1D572AAE00B6ABE8 /* pin_0@2x.png in Resources */,
+				78EB20BA1DC9DFE400E0C1E1 /* Log.storyboard in Resources */,
 				782DE97F1D40683D007F698E /* information.png in Resources */,
 				786CDA831DB9269F00632956 /* information_view02_4s@3x.png in Resources */,
 				7862F29D1CE71436000E4682 /* LivingAreaButton.xib in Resources */,
@@ -604,6 +615,7 @@
 				784DBD681D33543600D5C6AA /* SedimentsView.swift in Sources */,
 				78C47B3C1CBA480E00371566 /* DatabaseManager.swift in Sources */,
 				78C47B301CBA3F3500371566 /* TopViewController.swift in Sources */,
+				78EB20B81DC9DFD500E0C1E1 /* LogViewController.swift in Sources */,
 				78D81B701CD6253A00CA9498 /* Global.swift in Sources */,
 				782864011D46FFC500DBDE09 /* FacilityMapView.swift in Sources */,
 				78EFE5F31D014DD7005B16BD /* MapView.swift in Sources */,

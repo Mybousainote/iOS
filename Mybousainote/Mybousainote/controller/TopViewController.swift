@@ -17,11 +17,13 @@ class TopViewController: UIViewController, DatabaseManagerDelegate, LocationMana
     
     @IBOutlet weak var debugTextView: UITextView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var currentAreaView: UIView!
     @IBOutlet weak var livingAreaView1: UIView!
     @IBOutlet weak var livingAreaView2: UIView!
     @IBOutlet weak var livingAreaView3: UIView!
     @IBOutlet weak var livingAreaView4: UIView!
+    @IBOutlet weak var logButton: UIButton!
     
     var isFirstUpdatingLocation: Bool = true
     
@@ -56,11 +58,15 @@ class TopViewController: UIViewController, DatabaseManagerDelegate, LocationMana
     
     //viewが全て読み込まれた後に呼ばれる
     override func viewDidLayoutSubviews() {
-//        setLivingAreaButtons()
     }
+    
     override func viewDidAppear(animated: Bool) {
         setUI()
         trackingScreen()
+        
+        logButton.layer.cornerRadius = 4
+        addShadowAreaView(logButton)
+        scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, self.view.frame.height-68+65)
     }
     
     func setUI() {
@@ -330,6 +336,12 @@ class TopViewController: UIViewController, DatabaseManagerDelegate, LocationMana
     }
     
     
+    @IBAction func touchedLogButton(sender: AnyObject) {
+        print("ログを見る！")
+        let storyboard = UIStoryboard(name: "Log", bundle: nil)
+        let modalView: UIViewController! = storyboard.instantiateInitialViewController()
+        self.presentViewController(modalView, animated: true, completion: nil)
+    }
     
     
     
