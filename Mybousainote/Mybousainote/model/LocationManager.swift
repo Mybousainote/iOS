@@ -101,28 +101,25 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     // 位置情報が取得できたとき
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if locations.count > 0{
+        if locations.count > 0 {
             
-            if let currentLocation = (locations.last as? CLLocation?) {
-                lat = (currentLocation?.coordinate.latitude)!
-                lng = (currentLocation?.coordinate.longitude)!
+            if let currentLocation = locations.last {
+                lat = currentLocation.coordinate.latitude
+                lng = currentLocation.coordinate.longitude
 //                print("緯度:\(lat) 経度:\(lng)")
-                
-                //一度停止する
-//                locationManager.stopUpdatingLocation()
-                locationManager.stopMonitoringSignificantLocationChanges()
-                
-                //一定時間後に再び取得する
-                NSTimer.scheduledTimerWithTimeInterval(Config().timeIntervalUpdatingLocation, target: self, selector: "restartUpdatingLocation", userInfo: nil, repeats: false)
                 
                 //データベースに保存（緯度経度取得時 複数のデータが来るので1個だけ保存されるようにする）
                 if canInsertData == true {
                     //データベースに保存する
                     appDelegate.DBManager.insertLocationTable(lat, lng: lng)
+                    
+                    //一旦停止する
                     locationManager.stopMonitoringSignificantLocationChanges()
                     
                     canInsertData = false
-                    let aroowInsertTimer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "arrowInsertData", userInfo: nil, repeats: false)
+                    
+                    //一定時間後に再び取得する
+                    NSTimer.scheduledTimerWithTimeInterval(Config().timeIntervalUpdatingLocation, target: self, selector: #selector(LocationManager.restartUpdatingLocation), userInfo: nil, repeats: false)
                     
                     //Topviewcontorollerに緯度経度を取得したことを知らせる
                     self.delegate.didUpdatingLocation!()
@@ -132,14 +129,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func restartUpdatingLocation() {
-//        locationManager.startUpdatingLocation()
+        canInsertData = true
         locationManager.startMonitoringSignificantLocationChanges()
     }
-    
-    func arrowInsertData() {
-        canInsertData = true
-    }
-    
     
     // 位置情報取得に失敗したとき
     func locationManager(manager: CLLocationManager,didFailWithError error: NSError){

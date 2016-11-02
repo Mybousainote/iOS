@@ -19,7 +19,7 @@ public class Config {
     let timeIntervalHoldData: Double = 30
     
     //フォアグラウンド時に位置情報を取得するインターバル（秒）
-    let timeIntervalUpdatingLocation: NSTimeInterval = 60
+    let timeIntervalUpdatingLocation: NSTimeInterval = 15
     
     //避難施設を取得する中心点からの範囲（m）
     let BoundForGetFacilities: Int = 3000
