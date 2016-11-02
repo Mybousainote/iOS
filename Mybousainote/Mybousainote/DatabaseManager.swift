@@ -240,6 +240,22 @@ class DatabaseManager: NSObject {
             return (livingAreas as? [AnyObject])!
         }
     }
+    
+    func getLocationLog() -> [AnyObject] {
+        let myRealm = try! Realm()
+        let tableContents = myRealm.objects(CityName_Table)
+        
+        var locations = [AnyObject]()
+        
+        for row in tableContents {
+            let location = [
+                "lat": row.lat,
+                "lng": row.lng
+                ]
+            locations.append(location)
+        }
+        return locations
+    }
 }
 
 

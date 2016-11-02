@@ -59,6 +59,9 @@
                             <constraint firstAttribute="trailing" secondItem="8bX-PU-NTF" secondAttribute="trailing" id="iVa-Uu-qen"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logMapView" destination="8bX-PU-NTF" id="ylC-TA-JHL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5YD-pq-I5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
